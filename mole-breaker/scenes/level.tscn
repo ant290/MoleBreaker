@@ -2,11 +2,9 @@
 
 [ext_resource type="PackedScene" uid="uid://baqtq748e2314" path="res://scenes/paddle.tscn" id="1_2q6dc"]
 [ext_resource type="Script" uid="uid://bla25v87vpm1e" path="res://scripts/level.gd" id="1_w8frs"]
+[ext_resource type="Texture2D" uid="uid://by885h87iwnui" path="res://assets/background dirt.png" id="2_ppgk2"]
 [ext_resource type="PackedScene" uid="uid://c00uaxwxq1i2b" path="res://scenes/ball.tscn" id="2_w7c3h"]
 [ext_resource type="Script" uid="uid://bfk12tdquv0b7" path="res://scripts/player_ui.gd" id="4_mx8sn"]
-
-[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_w8frs"]
-size = Vector2(720, 1280)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_w7c3h"]
 size = Vector2(7.5, 1280)
@@ -26,7 +24,7 @@ script = ExtResource("1_w8frs")
 
 [node name="Background" type="Sprite2D" parent="."]
 position = Vector2(360, 640)
-texture = SubResource("PlaceholderTexture2D_w8frs")
+texture = ExtResource("2_ppgk2")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(360, 640)

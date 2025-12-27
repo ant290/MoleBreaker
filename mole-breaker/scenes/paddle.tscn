@@ -9,7 +9,7 @@ size = Vector2(128, 64)
 radius = 32.0
 height = 128.0
 
-[node name="Paddle" type="CharacterBody2D"]
+[node name="Paddle" type="CharacterBody2D" groups=["Paddle"]]
 motion_mode = 1
 script = ExtResource("1_3xiby")
 

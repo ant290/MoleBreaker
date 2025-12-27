@@ -23,6 +23,7 @@ window/size/viewport_height=1280
 [global_group]
 
 Brick=""
+Paddle=""
 
 [rendering]
 
