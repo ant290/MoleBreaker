@@ -1,6 +1,7 @@
 extends Node2D
 
 @onready var brickObject = preload("res://scenes/brick.tscn")
+@onready var uiLayer : PlayerUI = $CanvasLayer
 
 var columns = 5
 var rows  = 7
@@ -9,6 +10,7 @@ var margin = 13.33
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	setupLevel()
+	uiLayer.load_bricks()
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
