@@ -1,6 +1,5 @@
 extends CharacterBody2D
 
-
 const SPEED = 250
 var dir = Vector2.DOWN
 var is_active = true
