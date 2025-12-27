@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://baqtq748e2314"]
+
+[ext_resource type="Script" uid="uid://cxx1w3jcuudd5" path="res://scripts/paddle.gd" id="1_3xiby"]
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_31swd"]
+size = Vector2(128, 64)
+
+[node name="Node2D" type="CharacterBody2D"]
+script = ExtResource("1_3xiby")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = SubResource("PlaceholderTexture2D_31swd")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite2D"]
