@@ -4,11 +4,12 @@ class_name PlayerUI
 @onready var score_text : Label = $ScoreText
 @export var score_text_prompt : String = "Score: "
 
+@onready var lives_text : Label = $LivesText
+@export var lives_text_prompt : String = "Lives: "
+
 @onready var level = get_parent()
 
 var current_level_bricks : Array = [BreakableBrick]
-
-var current_score : int = 0
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -25,13 +26,16 @@ func load_bricks() -> void:
 
 func is_brick(node : Node) -> bool:
 	return node.is_in_group("Brick")
-	
+
 func subscribe_to_brick_onhit(brick: BreakableBrick) -> void:
 	brick.OnHit.connect(_update_score)
-	
+
 func _update_score (score : int) -> void:
-	current_score += score
+	PlayerStats.score += score
 	_set_score_label()
-	
+
 func _set_score_label() -> void:
-	score_text.text = score_text_prompt + str(current_score)
+	score_text.text = score_text_prompt + str(PlayerStats.score)
+
+func _on_catch_bucket_body_entered(body: Node2D) -> void:
+	lives_text.text = lives_text_prompt + str(PlayerStats.lives)

@@ -5,17 +5,20 @@
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_31swd"]
 size = Vector2(128, 64)
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_3xiby"]
-radius = 32.0
-height = 128.0
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3xiby"]
+size = Vector2(42, 128.20522)
 
 [node name="Paddle" type="CharacterBody2D" groups=["Paddle"]]
 motion_mode = 1
+platform_on_leave = 2
 script = ExtResource("1_3xiby")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(1.5600014, 1)
 texture = SubResource("PlaceholderTexture2D_31swd")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(3.4610575e-06, -11)
 rotation = 1.5707964
-shape = SubResource("CapsuleShape2D_3xiby")
+scale = Vector2(1, 1.559999)
+shape = SubResource("RectangleShape2D_3xiby")
