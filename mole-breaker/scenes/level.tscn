@@ -1,7 +1,8 @@
-[gd_scene load_steps=10 format=3 uid="uid://cvgivxopk62ic"]
+[gd_scene load_steps=11 format=3 uid="uid://cvgivxopk62ic"]
 
 [ext_resource type="PackedScene" uid="uid://baqtq748e2314" path="res://scenes/paddle.tscn" id="1_2q6dc"]
 [ext_resource type="Script" uid="uid://bla25v87vpm1e" path="res://scripts/level.gd" id="1_w8frs"]
+[ext_resource type="PackedScene" uid="uid://dn3083ytfbwut" path="res://scenes/touch_controls.tscn" id="2_2r41h"]
 [ext_resource type="Texture2D" uid="uid://by885h87iwnui" path="res://assets/background dirt.png" id="2_ppgk2"]
 [ext_resource type="PackedScene" uid="uid://c00uaxwxq1i2b" path="res://scenes/ball.tscn" id="2_w7c3h"]
 [ext_resource type="Script" uid="uid://bfk12tdquv0b7" path="res://scripts/player_ui.gd" id="4_mx8sn"]
@@ -52,30 +53,27 @@ shape = SubResource("RectangleShape2D_w7c3h")
 position = Vector2(360, -3.5)
 shape = SubResource("RectangleShape2D_w8frs")
 
+[node name="TouchControls" parent="." instance=ExtResource("2_2r41h")]
+
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 script = ExtResource("4_mx8sn")
 
 [node name="ScoreText" type="Label" parent="CanvasLayer"]
-anchors_preset = 2
-anchor_top = 1.0
-anchor_bottom = 1.0
-offset_left = 10.0
-offset_top = -45.0
-offset_right = 167.0
-grow_vertical = 0
+offset_left = 15.0
+offset_top = 15.0
+offset_right = 172.0
+offset_bottom = 60.0
 text = "Score: 100"
 label_settings = SubResource("LabelSettings_w8frs")
 
 [node name="LivesText" type="Label" parent="CanvasLayer"]
-anchors_preset = 3
+anchors_preset = 1
 anchor_left = 1.0
-anchor_top = 1.0
 anchor_right = 1.0
-anchor_bottom = 1.0
 offset_left = -139.0
-offset_top = -45.0
+offset_top = 15.0
+offset_bottom = 60.0
 grow_horizontal = 0
-grow_vertical = 0
 text = "Lives: 4"
 label_settings = SubResource("LabelSettings_w8frs")
 

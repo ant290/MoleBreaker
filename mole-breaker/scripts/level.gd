@@ -2,6 +2,7 @@ extends Node2D
 
 @onready var brickObject = preload("res://scenes/brick.tscn")
 @onready var uiLayer : PlayerUI = $CanvasLayer
+@onready var touchControls : MobileTouchControls = $TouchControls
 
 var columns = 5
 var rows  = 7
@@ -9,6 +10,11 @@ var margin = 13.33
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	match OS.get_name():
+		"Android", "iOS":
+			touchControls.show()
+		_:
+			touchControls.hide()
 	setupLevel()
 	uiLayer.load_bricks()
 

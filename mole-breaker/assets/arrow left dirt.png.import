@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dw6b64oejapoa"
-path="res://.godot/imported/brick dirt.png-25e02549763b17e81691ba51485d0b08.ctex"
+uid="uid://ddnoeidcj41dc"
+path="res://.godot/imported/arrow left dirt.png-76595cc5d50c9d77c83ee64e978c31cb.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/brick dirt.png"
-dest_files=["res://.godot/imported/brick dirt.png-25e02549763b17e81691ba51485d0b08.ctex"]
+source_file="res://assets/arrow left dirt.png"
+dest_files=["res://.godot/imported/arrow left dirt.png-76595cc5d50c9d77c83ee64e978c31cb.ctex"]
 
 [params]
 

@@ -1,8 +1,8 @@
 [gd_scene load_steps=5 format=3 uid="uid://d0qgslqpuw3ps"]
 
 [ext_resource type="Script" uid="uid://l0in4ahl7f44" path="res://scripts/brick.gd" id="1_0w5h4"]
-[ext_resource type="Texture2D" uid="uid://dw6b64oejapoa" path="res://assets/brick dirt.png" id="1_5l4w1"]
-[ext_resource type="Texture2D" uid="uid://c7bp54u7h42u" path="res://assets/brick dirt cracked.png" id="3_7mekc"]
+[ext_resource type="Texture2D" uid="uid://dw6b64oejapoa" path="res://assets/bricks/brick dirt.png" id="1_5l4w1"]
+[ext_resource type="Texture2D" uid="uid://c7bp54u7h42u" path="res://assets/bricks/brick dirt cracked.png" id="3_7mekc"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0w5h4"]
 size = Vector2(122, 58)
