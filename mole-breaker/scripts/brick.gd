@@ -8,6 +8,7 @@ signal OnHit(points : int)
 
 @onready var healthy_sprite : Sprite2D = $HealthySprite
 @onready var damaged_sprite : Sprite2D = $DamagedSprite
+@onready var animator : AnimationPlayer = $AnimationPlayer
 
 var health : int
 
@@ -21,18 +22,19 @@ func _process(delta: float) -> void:
 	pass
 
 func hit():
+	#set the brick health, call animation and emit points signal
 	health -= 1
+	animator.play("dink")
 	OnHit.emit(points_per_hit)
+	
+
+func _on_animation_player_animation_finished(anim_name: StringName) -> void:
+	#here handling the changing of sprites and killing the brick
 	if health <= starting_health / 2:
 		#load broken sprite
 		damaged_sprite.show()
 		healthy_sprite.hide()
-		
 	if health <= 0:
-		
 		healthy_sprite.hide()
 		damaged_sprite.hide()
-	
-		await get_tree().create_timer(1).timeout
-	
-		queue_free()
+		call_deferred("queue_free")
