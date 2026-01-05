@@ -2,9 +2,13 @@ extends RigidBody2D
 class_name BreakableBrick
 
 signal OnHit(points : int)
+signal OnBreak(brickType: GameConstants.BrickType)
 
 @export var starting_health : int = 2
 @export var points_per_hit : int = 1
+@export var healthy_texture : Texture2D
+@export var damaged_texture : Texture2D
+@export var brick_type : GameConstants.BrickType = GameConstants.BrickType.BRICK_DIRT
 
 @onready var healthy_sprite : Sprite2D = $HealthySprite
 @onready var damaged_sprite : Sprite2D = $DamagedSprite
@@ -15,6 +19,9 @@ var health : int
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	health = starting_health
+	healthy_sprite.texture = healthy_texture
+	damaged_sprite.texture = damaged_texture
+	
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -26,6 +33,8 @@ func hit():
 	health -= 1
 	animator.play("dink")
 	OnHit.emit(points_per_hit)
+	if health <= 0:
+		OnBreak.emit(brick_type)
 	
 
 func _on_animation_player_animation_finished(anim_name: StringName) -> void:

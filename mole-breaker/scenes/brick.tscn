@@ -1,11 +1,36 @@
-[gd_scene load_steps=8 format=3 uid="uid://d0qgslqpuw3ps"]
+[gd_scene load_steps=6 format=3 uid="uid://d0qgslqpuw3ps"]
 
 [ext_resource type="Script" uid="uid://l0in4ahl7f44" path="res://scripts/brick.gd" id="1_0w5h4"]
-[ext_resource type="Texture2D" uid="uid://dw6b64oejapoa" path="res://assets/bricks/brick dirt.png" id="1_5l4w1"]
-[ext_resource type="Texture2D" uid="uid://c7bp54u7h42u" path="res://assets/bricks/brick dirt cracked.png" id="3_7mekc"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0w5h4"]
 size = Vector2(122, 58)
+
+[sub_resource type="Animation" id="Animation_c34n8"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("HealthySprite:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("DamagedSprite:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
 
 [sub_resource type="Animation" id="Animation_7mekc"]
 resource_name = "dink"
@@ -35,33 +60,6 @@ tracks/1/keys = {
 "values": [Vector2(1, 1), Vector2(1.1, 1.1), Vector2(1, 1)]
 }
 
-[sub_resource type="Animation" id="Animation_c34n8"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("HealthySprite:scale")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(1, 1)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("DamagedSprite:scale")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(1, 1)]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_ci8dj"]
 _data = {
 &"RESET": SubResource("Animation_c34n8"),
@@ -73,11 +71,9 @@ gravity_scale = 0.0
 script = ExtResource("1_0w5h4")
 
 [node name="HealthySprite" type="Sprite2D" parent="."]
-texture = ExtResource("1_5l4w1")
 
 [node name="DamagedSprite" type="Sprite2D" parent="."]
 visible = false
-texture = ExtResource("3_7mekc")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_0w5h4")

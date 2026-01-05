@@ -22,17 +22,23 @@ func _process(delta: float) -> void:
 func load_bricks() -> void:
 	current_level_bricks = level.get_children().filter(is_brick)
 	
-	current_level_bricks.map(subscribe_to_brick_onhit)
+	current_level_bricks.map(subscribe_to_brick)
 
 func is_brick(node : Node) -> bool:
 	return node.is_in_group("Brick")
 
-func subscribe_to_brick_onhit(brick: BreakableBrick) -> void:
+func subscribe_to_brick(brick: BreakableBrick) -> void:
 	brick.OnHit.connect(_update_score)
+	brick.OnBreak.connect(_update_inventory)
 
 func _update_score (score : int) -> void:
 	PlayerStats.score += score
 	_set_score_label()
+	
+func _update_inventory (brickType : GameConstants.BrickType) -> void:
+	#if brick type in dict, add 1
+	#else add brick type to dict with 1 as count
+	pass
 
 func _set_score_label() -> void:
 	score_text.text = score_text_prompt + str(PlayerStats.score)
