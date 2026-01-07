@@ -2,13 +2,14 @@ extends RigidBody2D
 class_name BreakableBrick
 
 signal OnHit(points : int)
-signal OnBreak(brickType: GameConstants.BrickType)
+signal OnBreak(brick_type: GameConstants.BrickType, quantity : int)
 
 @export var starting_health : int = 2
 @export var points_per_hit : int = 1
 @export var healthy_texture : Texture2D
 @export var damaged_texture : Texture2D
 @export var brick_type : GameConstants.BrickType = GameConstants.BrickType.BRICK_DIRT
+@export var quantity_dropped : int = 1
 
 @onready var healthy_sprite : Sprite2D = $HealthySprite
 @onready var damaged_sprite : Sprite2D = $DamagedSprite
@@ -34,7 +35,7 @@ func hit():
 	animator.play("dink")
 	OnHit.emit(points_per_hit)
 	if health <= 0:
-		OnBreak.emit(brick_type)
+		OnBreak.emit(brick_type, quantity_dropped)
 	
 
 func _on_animation_player_animation_finished(anim_name: StringName) -> void:
