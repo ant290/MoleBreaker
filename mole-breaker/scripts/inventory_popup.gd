@@ -1,0 +1,48 @@
+extends NinePatchRect
+
+@onready var inventory_item_scene = preload("res://scenes/inventory_item.tscn")
+@onready var inven_items_container : VBoxContainer = $VBoxContainer
+
+# load brick images
+@onready var imgBrickDirt = preload("res://assets/bricks/brick dirt.png")
+@onready var imgBrickRock = preload("res://assets/bricks/brick rock.png")
+
+# Called when the node enters the scene tree for the first time.
+func _ready() -> void:
+	load_inventory()
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta: float) -> void:
+	pass
+
+func refresh() -> void:
+	load_inventory()
+
+func is_brick_type(item: InventoryItem, number):
+	return item.brick_type == number
+
+func load_inventory() -> void:
+	var children = inven_items_container.get_children()
+	
+	for brick in PlayerStats.brickInventory:
+		var found_child = children.find_custom(is_brick_type.bind(brick))
+
+		if found_child > -1:
+			children[found_child].quantity = PlayerStats.brickInventory[brick]
+			children[found_child].update()
+
+		else:
+			#create new item
+			var newBrick : InventoryItem = inventory_item_scene.instantiate()
+			newBrick.brick_type = brick
+			newBrick.quantity = PlayerStats.brickInventory[brick]
+
+			# probably refactor to new method to set the sprite
+			match brick:
+				GameConstants.BrickType.BRICK_DIRT:
+					newBrick.sprite_texture = imgBrickDirt
+				GameConstants.BrickType.BRICK_ROCK:
+					newBrick.sprite_texture = imgBrickRock
+			
+			inven_items_container.add_child(newBrick)

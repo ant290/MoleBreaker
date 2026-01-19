@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://blk8vahcdnqje"]
+
+[ext_resource type="Script" uid="uid://b6vc0wjghgks4" path="res://scripts/inventory_item.gd" id="1_letey"]
+[ext_resource type="Texture2D" uid="uid://dw6b64oejapoa" path="res://assets/bricks/brick dirt.png" id="1_u4rwp"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_kqme1"]
+font_color = Color(0.012617188, 0.012617188, 0.012617188, 1)
+
+[node name="InventoryItem" type="HSplitContainer"]
+dragging_enabled = false
+script = ExtResource("1_letey")
+
+[node name="Sprite" type="TextureRect" parent="."]
+layout_mode = 2
+texture = ExtResource("1_u4rwp")
+
+[node name="Quantity" type="Label" parent="."]
+layout_mode = 2
+text = "qty of dirt"
+label_settings = SubResource("LabelSettings_kqme1")

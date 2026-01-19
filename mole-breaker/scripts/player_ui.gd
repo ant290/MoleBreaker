@@ -7,6 +7,8 @@ class_name PlayerUI
 @onready var lives_text : Label = $LivesText
 @export var lives_text_prompt : String = "Lives: "
 
+@onready var inventory : NinePatchRect = $Inventory
+
 @onready var level = get_parent()
 
 var current_level_bricks : Array = [BreakableBrick]
@@ -17,6 +19,14 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
+	if Input.is_action_just_pressed("ui_cancel"):
+		if get_tree().paused:
+			get_tree().paused = false
+			inventory.visible = false
+		else:
+			get_tree().paused = true
+			inventory.refresh()
+			inventory.visible = true
 	pass
 
 func load_bricks() -> void:

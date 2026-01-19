@@ -24,6 +24,9 @@ func _physics_process(delta: float) -> void:
 			velocity.y = -base_speed
 		if velocity.x == 0:
 			velocity.x = -base_speed
+		
+		velocity.x = clamp(velocity.x, -600, 600)
+		velocity.y = clamp(velocity.y, -600, 600)
 
 func game_over ():
 	get_tree().reload_current_scene()

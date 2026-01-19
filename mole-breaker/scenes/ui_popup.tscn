@@ -1,0 +1,21 @@
+[gd_scene load_steps=2 format=3 uid="uid://d32bg47cji12w"]
+
+[ext_resource type="Texture2D" uid="uid://co24y1iailax" path="res://assets/DemoUiBackgroundNineRect.png" id="1_ajo4i"]
+
+[node name="UiPopup" type="NinePatchRect"]
+offset_left = 105.0
+offset_top = 119.0
+offset_right = 614.0
+offset_bottom = 394.0
+texture = ExtResource("1_ajo4i")
+patch_margin_left = 5
+patch_margin_top = 5
+patch_margin_right = 5
+patch_margin_bottom = 5
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 0
+offset_left = 20.0
+offset_top = 17.0
+offset_right = 488.0
+offset_bottom = 257.0
