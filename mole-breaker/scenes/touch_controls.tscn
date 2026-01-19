@@ -1,8 +1,11 @@
-[gd_scene load_steps=4 format=3 uid="uid://dn3083ytfbwut"]
+[gd_scene load_steps=5 format=3 uid="uid://dn3083ytfbwut"]
 
 [ext_resource type="Script" uid="uid://chunyu8itfm2e" path="res://scripts/touch_controls.gd" id="1_6e4pk"]
 [ext_resource type="Texture2D" uid="uid://ddnoeidcj41dc" path="res://assets/arrow left dirt.png" id="1_n26gd"]
 [ext_resource type="Texture2D" uid="uid://r7idy8xwqh6b" path="res://assets/arrow right dirt.png" id="2_6e4pk"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6e4pk"]
+size = Vector2(400, 200)
 
 [node name="TouchControls" type="CanvasLayer"]
 script = ExtResource("1_6e4pk")
@@ -16,3 +19,9 @@ action = "ui_left"
 position = Vector2(616, 1188)
 texture_normal = ExtResource("2_6e4pk")
 action = "ui_right"
+
+[node name="Escape" type="TouchScreenButton" parent="."]
+process_mode = 3
+position = Vector2(360, 200)
+shape = SubResource("RectangleShape2D_6e4pk")
+action = "ui_cancel"

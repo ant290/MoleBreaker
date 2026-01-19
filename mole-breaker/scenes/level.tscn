@@ -55,8 +55,6 @@ shape = SubResource("RectangleShape2D_w7c3h")
 position = Vector2(360, -3.5)
 shape = SubResource("RectangleShape2D_w8frs")
 
-[node name="TouchControls" parent="." instance=ExtResource("2_2r41h")]
-
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 process_mode = 3
 script = ExtResource("4_mx8sn")
@@ -84,6 +82,8 @@ label_settings = SubResource("LabelSettings_w8frs")
 process_mode = 2
 visible = false
 script = ExtResource("8_b121j")
+
+[node name="TouchControls" parent="." instance=ExtResource("2_2r41h")]
 
 [node name="CatchBucket" type="Area2D" parent="."]
 
