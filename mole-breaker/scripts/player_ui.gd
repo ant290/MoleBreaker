@@ -30,12 +30,9 @@ func _process(delta: float) -> void:
 	pass
 
 func load_bricks() -> void:
-	current_level_bricks = level.get_children().filter(is_brick)
+	current_level_bricks = level.get_children().filter(GameConstants.is_brick)
 	
 	current_level_bricks.map(subscribe_to_brick)
-
-func is_brick(node : Node) -> bool:
-	return node.is_in_group("Brick")
 
 func subscribe_to_brick(brick: BreakableBrick) -> void:
 	brick.OnHit.connect(_update_score)

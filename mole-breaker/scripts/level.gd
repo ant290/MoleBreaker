@@ -17,7 +17,7 @@ var rockHealth = 4
 var rockPointsPerHit = 3
 
 var columns = 5
-var rows  = 7
+var rows  = 6
 var margin = 13.33
 
 # Called when the node enters the scene tree for the first time.
@@ -64,4 +64,15 @@ func setupLevel():
 			newBrick.position = Vector2(col_margins + col_pos, row_margins + row_pos)
 			add_child(newBrick)
 			
-			#print(newBrick.position)
+	#listen for breaks to know when complete
+	var bricks = get_children().filter(GameConstants.is_brick)
+	bricks.map(subscribe_to_brick)
+
+func subscribe_to_brick(brick: BreakableBrick) -> void:
+	brick.OnBreak.connect(_on_brick_break)
+
+func _on_brick_break(brickType : GameConstants.BrickType, quantity : int) -> void:
+	var remaining_bricks = get_children().filter(GameConstants.is_brick)
+
+	if remaining_bricks.size() == 1:
+		get_tree().change_scene_to_file("res://scenes/menu.tscn")

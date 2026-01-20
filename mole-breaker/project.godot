@@ -12,9 +12,9 @@ config_version=5
 
 config/name="MoleBreaker"
 config/tags=PackedStringArray("2d", "moleboi")
-run/main_scene="uid://cvgivxopk62ic"
+run/main_scene="uid://by44at2dyig6r"
 config/features=PackedStringArray("4.5", "Mobile")
-config/icon="res://icon.svg"
+config/icon="uid://cv3hg2m8wxws"
 
 [autoload]
 
