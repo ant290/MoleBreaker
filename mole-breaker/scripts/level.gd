@@ -17,7 +17,7 @@ var rockHealth = 4
 var rockPointsPerHit = 3
 
 var columns = 5
-var rows  = 6
+var rows  = 3
 var margin = 13.33
 
 # Called when the node enters the scene tree for the first time.
@@ -75,4 +75,8 @@ func _on_brick_break(brickType : GameConstants.BrickType, quantity : int) -> voi
 	var remaining_bricks = get_children().filter(GameConstants.is_brick)
 
 	if remaining_bricks.size() == 1:
+		call_deferred("_save_data")
 		get_tree().change_scene_to_file("res://scenes/menu.tscn")
+	
+func _save_data() -> void:
+	GameSaveService.save_game()
