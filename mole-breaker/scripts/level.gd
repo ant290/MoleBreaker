@@ -37,6 +37,8 @@ func _process(delta: float) -> void:
 
 
 func setupLevel():
+	PlayerStats.lives = 3
+	
 	for r in rows:
 		for c in columns:
 			var col_pos = 64 + (c * 128)

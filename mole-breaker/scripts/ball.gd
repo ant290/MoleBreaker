@@ -29,8 +29,8 @@ func _physics_process(delta: float) -> void:
 		velocity.y = clamp(velocity.y, -600, 600)
 
 func game_over ():
-	get_tree().reload_current_scene()
-	PlayerStats.lives = 4
+	GameSaveService.save_game()
+	get_tree().change_scene_to_file("res://scenes/menu.tscn")
 
 func _on_catch_bucket_body_entered(body: Node2D) -> void:
 	PlayerStats.lives -= 1

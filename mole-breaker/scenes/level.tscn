@@ -36,7 +36,7 @@ texture = ExtResource("2_ppgk2")
 position = Vector2(360, 640)
 
 [node name="Paddle" parent="." instance=ExtResource("1_2q6dc")]
-position = Vector2(359, 1169)
+position = Vector2(359, 1130)
 
 [node name="Ball" parent="." instance=ExtResource("2_w7c3h")]
 position = Vector2(384, 1059)
