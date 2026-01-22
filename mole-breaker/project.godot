@@ -14,7 +14,7 @@ config/name="MoleBreaker"
 config/tags=PackedStringArray("2d", "moleboi")
 run/main_scene="uid://by44at2dyig6r"
 config/features=PackedStringArray("4.5", "Mobile")
-config/icon="uid://cv3hg2m8wxws"
+config/icon="uid://db68f2ea2wibb"
 
 [autoload]
 

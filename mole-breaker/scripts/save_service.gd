@@ -1,22 +1,21 @@
 extends Node
 class_name SaveService
 
-var save_data
-
-const file_name = "user://savegame.save"
-
 func save_game() -> void:
-	var save_file = FileAccess.open(file_name, FileAccess.WRITE)
+	var save_data = {}
+	save_data[GameConstants.SAVE_DATA_PLAYER_STATS] = PlayerStats.get_save_data()
+
+	var save_file = FileAccess.open(GameConstants.SAVE_DATA_FILE_NAME, FileAccess.WRITE)
 	
-	var json = JSON.stringify(PlayerStats.brickInventory)
+	var json = JSON.stringify(save_data)
 	
 	save_file.store_line(json)
 	
 func load_game() -> void:
-	if not FileAccess.file_exists(file_name):
+	if not FileAccess.file_exists(GameConstants.SAVE_DATA_FILE_NAME):
 		return # Error, no file found
 	
-	var save_file = FileAccess.open(file_name, FileAccess.READ)
+	var save_file = FileAccess.open(GameConstants.SAVE_DATA_FILE_NAME, FileAccess.READ)
 	
 	var file_position = 0
 	
@@ -31,12 +30,13 @@ func load_game() -> void:
 			continue
 		
 		var data = json_helper.data
-		var parsed_brickInventory: Dictionary[GameConstants.BrickType, int] = {}
 		
-		for i in data.keys():
-			var brick_type = int(i)
-			parsed_brickInventory[brick_type] = int(data[i])
-		
-		PlayerStats.brickInventory = parsed_brickInventory
+		for key in data.keys():
+			#match the key to a const and load that data to each class
+			match key:
+				GameConstants.SAVE_DATA_PLAYER_STATS:
+					PlayerStats.load_data(data[key])
+				_:
+					print("UNKNOWN save data component", key)
 		
 		file_position += 1

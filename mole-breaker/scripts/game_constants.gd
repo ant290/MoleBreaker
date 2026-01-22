@@ -5,11 +5,6 @@ enum BrickType {BRICK_DIRT, BRICK_ROCK}
 func is_brick(node : Node) -> bool:
 	return node.is_in_group("Brick")
 
-# Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-	pass # Replace with function body.
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
+const SAVE_DATA_FILE_NAME : String = "user://savegame.save"
+const SAVE_DATA_PLAYER_STATS : String = "PLAYER_STATS"
+const SAVE_DATA_PLAYER_STATS_BRICK_INVENTORY : String = "BRICK_INVENTORY"

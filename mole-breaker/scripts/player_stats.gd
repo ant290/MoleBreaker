@@ -18,3 +18,17 @@ func add_to_inventory(brick_type: GameConstants.BrickType, amount: int) -> void:
 		brickInventory[brick_type] = brick_amount + amount
 	else:
 		brickInventory[brick_type] = amount
+		
+func get_save_data() -> Dictionary:
+	var save_data = {
+		GameConstants.SAVE_DATA_PLAYER_STATS_BRICK_INVENTORY : brickInventory
+	}
+	
+	return save_data
+
+func load_data(data: Dictionary) -> void:
+	var brickInventoryPart = data[GameConstants.SAVE_DATA_PLAYER_STATS_BRICK_INVENTORY]
+	
+	for key in brickInventoryPart.keys():
+		var brick_type = int(key)
+		brickInventory[brick_type] = int(brickInventoryPart[key])
