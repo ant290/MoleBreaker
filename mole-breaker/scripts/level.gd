@@ -1,6 +1,6 @@
 extends Node2D
 
-@onready var brickObject = preload("res://scenes/brick.tscn")
+@onready var brickObject = preload("res://scenes/brickBreaker/brick.tscn")
 @onready var uiLayer : PlayerUI = $CanvasLayer
 @onready var touchControls : MobileTouchControls = $TouchControls
 
