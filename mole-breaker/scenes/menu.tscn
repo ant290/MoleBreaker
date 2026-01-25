@@ -80,5 +80,18 @@ grow_vertical = 2
 text = "TOWN"
 icon = ExtResource("4_mhnvy")
 
+[node name="QuitButton" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 40.0
+offset_top = -71.0
+offset_right = 87.0
+offset_bottom = -40.0
+grow_vertical = 0
+text = "QUIT"
+
 [connection signal="pressed" from="PlayButton" to="." method="_on_play_button_pressed"]
 [connection signal="pressed" from="TownButton" to="." method="_on_town_button_pressed"]
+[connection signal="pressed" from="QuitButton" to="." method="_on_quit_button_pressed"]

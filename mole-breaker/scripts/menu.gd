@@ -23,3 +23,7 @@ func _on_town_button_pressed() -> void:
 	await SceneTransitions.fade_complete
 	
 	get_tree().change_scene_to_file("res://scenes/town/town.tscn")
+
+
+func _on_quit_button_pressed() -> void:
+	get_tree().quit()
