@@ -29,6 +29,8 @@ func _ready() -> void:
 			touchControls.hide()
 	setupLevel()
 	uiLayer.load_bricks()
+	
+	SceneTransitions.fade_in()
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

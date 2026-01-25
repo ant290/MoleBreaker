@@ -21,6 +21,7 @@ config/icon="uid://db68f2ea2wibb"
 PlayerStats="*res://scripts/globals/player_stats.gd"
 GameConstants="*res://scripts/globals/game_constants.gd"
 GameSaveService="*res://scripts/globals/save_service.gd"
+SceneTransitions="*res://scenes/singletons/scene_transitions.tscn"
 
 [display]
 

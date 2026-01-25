@@ -12,4 +12,8 @@ func _process(delta: float) -> void:
 
 
 func _on_play_button_pressed() -> void:
+	
+	SceneTransitions.fade_out("Breaker")
+	await SceneTransitions.fade_complete
+	
 	get_tree().change_scene_to_file("res://scenes/brickBreaker/level.tscn")
