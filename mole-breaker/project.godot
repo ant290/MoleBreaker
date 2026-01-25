@@ -18,9 +18,9 @@ config/icon="uid://db68f2ea2wibb"
 
 [autoload]
 
-PlayerStats="*res://scripts/player_stats.gd"
-GameConstants="*res://scripts/game_constants.gd"
-GameSaveService="*res://scripts/save_service.gd"
+PlayerStats="*res://scripts/globals/player_stats.gd"
+GameConstants="*res://scripts/globals/game_constants.gd"
+GameSaveService="*res://scripts/globals/save_service.gd"
 
 [display]
 

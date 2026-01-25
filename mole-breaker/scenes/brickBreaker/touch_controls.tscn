@@ -11,12 +11,14 @@ size = Vector2(400, 200)
 script = ExtResource("1_6e4pk")
 
 [node name="Left" type="TouchScreenButton" parent="."]
-position = Vector2(40, 1188)
+position = Vector2(40, 1149)
+scale = Vector2(1.5, 1.5)
 texture_normal = ExtResource("1_n26gd")
 action = "ui_left"
 
 [node name="Right" type="TouchScreenButton" parent="."]
-position = Vector2(616, 1188)
+position = Vector2(589, 1149)
+scale = Vector2(1.5, 1.5)
 texture_normal = ExtResource("2_6e4pk")
 action = "ui_right"
 
