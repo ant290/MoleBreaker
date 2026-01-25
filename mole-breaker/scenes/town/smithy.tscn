@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://b2speixjr7d74"]
+
+[ext_resource type="Texture2D" uid="uid://xvtm48ovjovt" path="res://assets/town/Smithy.png" id="1_hpoev"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_06row"]
+size = Vector2(154, 146)
+
+[node name="Area2D" type="Area2D"]
+
+[node name="Sprite" type="Sprite2D" parent="."]
+texture = ExtResource("1_hpoev")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_06row")

@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://b1rgrcyv5ghra"]
+
+[ext_resource type="Texture2D" uid="uid://dq1podwxaesdl" path="res://assets/town/Tavern.png" id="1_h43lo"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_f73nn"]
+size = Vector2(156, 136)
+
+[node name="Area2D" type="Area2D"]
+
+[node name="Sprite" type="Sprite2D" parent="."]
+texture = ExtResource("1_h43lo")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_f73nn")

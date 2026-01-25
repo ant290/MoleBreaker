@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://cinvu8quv2384"]
+
+[ext_resource type="Texture2D" uid="uid://emtvli72pwy7" path="res://assets/town/Store.png" id="1_k61li"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ljh1p"]
+size = Vector2(112, 112)
+
+[node name="Area2D" type="Area2D"]
+
+[node name="Sprite" type="Sprite2D" parent="."]
+texture = ExtResource("1_k61li")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_ljh1p")
