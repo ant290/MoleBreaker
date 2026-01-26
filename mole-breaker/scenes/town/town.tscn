@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=4 uid="uid://w5lfv6cgej18"]
+[gd_scene load_steps=12 format=4 uid="uid://w5lfv6cgej18"]
 
 [ext_resource type="Script" uid="uid://btqouthlsrvy4" path="res://scripts/town.gd" id="1_6g2qn"]
 [ext_resource type="PackedScene" uid="uid://0l5pmxfgd5xp" path="res://scenes/town/house.tscn" id="2_8b7wv"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://cinvu8quv2384" path="res://scenes/town/store.tscn" id="5_v00pm"]
 [ext_resource type="PackedScene" uid="uid://b1rgrcyv5ghra" path="res://scenes/town/tavern.tscn" id="6_6g2qn"]
 [ext_resource type="Texture2D" uid="uid://ddnoeidcj41dc" path="res://assets/arrow left dirt.png" id="8_5vpkg"]
+[ext_resource type="PackedScene" uid="uid://d32bg47cji12w" path="res://scenes/inventory_popup.tscn" id="8_jil70"]
 [ext_resource type="PackedScene" uid="uid://cdkondhkrlc2b" path="res://scenes/shaders/crt_shader.tscn" id="9_jil70"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_jil70"]
@@ -104,7 +105,14 @@ position = Vector2(429, 960)
 position = Vector2(30, 30)
 texture_normal = ExtResource("8_5vpkg")
 
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Inventory" parent="CanvasLayer" instance=ExtResource("8_jil70")]
+visible = false
+
 [node name="CRTShader" parent="." instance=ExtResource("9_jil70")]
 visible = false
 
+[connection signal="on_click" from="House" to="." method="_on_house_on_click"]
 [connection signal="released" from="TouchScreenButton" to="." method="_on_touch_screen_button_released"]
+[connection signal="on_close" from="CanvasLayer/Inventory" to="." method="_on_inventory_on_close"]

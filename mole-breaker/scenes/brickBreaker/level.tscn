@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://cvgivxopk62ic"]
+[gd_scene load_steps=13 format=3 uid="uid://cvgivxopk62ic"]
 
 [ext_resource type="PackedScene" uid="uid://baqtq748e2314" path="res://scenes/brickBreaker/paddle.tscn" id="1_2q6dc"]
 [ext_resource type="Script" uid="uid://bla25v87vpm1e" path="res://scripts/level.gd" id="1_w8frs"]
@@ -7,7 +7,6 @@
 [ext_resource type="PackedScene" uid="uid://c00uaxwxq1i2b" path="res://scenes/brickBreaker/ball.tscn" id="2_w7c3h"]
 [ext_resource type="Script" uid="uid://bfk12tdquv0b7" path="res://scripts/player_ui.gd" id="4_mx8sn"]
 [ext_resource type="PackedScene" uid="uid://d32bg47cji12w" path="res://scenes/inventory_popup.tscn" id="7_klq6b"]
-[ext_resource type="Script" uid="uid://lpx3hxn6obsv" path="res://scripts/inventory_popup.gd" id="8_b121j"]
 [ext_resource type="PackedScene" uid="uid://cdkondhkrlc2b" path="res://scenes/shaders/crt_shader.tscn" id="9_k34ab"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_w7c3h"]
@@ -80,9 +79,7 @@ text = "Lives: 4"
 label_settings = SubResource("LabelSettings_w8frs")
 
 [node name="Inventory" parent="CanvasLayer" instance=ExtResource("7_klq6b")]
-process_mode = 2
 visible = false
-script = ExtResource("8_b121j")
 
 [node name="CatchBucket" type="Area2D" parent="."]
 

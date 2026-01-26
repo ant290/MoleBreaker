@@ -1,6 +1,7 @@
 extends Node2D
 
 @onready var crtShader : CanvasLayer = $CRTShader
+@onready var inventory : InventoryPopup = $CanvasLayer/Inventory
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -16,3 +17,9 @@ func _on_touch_screen_button_released() -> void:
 	await SceneTransitions.fade_complete
 	
 	get_tree().change_scene_to_file("res://scenes/menu.tscn")
+
+func _on_house_on_click() -> void:
+	inventory.visible = true
+
+func _on_inventory_on_close() -> void:
+	inventory.visible = false

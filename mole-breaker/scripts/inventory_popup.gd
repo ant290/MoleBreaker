@@ -1,4 +1,7 @@
 extends ColorRect
+class_name InventoryPopup
+
+signal on_close()
 
 @onready var inventory_item_scene = preload("res://scenes/inventory_item.tscn")
 @onready var inven_items_container : VBoxContainer = $UiPopup/VBoxContainer
@@ -46,3 +49,6 @@ func load_inventory() -> void:
 					newBrick.sprite_texture = imgBrickRock
 			
 			inven_items_container.add_child(newBrick)
+
+func _on_close_button_pressed() -> void:
+	on_close.emit()

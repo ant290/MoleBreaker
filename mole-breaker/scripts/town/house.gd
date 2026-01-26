@@ -13,4 +13,5 @@ func _process(delta: float) -> void:
 
 
 func _on_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
-	on_click.emit()
+	if event is InputEventMouseButton and event.is_released():
+		on_click.emit()

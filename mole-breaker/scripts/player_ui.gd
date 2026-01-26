@@ -7,7 +7,7 @@ class_name PlayerUI
 @onready var lives_text : Label = $LivesText
 @export var lives_text_prompt : String = "Lives: "
 
-@onready var inventory : ColorRect = $Inventory
+@onready var inventory : InventoryPopup = $Inventory
 
 @onready var level = get_parent()
 
@@ -16,18 +16,24 @@ var current_level_bricks : Array = [BreakableBrick]
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	_set_score_label()
+	inventory.on_close.connect(_on_inventory_closed)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	if Input.is_action_just_pressed("ui_cancel"):
-		if get_tree().paused:
-			get_tree().paused = false
-			inventory.visible = false
-		else:
-			get_tree().paused = true
-			inventory.refresh()
-			inventory.visible = true
-	pass
+		_handle_open_close_inventory(get_tree().paused)
+
+func _handle_open_close_inventory(paused: bool) -> void:
+	if paused:
+		get_tree().paused = false
+		inventory.visible = false
+	else:
+		get_tree().paused = true
+		inventory.refresh()
+		inventory.visible = true
+
+func _on_inventory_closed() -> void:
+	_handle_open_close_inventory(true)
 
 func load_bricks() -> void:
 	current_level_bricks = level.get_children().filter(GameConstants.is_brick)

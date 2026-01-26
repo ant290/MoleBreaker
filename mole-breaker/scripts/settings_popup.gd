@@ -20,7 +20,6 @@ func _on_close_button_pressed() -> void:
 func _on_use_crt_check_button_toggled(toggled_on: bool) -> void:
 	Settings.set_use_crt(toggled_on)
 
-
 func _on_visibility_changed() -> void:
 	if useCrtCheckButton != null:
 		useCrtCheckButton.button_pressed = Settings.useCrtShader
