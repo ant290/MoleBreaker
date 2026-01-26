@@ -1,0 +1,39 @@
+[gd_scene load_steps=3 format=3 uid="uid://cdkondhkrlc2b"]
+
+[ext_resource type="Shader" uid="uid://us32x4opo11n" path="res://shaders/vhs.gdshader" id="1_ebwxi"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_vb1k2"]
+shader = ExtResource("1_ebwxi")
+shader_parameter/overlay = true
+shader_parameter/scanlines_opacity = 0.31200001482
+shader_parameter/scanlines_width = 0.218000010355
+shader_parameter/grille_opacity = 0.114000005415
+shader_parameter/resolution = Vector2(360, 640)
+shader_parameter/pixelate = true
+shader_parameter/roll = true
+shader_parameter/roll_speed = 1.0
+shader_parameter/roll_size = 35.76400169879
+shader_parameter/roll_variation = 0.20100000628762
+shader_parameter/distort_intensity = 0.002000000095
+shader_parameter/noise_opacity = 0.0530000025175
+shader_parameter/noise_speed = 5.0
+shader_parameter/static_noise_intensity = 0.06000000285
+shader_parameter/aberration = 0.00500004773750006
+shader_parameter/brightness = 1.1
+shader_parameter/discolor = false
+shader_parameter/warp_amount = 0.0
+shader_parameter/clip_warp = false
+shader_parameter/vignette_intensity = 0.3
+shader_parameter/vignette_opacity = 0.28800001368
+
+[node name="CRTShader" type="CanvasLayer"]
+process_mode = 3
+
+[node name="ShaderTexture" type="ColorRect" parent="."]
+material = SubResource("ShaderMaterial_vb1k2")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2

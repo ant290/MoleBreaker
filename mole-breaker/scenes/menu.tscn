@@ -1,9 +1,11 @@
-[gd_scene load_steps=7 format=3 uid="uid://by44at2dyig6r"]
+[gd_scene load_steps=9 format=3 uid="uid://by44at2dyig6r"]
 
 [ext_resource type="Script" uid="uid://di0qoyjc2m27o" path="res://scripts/menu.gd" id="1_con2f"]
 [ext_resource type="Texture2D" uid="uid://by885h87iwnui" path="res://assets/background dirt.png" id="1_yqeox"]
 [ext_resource type="Texture2D" uid="uid://cv3hg2m8wxws" path="res://assets/character.png" id="2_vjb58"]
+[ext_resource type="Theme" uid="uid://cjk14w4wpwu4k" path="res://themes/menu_button_theme.tres" id="3_g3eks"]
 [ext_resource type="Texture2D" uid="uid://emtvli72pwy7" path="res://assets/town/Store.png" id="4_mhnvy"]
+[ext_resource type="PackedScene" uid="uid://cdkondhkrlc2b" path="res://scenes/shaders/crt_shader.tscn" id="5_4ytvr"]
 
 [sub_resource type="SystemFont" id="SystemFont_yqeox"]
 
@@ -60,6 +62,7 @@ offset_right = 100.0
 offset_bottom = -124.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("3_g3eks")
 text = "PLAY"
 icon = ExtResource("2_vjb58")
 expand_icon = true
@@ -77,6 +80,7 @@ offset_right = 100.0
 offset_bottom = 60.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("3_g3eks")
 text = "TOWN"
 icon = ExtResource("4_mhnvy")
 
@@ -90,7 +94,26 @@ offset_top = -71.0
 offset_right = 87.0
 offset_bottom = -40.0
 grow_vertical = 0
+theme = ExtResource("3_g3eks")
 text = "QUIT"
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -159.0
+offset_top = -82.0
+offset_right = -40.0
+offset_bottom = -40.0
+grow_horizontal = 0
+grow_vertical = 0
+theme = ExtResource("3_g3eks")
+text = "SETTINGS"
+
+[node name="CRTShader" parent="." instance=ExtResource("5_4ytvr")]
 
 [connection signal="pressed" from="PlayButton" to="." method="_on_play_button_pressed"]
 [connection signal="pressed" from="TownButton" to="." method="_on_town_button_pressed"]

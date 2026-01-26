@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://cvgivxopk62ic"]
+[gd_scene load_steps=14 format=3 uid="uid://cvgivxopk62ic"]
 
 [ext_resource type="PackedScene" uid="uid://baqtq748e2314" path="res://scenes/brickBreaker/paddle.tscn" id="1_2q6dc"]
 [ext_resource type="Script" uid="uid://bla25v87vpm1e" path="res://scripts/level.gd" id="1_w8frs"]
@@ -8,6 +8,7 @@
 [ext_resource type="Script" uid="uid://bfk12tdquv0b7" path="res://scripts/player_ui.gd" id="4_mx8sn"]
 [ext_resource type="PackedScene" uid="uid://d32bg47cji12w" path="res://scenes/ui_popup.tscn" id="7_klq6b"]
 [ext_resource type="Script" uid="uid://lpx3hxn6obsv" path="res://scripts/inventory_popup.gd" id="8_b121j"]
+[ext_resource type="PackedScene" uid="uid://cdkondhkrlc2b" path="res://scenes/shaders/crt_shader.tscn" id="9_k34ab"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_w7c3h"]
 size = Vector2(7.5, 1280)
@@ -83,13 +84,15 @@ process_mode = 2
 visible = false
 script = ExtResource("8_b121j")
 
-[node name="TouchControls" parent="." instance=ExtResource("2_2r41h")]
-
 [node name="CatchBucket" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CatchBucket"]
 position = Vector2(360, 1282)
 shape = SubResource("RectangleShape2D_ppgk2")
+
+[node name="TouchControls" parent="." instance=ExtResource("2_2r41h")]
+
+[node name="CRTShader" parent="." instance=ExtResource("9_k34ab")]
 
 [connection signal="body_entered" from="CatchBucket" to="Ball" method="_on_catch_bucket_body_entered"]
 [connection signal="body_entered" from="CatchBucket" to="CanvasLayer" method="_on_catch_bucket_body_entered"]

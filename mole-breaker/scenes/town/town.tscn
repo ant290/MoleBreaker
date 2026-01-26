@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=4 uid="uid://w5lfv6cgej18"]
+[gd_scene load_steps=12 format=4 uid="uid://w5lfv6cgej18"]
 
 [ext_resource type="Script" uid="uid://btqouthlsrvy4" path="res://scripts/town.gd" id="1_6g2qn"]
 [ext_resource type="Texture2D" uid="uid://by885h87iwnui" path="res://assets/background dirt.png" id="1_e21v4"]
@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://cinvu8quv2384" path="res://scenes/town/store.tscn" id="5_v00pm"]
 [ext_resource type="PackedScene" uid="uid://b1rgrcyv5ghra" path="res://scenes/town/tavern.tscn" id="6_6g2qn"]
 [ext_resource type="Texture2D" uid="uid://ddnoeidcj41dc" path="res://assets/arrow left dirt.png" id="8_5vpkg"]
+[ext_resource type="PackedScene" uid="uid://cdkondhkrlc2b" path="res://scenes/shaders/crt_shader.tscn" id="9_jil70"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_e21v4"]
 texture = ExtResource("3_06row")
@@ -299,5 +300,7 @@ position = Vector2(429, 960)
 [node name="TouchScreenButton" type="TouchScreenButton" parent="."]
 position = Vector2(30, 30)
 texture_normal = ExtResource("8_5vpkg")
+
+[node name="CRTShader" parent="." instance=ExtResource("9_jil70")]
 
 [connection signal="released" from="TouchScreenButton" to="." method="_on_touch_screen_button_released"]
