@@ -1,6 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://0l5pmxfgd5xp"]
+[gd_scene load_steps=5 format=3 uid="uid://0l5pmxfgd5xp"]
 
 [ext_resource type="Texture2D" uid="uid://cokfl4riajtur" path="res://assets/town/House.png" id="1_et3ds"]
+[ext_resource type="Script" uid="uid://desw8ko68iwrh" path="res://scripts/town/house.gd" id="1_mamke"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_mamke"]
 size = Vector2(156, 166)
@@ -9,6 +10,7 @@ size = Vector2(156, 166)
 font_size = 24
 
 [node name="House" type="Area2D"]
+script = ExtResource("1_mamke")
 
 [node name="Sprite" type="Sprite2D" parent="."]
 texture = ExtResource("1_et3ds")
@@ -29,3 +31,5 @@ text = "HOUSE"
 label_settings = SubResource("LabelSettings_et3ds")
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[connection signal="input_event" from="." to="." method="_on_input_event"]
