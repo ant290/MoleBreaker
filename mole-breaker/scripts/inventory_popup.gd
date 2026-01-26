@@ -1,7 +1,7 @@
-extends NinePatchRect
+extends ColorRect
 
 @onready var inventory_item_scene = preload("res://scenes/inventory_item.tscn")
-@onready var inven_items_container : VBoxContainer = $VBoxContainer
+@onready var inven_items_container : VBoxContainer = $UiPopup/VBoxContainer
 
 # load brick images
 @onready var imgBrickDirt = preload("res://assets/bricks/brick dirt.png")

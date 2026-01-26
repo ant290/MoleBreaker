@@ -7,7 +7,7 @@ class_name PlayerUI
 @onready var lives_text : Label = $LivesText
 @export var lives_text_prompt : String = "Lives: "
 
-@onready var inventory : NinePatchRect = $Inventory
+@onready var inventory : ColorRect = $Inventory
 
 @onready var level = get_parent()
 
