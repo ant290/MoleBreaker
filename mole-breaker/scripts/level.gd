@@ -3,6 +3,7 @@ extends Node2D
 @onready var brickObject = preload("res://scenes/brickBreaker/brick.tscn")
 @onready var uiLayer : PlayerUI = $CanvasLayer
 @onready var touchControls : MobileTouchControls = $TouchControls
+@onready var crtShader : CanvasLayer = $CRTShader
 
 # load brick images
 @onready var imgBrickDirt = preload("res://assets/bricks/brick dirt.png")
@@ -30,6 +31,7 @@ func _ready() -> void:
 	setupLevel()
 	uiLayer.load_bricks()
 	
+	crtShader.visible = Settings.useCrtShader
 	SceneTransitions.fade_in()
 
 

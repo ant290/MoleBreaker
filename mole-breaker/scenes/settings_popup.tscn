@@ -1,0 +1,75 @@
+[gd_scene load_steps=4 format=3 uid="uid://dj6ok546ls86i"]
+
+[ext_resource type="Texture2D" uid="uid://co24y1iailax" path="res://assets/DemoUiBackgroundNineRect.png" id="1_fdmib"]
+[ext_resource type="Script" uid="uid://cprkugw4vypms" path="res://scripts/settings_popup.gd" id="1_wv7nd"]
+[ext_resource type="Theme" uid="uid://cnkgqea1hlwgw" path="res://themes/settings_theme.tres" id="2_wv7nd"]
+
+[node name="OverlayShadow" type="ColorRect"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.7254902)
+script = ExtResource("1_wv7nd")
+
+[node name="SettingsPopup" type="NinePatchRect" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -200.0
+offset_top = -300.0
+offset_right = 200.0
+offset_bottom = 300.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_fdmib")
+patch_margin_left = 5
+patch_margin_top = 5
+patch_margin_right = 5
+patch_margin_bottom = 5
+
+[node name="UseCRTCheckButton" type="CheckButton" parent="SettingsPopup"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -64.0
+offset_top = -217.5
+offset_right = 62.0
+offset_bottom = -186.5
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("2_wv7nd")
+theme_override_colors/font_color = Color(0.23753878, 0.23753935, 0.2375389, 1)
+theme_override_colors/font_focus_color = Color(0.23921569, 0.23921569, 0.23921569, 1)
+theme_override_colors/font_pressed_color = Color(0.23921569, 0.23921569, 0.23921569, 1)
+theme_override_colors/font_hover_color = Color(0.23921569, 0.23921569, 0.23921569, 1)
+theme_override_colors/font_hover_pressed_color = Color(0.23921569, 0.23921569, 0.23921569, 1)
+theme_override_colors/icon_pressed_color = Color(0.63375676, 0.6337568, 0.63375676, 1)
+theme_override_colors/button_checked_color = Color(0.74558026, 0.7455802, 0.7455802, 1)
+text = "CRT Effect"
+
+[node name="CloseButton" type="Button" parent="SettingsPopup"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -29.0
+offset_top = -72.0
+offset_right = 29.0
+offset_bottom = -41.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "CLOSE"
+
+[connection signal="visibility_changed" from="." to="." method="_on_visibility_changed"]
+[connection signal="toggled" from="SettingsPopup/UseCRTCheckButton" to="." method="_on_use_crt_check_button_toggled"]
+[connection signal="pressed" from="SettingsPopup/CloseButton" to="." method="_on_close_button_pressed"]

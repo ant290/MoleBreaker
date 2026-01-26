@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://by44at2dyig6r"]
+[gd_scene load_steps=10 format=3 uid="uid://by44at2dyig6r"]
 
 [ext_resource type="Script" uid="uid://di0qoyjc2m27o" path="res://scripts/menu.gd" id="1_con2f"]
 [ext_resource type="Texture2D" uid="uid://by885h87iwnui" path="res://assets/background dirt.png" id="1_yqeox"]
@@ -6,6 +6,7 @@
 [ext_resource type="Theme" uid="uid://cjk14w4wpwu4k" path="res://themes/menu_button_theme.tres" id="3_g3eks"]
 [ext_resource type="Texture2D" uid="uid://emtvli72pwy7" path="res://assets/town/Store.png" id="4_mhnvy"]
 [ext_resource type="PackedScene" uid="uid://cdkondhkrlc2b" path="res://scenes/shaders/crt_shader.tscn" id="5_4ytvr"]
+[ext_resource type="PackedScene" uid="uid://dj6ok546ls86i" path="res://scenes/settings_popup.tscn" id="6_v86rl"]
 
 [sub_resource type="SystemFont" id="SystemFont_yqeox"]
 
@@ -113,8 +114,14 @@ grow_vertical = 0
 theme = ExtResource("3_g3eks")
 text = "SETTINGS"
 
+[node name="SettingsPopup" parent="." instance=ExtResource("6_v86rl")]
+visible = false
+layout_mode = 1
+
 [node name="CRTShader" parent="." instance=ExtResource("5_4ytvr")]
 
 [connection signal="pressed" from="PlayButton" to="." method="_on_play_button_pressed"]
 [connection signal="pressed" from="TownButton" to="." method="_on_town_button_pressed"]
 [connection signal="pressed" from="QuitButton" to="." method="_on_quit_button_pressed"]
+[connection signal="pressed" from="SettingsButton" to="." method="_on_settings_button_pressed"]
+[connection signal="on_close" from="SettingsPopup" to="." method="_on_settings_popup_on_close"]
