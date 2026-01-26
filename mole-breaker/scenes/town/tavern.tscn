@@ -1,9 +1,12 @@
-[gd_scene load_steps=3 format=3 uid="uid://b1rgrcyv5ghra"]
+[gd_scene load_steps=4 format=3 uid="uid://b1rgrcyv5ghra"]
 
 [ext_resource type="Texture2D" uid="uid://dq1podwxaesdl" path="res://assets/town/Tavern.png" id="1_h43lo"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_f73nn"]
 size = Vector2(156, 136)
+
+[sub_resource type="LabelSettings" id="LabelSettings_h43lo"]
+font_size = 24
 
 [node name="Area2D" type="Area2D"]
 
@@ -17,11 +20,12 @@ shape = SubResource("RectangleShape2D_f73nn")
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -27.5
-offset_top = -96.0
-offset_right = 27.5
-offset_bottom = -73.0
+offset_left = -46.0
+offset_top = -100.0
+offset_right = 46.0
+offset_bottom = -66.0
 grow_horizontal = 2
 text = "TAVERN"
+label_settings = SubResource("LabelSettings_h43lo")
 horizontal_alignment = 1
 vertical_alignment = 1
