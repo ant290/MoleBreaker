@@ -119,6 +119,7 @@ visible = false
 layout_mode = 1
 
 [node name="CRTShader" parent="." instance=ExtResource("5_4ytvr")]
+visible = false
 
 [connection signal="pressed" from="PlayButton" to="." method="_on_play_button_pressed"]
 [connection signal="pressed" from="TownButton" to="." method="_on_town_button_pressed"]
