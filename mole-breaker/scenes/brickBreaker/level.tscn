@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://cvgivxopk62ic"]
+[gd_scene format=3 uid="uid://cvgivxopk62ic"]
 
 [ext_resource type="PackedScene" uid="uid://baqtq748e2314" path="res://scenes/brickBreaker/paddle.tscn" id="1_2q6dc"]
 [ext_resource type="Script" uid="uid://bla25v87vpm1e" path="res://scripts/level.gd" id="1_w8frs"]
@@ -25,41 +25,41 @@ shadow_color = Color(0.043137256, 0.043137256, 0.043137256, 0.8117647)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ppgk2"]
 size = Vector2(720, 11)
 
-[node name="Level" type="Node2D"]
+[node name="Level" type="Node2D" unique_id=851138091]
 script = ExtResource("1_w8frs")
 
-[node name="Background" type="Sprite2D" parent="."]
+[node name="Background" type="Sprite2D" parent="." unique_id=1389256629]
 position = Vector2(360, 640)
 texture = ExtResource("2_ppgk2")
 
-[node name="Camera2D" type="Camera2D" parent="."]
+[node name="Camera2D" type="Camera2D" parent="." unique_id=988910356]
 position = Vector2(360, 640)
 
-[node name="Paddle" parent="." instance=ExtResource("1_2q6dc")]
+[node name="Paddle" parent="." unique_id=395169963 instance=ExtResource("1_2q6dc")]
 position = Vector2(359, 1130)
 
-[node name="Ball" parent="." instance=ExtResource("2_w7c3h")]
+[node name="Ball" parent="." unique_id=1765914509 instance=ExtResource("2_w7c3h")]
 position = Vector2(384, 1059)
 
-[node name="Walls" type="StaticBody2D" parent="."]
+[node name="Walls" type="StaticBody2D" parent="." unique_id=1718697576]
 
-[node name="LeftWall" type="CollisionShape2D" parent="Walls"]
+[node name="LeftWall" type="CollisionShape2D" parent="Walls" unique_id=577295977]
 position = Vector2(-3.75, 640)
 shape = SubResource("RectangleShape2D_w7c3h")
 
-[node name="RightWall" type="CollisionShape2D" parent="Walls"]
+[node name="RightWall" type="CollisionShape2D" parent="Walls" unique_id=433608889]
 position = Vector2(724, 640)
 shape = SubResource("RectangleShape2D_w7c3h")
 
-[node name="Ceiling" type="CollisionShape2D" parent="Walls"]
+[node name="Ceiling" type="CollisionShape2D" parent="Walls" unique_id=1427809319]
 position = Vector2(360, -3.5)
 shape = SubResource("RectangleShape2D_w8frs")
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=140996247]
 process_mode = 3
 script = ExtResource("4_mx8sn")
 
-[node name="ScoreText" type="Label" parent="CanvasLayer"]
+[node name="ScoreText" type="Label" parent="CanvasLayer" unique_id=1467219390]
 offset_left = 15.0
 offset_top = 15.0
 offset_right = 172.0
@@ -67,7 +67,7 @@ offset_bottom = 60.0
 text = "Score: 100"
 label_settings = SubResource("LabelSettings_w8frs")
 
-[node name="LivesText" type="Label" parent="CanvasLayer"]
+[node name="LivesText" type="Label" parent="CanvasLayer" unique_id=316687985]
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
@@ -78,18 +78,18 @@ grow_horizontal = 0
 text = "Lives: 4"
 label_settings = SubResource("LabelSettings_w8frs")
 
-[node name="Inventory" parent="CanvasLayer" instance=ExtResource("7_klq6b")]
+[node name="Inventory" parent="CanvasLayer" unique_id=1198923052 instance=ExtResource("7_klq6b")]
 visible = false
 
-[node name="CatchBucket" type="Area2D" parent="."]
+[node name="CatchBucket" type="Area2D" parent="." unique_id=1493037682]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="CatchBucket"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CatchBucket" unique_id=1143688832]
 position = Vector2(360, 1282)
 shape = SubResource("RectangleShape2D_ppgk2")
 
-[node name="TouchControls" parent="." instance=ExtResource("2_2r41h")]
+[node name="TouchControls" parent="." unique_id=681020835 instance=ExtResource("2_2r41h")]
 
-[node name="CRTShader" parent="." instance=ExtResource("9_k34ab")]
+[node name="CRTShader" parent="." unique_id=1086750645 instance=ExtResource("9_k34ab")]
 visible = false
 
 [connection signal="body_entered" from="CatchBucket" to="Ball" method="_on_catch_bucket_body_entered"]
