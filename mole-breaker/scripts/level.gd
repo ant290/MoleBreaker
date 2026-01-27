@@ -48,7 +48,7 @@ func setupLevel():
 			var col_pos = 64 + (c * 128)
 			var col_margins = margin + (c * margin)
 			
-			var row_pos = 32 + (r * 64)
+			var row_pos = 128 + (r * 64)
 			var row_margins = margin + (r * margin)
 			
 			var newBrick : BreakableBrick = brickObject.instantiate()
