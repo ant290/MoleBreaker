@@ -1,6 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://cinvu8quv2384"]
+[gd_scene load_steps=7 format=3 uid="uid://cinvu8quv2384"]
 
 [ext_resource type="Texture2D" uid="uid://emtvli72pwy7" path="res://assets/town/Store.png" id="1_k61li"]
+[ext_resource type="Texture2D" uid="uid://c0xt57i3pi1e4" path="res://assets/town/decor/16.png" id="2_ljh1p"]
+[ext_resource type="Texture2D" uid="uid://baob8w3clkaar" path="res://assets/town/box/3.png" id="3_qdg1j"]
+[ext_resource type="Texture2D" uid="uid://cqke3mwrwf2jf" path="res://assets/town/box/4.png" id="4_p6v8q"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ljh1p"]
 size = Vector2(112, 112)
@@ -11,7 +14,21 @@ font_size = 24
 [node name="Area2D" type="Area2D"]
 
 [node name="Sprite" type="Sprite2D" parent="."]
+modulate = Color(0.16078432, 0.16078432, 0.16078432, 1)
 texture = ExtResource("1_k61li")
+
+[node name="16" type="Sprite2D" parent="Sprite"]
+position = Vector2(-66, -1)
+texture = ExtResource("2_ljh1p")
+offset = Vector2(0.5, 0)
+
+[node name="3" type="Sprite2D" parent="Sprite"]
+position = Vector2(-37, 56)
+texture = ExtResource("3_qdg1j")
+
+[node name="4" type="Sprite2D" parent="Sprite"]
+position = Vector2(58, 43)
+texture = ExtResource("4_p6v8q")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_ljh1p")
