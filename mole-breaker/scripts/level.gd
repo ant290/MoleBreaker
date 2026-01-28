@@ -10,12 +10,16 @@ extends Node2D
 @onready var imgBrickDirtDamaged = preload("res://assets/bricks/brick dirt cracked.png")
 @onready var imgBrickRock = preload("res://assets/bricks/brick rock.png")
 @onready var imgBrickRockDamaged = preload("res://assets/bricks/brick rock cracked.png")
+@onready var imgBrickWood = preload("res://assets/bricks/brick wood.png")
+@onready var imgBrickWoodDamaged = preload("res://assets/bricks/brick wood cracked.png")
 
 # brick stats
 var dirtHealth = 2
 var dirtPointsPerHit = 1
 var rockHealth = 4
 var rockPointsPerHit = 3
+var woodHealth = 3
+var woodPointsPerHit = 2
 
 var columns = 5
 var rows  = 3
@@ -52,14 +56,20 @@ func setupLevel():
 			var row_margins = margin + (r * margin)
 			
 			var newBrick : BreakableBrick = brickObject.instantiate()
-			var random_num = randi() % 10
+			var random_num = randi() % 10 + 1
 			match random_num:
-				7, 8, 9, 10:
+				8, 9, 10:
 					newBrick.healthy_texture = imgBrickRock
 					newBrick.damaged_texture = imgBrickRockDamaged
 					newBrick.starting_health = rockHealth
 					newBrick.points_per_hit = rockPointsPerHit
 					newBrick.brick_type = GameConstants.BrickType.BRICK_ROCK
+				5, 6, 7:
+					newBrick.healthy_texture = imgBrickWood
+					newBrick.damaged_texture = imgBrickWoodDamaged
+					newBrick.starting_health = woodHealth
+					newBrick.points_per_hit = woodPointsPerHit
+					newBrick.brick_type = GameConstants.BrickType.BRICK_WOOD
 				_:
 					newBrick.healthy_texture = imgBrickDirt
 					newBrick.damaged_texture = imgBrickDirtDamaged

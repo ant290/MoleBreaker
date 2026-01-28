@@ -9,6 +9,7 @@ signal on_close()
 # load brick images
 @onready var imgBrickDirt = preload("res://assets/bricks/brick dirt.png")
 @onready var imgBrickRock = preload("res://assets/bricks/brick rock.png")
+@onready var imgBrickWood = preload("res://assets/bricks/brick wood.png")
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -47,6 +48,8 @@ func load_inventory() -> void:
 					newBrick.sprite_texture = imgBrickDirt
 				GameConstants.BrickType.BRICK_ROCK:
 					newBrick.sprite_texture = imgBrickRock
+				GameConstants.BrickType.BRICK_WOOD:
+					newBrick.sprite_texture = imgBrickWood
 			
 			inven_items_container.add_child(newBrick)
 
