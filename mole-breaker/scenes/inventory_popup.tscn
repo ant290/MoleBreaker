@@ -1,14 +1,14 @@
-[gd_scene load_steps=5 format=3 uid="uid://d32bg47cji12w"]
+[gd_scene format=3 uid="uid://d32bg47cji12w"]
 
-[ext_resource type="Texture2D" uid="uid://co24y1iailax" path="res://assets/DemoUiBackgroundNineRect.png" id="1_ajo4i"]
 [ext_resource type="Script" uid="uid://lpx3hxn6obsv" path="res://scripts/inventory_popup.gd" id="1_cstkm"]
+[ext_resource type="Texture2D" uid="uid://dk2ypv5mvf68a" path="res://assets/woodNineRect.png" id="2_j34ho"]
 [ext_resource type="Theme" uid="uid://cnkgqea1hlwgw" path="res://themes/settings_theme.tres" id="3_j34ho"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_j34ho"]
 font_size = 24
 font_color = Color(0, 0, 0, 1)
 
-[node name="OverlayShadow" type="ColorRect"]
+[node name="OverlayShadow" type="ColorRect" unique_id=1278439784]
 process_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -18,19 +18,21 @@ grow_vertical = 2
 color = Color(0, 0, 0, 0.7254902)
 script = ExtResource("1_cstkm")
 
-[node name="UiPopup" type="NinePatchRect" parent="."]
+[node name="UiPopup" type="NinePatchRect" parent="." unique_id=761637598]
 layout_mode = 0
 offset_left = 105.0
 offset_top = 119.0
 offset_right = 614.0
 offset_bottom = 619.0
-texture = ExtResource("1_ajo4i")
-patch_margin_left = 5
-patch_margin_top = 5
-patch_margin_right = 5
-patch_margin_bottom = 5
+texture = ExtResource("2_j34ho")
+patch_margin_left = 12
+patch_margin_top = 12
+patch_margin_right = 12
+patch_margin_bottom = 12
+axis_stretch_horizontal = 2
+axis_stretch_vertical = 1
 
-[node name="Title" type="Label" parent="UiPopup"]
+[node name="Title" type="Label" parent="UiPopup" unique_id=1771173603]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
@@ -43,7 +45,7 @@ grow_horizontal = 2
 text = "INVENTORY"
 label_settings = SubResource("LabelSettings_j34ho")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="UiPopup"]
+[node name="VBoxContainer" type="VBoxContainer" parent="UiPopup" unique_id=2059397886]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
@@ -54,7 +56,7 @@ offset_right = 234.0
 offset_bottom = 295.0
 grow_horizontal = 2
 
-[node name="CloseButton" type="Button" parent="UiPopup"]
+[node name="CloseButton" type="Button" parent="UiPopup" unique_id=1760897663]
 layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
