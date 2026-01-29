@@ -1,0 +1,23 @@
+[gd_scene format=3 uid="uid://bid1au5vt1gw0"]
+
+[ext_resource type="Script" uid="uid://casjjwa7idwx3" path="res://scripts/settings_volume.gd" id="1_qsl2s"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_qsl2s"]
+font_color = Color(0.23921569, 0.23921569, 0.23921569, 1)
+
+[node name="VolumeContainer" type="HSplitContainer" unique_id=414287825]
+script = ExtResource("1_qsl2s")
+
+[node name="Label" type="Label" parent="." unique_id=733640008]
+custom_minimum_size = Vector2(60, 0)
+layout_mode = 2
+text = "LabelText"
+label_settings = SubResource("LabelSettings_qsl2s")
+
+[node name="HSlider" type="HSlider" parent="." unique_id=158280120]
+layout_mode = 2
+size_flags_vertical = 1
+max_value = 1.0
+step = 0.05
+
+[connection signal="drag_ended" from="HSlider" to="." method="_on_h_slider_drag_ended"]

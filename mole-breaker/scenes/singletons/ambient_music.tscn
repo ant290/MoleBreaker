@@ -1,0 +1,8 @@
+[gd_scene format=3 uid="uid://c701vdw7c82xu"]
+
+[ext_resource type="Script" uid="uid://bjc6fo7fpvxe8" path="res://scripts/globals/ambient_music.gd" id="2_linfj"]
+
+[node name="AmbientMusicPlayer" type="AudioStreamPlayer" unique_id=1049359386]
+process_mode = 3
+bus = &"Music"
+script = ExtResource("2_linfj")

@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://by44at2dyig6r"]
+[gd_scene format=3 uid="uid://by44at2dyig6r"]
 
 [ext_resource type="Script" uid="uid://di0qoyjc2m27o" path="res://scripts/menu.gd" id="1_con2f"]
 [ext_resource type="Texture2D" uid="uid://by885h87iwnui" path="res://assets/background dirt.png" id="1_yqeox"]
@@ -19,7 +19,7 @@ outline_color = Color(0.19607843, 0.24313726, 0.30980393, 1)
 shadow_size = 8
 shadow_color = Color(1, 1, 1, 0.47843137)
 
-[node name="Menu" type="Control"]
+[node name="Menu" type="Control" unique_id=915963961]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -28,14 +28,14 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_con2f")
 
-[node name="TextureRect" type="TextureRect" parent="."]
+[node name="TextureRect" type="TextureRect" parent="." unique_id=901010139]
 modulate = Color(0.19607843, 0.19607843, 0.19607843, 0.85882354)
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
 texture = ExtResource("1_yqeox")
 
-[node name="Title" type="Label" parent="."]
+[node name="Title" type="Label" parent="." unique_id=1745419683]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
@@ -50,7 +50,7 @@ label_settings = SubResource("LabelSettings_vjb58")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="PlayButton" type="Button" parent="."]
+[node name="PlayButton" type="Button" parent="." unique_id=2096653511]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -68,7 +68,7 @@ text = "PLAY"
 icon = ExtResource("2_vjb58")
 expand_icon = true
 
-[node name="TownButton" type="Button" parent="."]
+[node name="TownButton" type="Button" parent="." unique_id=1686159109]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -85,7 +85,7 @@ theme = ExtResource("3_g3eks")
 text = "TOWN"
 icon = ExtResource("4_mhnvy")
 
-[node name="QuitButton" type="Button" parent="."]
+[node name="QuitButton" type="Button" parent="." unique_id=1820341181]
 layout_mode = 1
 anchors_preset = 2
 anchor_top = 1.0
@@ -98,7 +98,7 @@ grow_vertical = 0
 theme = ExtResource("3_g3eks")
 text = "QUIT"
 
-[node name="SettingsButton" type="Button" parent="."]
+[node name="SettingsButton" type="Button" parent="." unique_id=1903598396]
 layout_mode = 1
 anchors_preset = 3
 anchor_left = 1.0
@@ -114,11 +114,11 @@ grow_vertical = 0
 theme = ExtResource("3_g3eks")
 text = "SETTINGS"
 
-[node name="SettingsPopup" parent="." instance=ExtResource("6_v86rl")]
+[node name="SettingsPopup" parent="." unique_id=1347997366 instance=ExtResource("6_v86rl")]
 visible = false
 layout_mode = 1
 
-[node name="CRTShader" parent="." instance=ExtResource("5_4ytvr")]
+[node name="CRTShader" parent="." unique_id=376040669 instance=ExtResource("5_4ytvr")]
 visible = false
 
 [connection signal="pressed" from="PlayButton" to="." method="_on_play_button_pressed"]

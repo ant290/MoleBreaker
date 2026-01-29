@@ -20,6 +20,10 @@ run/main_scene="uid://by44at2dyig6r"
 config/features=PackedStringArray("4.6", "Mobile")
 config/icon="uid://db68f2ea2wibb"
 
+[audio]
+
+buses/default_bus_layout="uid://dsfemkfmmlw8q"
+
 [autoload]
 
 PlayerStats="*res://scripts/globals/player_stats.gd"
@@ -27,6 +31,7 @@ GameConstants="*res://scripts/globals/game_constants.gd"
 GameSaveService="*res://scripts/globals/save_service.gd"
 SceneTransitions="*res://scenes/singletons/scene_transitions.tscn"
 Settings="*res://scripts/globals/settings.gd"
+AmbientMusic="*uid://c701vdw7c82xu"
 
 [display]
 

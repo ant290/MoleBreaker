@@ -9,6 +9,7 @@ func _ready() -> void:
 	GameSaveService.load_game()
 	crtShader.visible = Settings.useCrtShader
 	Settings.use_crt_changed.connect(_on_settings_use_crt_changed)
+	AmbientMusic.play_ambient_music(AmbientMusicPlayer.MUSIC_NAME_CABIN)
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

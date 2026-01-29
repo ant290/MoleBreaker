@@ -37,6 +37,7 @@ func _ready() -> void:
 	
 	crtShader.visible = Settings.useCrtShader
 	SceneTransitions.fade_in()
+	AmbientMusic.play_ambient_music(AmbientMusicPlayer.MUSIC_NAME_GARDEN)
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

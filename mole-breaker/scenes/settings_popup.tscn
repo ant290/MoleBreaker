@@ -1,10 +1,11 @@
-[gd_scene load_steps=4 format=3 uid="uid://dj6ok546ls86i"]
+[gd_scene format=3 uid="uid://dj6ok546ls86i"]
 
-[ext_resource type="Texture2D" uid="uid://co24y1iailax" path="res://assets/DemoUiBackgroundNineRect.png" id="1_fdmib"]
 [ext_resource type="Script" uid="uid://cprkugw4vypms" path="res://scripts/settings_popup.gd" id="1_wv7nd"]
+[ext_resource type="Texture2D" uid="uid://dk2ypv5mvf68a" path="res://assets/woodNineRect.png" id="2_2bd2y"]
 [ext_resource type="Theme" uid="uid://cnkgqea1hlwgw" path="res://themes/settings_theme.tres" id="2_wv7nd"]
+[ext_resource type="PackedScene" uid="uid://bid1au5vt1gw0" path="res://scenes/settings_volume.tscn" id="4_m133j"]
 
-[node name="OverlayShadow" type="ColorRect"]
+[node name="OverlayShadow" type="ColorRect" unique_id=425021697]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -13,7 +14,7 @@ grow_vertical = 2
 color = Color(0, 0, 0, 0.7254902)
 script = ExtResource("1_wv7nd")
 
-[node name="SettingsPopup" type="NinePatchRect" parent="."]
+[node name="SettingsPopup" type="NinePatchRect" parent="." unique_id=1780968823]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -26,25 +27,27 @@ offset_right = 200.0
 offset_bottom = 300.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("1_fdmib")
-patch_margin_left = 5
-patch_margin_top = 5
-patch_margin_right = 5
-patch_margin_bottom = 5
+texture = ExtResource("2_2bd2y")
+patch_margin_left = 12
+patch_margin_top = 12
+patch_margin_right = 12
+patch_margin_bottom = 12
+axis_stretch_horizontal = 1
+axis_stretch_vertical = 1
 
-[node name="UseCRTCheckButton" type="CheckButton" parent="SettingsPopup"]
+[node name="SettingsVertContainer" type="VBoxContainer" parent="SettingsPopup" unique_id=791171058]
 layout_mode = 1
-anchors_preset = 8
+anchors_preset = 5
 anchor_left = 0.5
-anchor_top = 0.5
 anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -64.0
-offset_top = -217.5
-offset_right = 62.0
-offset_bottom = -186.5
+offset_left = -82.0
+offset_top = 50.0
+offset_right = 82.0
+offset_bottom = 92.0
 grow_horizontal = 2
-grow_vertical = 2
+
+[node name="UseCRTCheckButton" type="CheckButton" parent="SettingsPopup/SettingsVertContainer" unique_id=1166169275]
+layout_mode = 2
 theme = ExtResource("2_wv7nd")
 theme_override_colors/font_color = Color(0.23753878, 0.23753935, 0.2375389, 1)
 theme_override_colors/font_focus_color = Color(0.23921569, 0.23921569, 0.23921569, 1)
@@ -55,7 +58,26 @@ theme_override_colors/icon_pressed_color = Color(0.63375676, 0.6337568, 0.633756
 theme_override_colors/button_checked_color = Color(0.74558026, 0.7455802, 0.7455802, 1)
 text = "CRT Effect"
 
-[node name="CloseButton" type="Button" parent="SettingsPopup"]
+[node name="Label" type="Label" parent="SettingsPopup/SettingsVertContainer" unique_id=1204248275]
+layout_mode = 2
+theme = ExtResource("2_wv7nd")
+theme_override_colors/font_color = Color(0.23921569, 0.23921569, 0.23921569, 1)
+text = "Sounds"
+horizontal_alignment = 1
+
+[node name="MasterVolume" parent="SettingsPopup/SettingsVertContainer" unique_id=414287825 instance=ExtResource("4_m133j")]
+layout_mode = 2
+title = "Master"
+
+[node name="MusicVolume" parent="SettingsPopup/SettingsVertContainer" unique_id=647951805 instance=ExtResource("4_m133j")]
+layout_mode = 2
+title = "Music"
+
+[node name="EffectsVolume" parent="SettingsPopup/SettingsVertContainer" unique_id=369323935 instance=ExtResource("4_m133j")]
+layout_mode = 2
+title = "Effects"
+
+[node name="CloseButton" type="Button" parent="SettingsPopup" unique_id=1786091920]
 layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
@@ -71,5 +93,8 @@ grow_vertical = 0
 text = "CLOSE"
 
 [connection signal="visibility_changed" from="." to="." method="_on_visibility_changed"]
-[connection signal="toggled" from="SettingsPopup/UseCRTCheckButton" to="." method="_on_use_crt_check_button_toggled"]
+[connection signal="toggled" from="SettingsPopup/SettingsVertContainer/UseCRTCheckButton" to="." method="_on_use_crt_check_button_toggled"]
+[connection signal="volume_drag_ended" from="SettingsPopup/SettingsVertContainer/MasterVolume" to="." method="_on_master_volume_volume_drag_ended"]
+[connection signal="volume_drag_ended" from="SettingsPopup/SettingsVertContainer/MusicVolume" to="." method="_on_music_volume_volume_drag_ended"]
+[connection signal="volume_drag_ended" from="SettingsPopup/SettingsVertContainer/EffectsVolume" to="." method="_on_effects_volume_volume_drag_ended"]
 [connection signal="pressed" from="SettingsPopup/CloseButton" to="." method="_on_close_button_pressed"]
