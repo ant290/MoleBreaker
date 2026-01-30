@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://c00uaxwxq1i2b"]
+[gd_scene format=3 uid="uid://c00uaxwxq1i2b"]
 
 [ext_resource type="Script" uid="uid://b8qxt4jfq6i2f" path="res://scripts/ball.gd" id="1_7s4qf"]
 [ext_resource type="Texture2D" uid="uid://cbo5d6o4ucsu5" path="res://assets/SnowBall.png" id="2_cxlvu"]
+[ext_resource type="AudioStream" uid="uid://difs5mwf7xgj4" path="res://assets/sounds/effects/Cartoon Boing C.wav" id="3_fjarr"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_f7cbr"]
 radius = 16.0
@@ -9,20 +10,24 @@ radius = 16.0
 [sub_resource type="Gradient" id="Gradient_cxlvu"]
 colors = PackedColorArray(0.53362983, 0.8204804, 0.88068885, 1, 1, 1, 1, 1)
 
-[node name="Ball" type="CharacterBody2D"]
+[node name="Ball" type="CharacterBody2D" unique_id=1289675433 groups=["Ball"]]
 script = ExtResource("1_7s4qf")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1799405161]
 texture = ExtResource("2_cxlvu")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1038187710]
 shape = SubResource("CircleShape2D_f7cbr")
 
-[node name="CPUParticles2D" type="CPUParticles2D" parent="."]
+[node name="CPUParticles2D" type="CPUParticles2D" parent="." unique_id=713996948]
 amount = 20
-lifetime = 0.09999999999999999
+lifetime = 0.1
 speed_scale = 0.5
 emission_shape = 1
 emission_sphere_radius = 9.0
 gravity = Vector2(0, 0)
 color_ramp = SubResource("Gradient_cxlvu")
+
+[node name="BounceSound" type="AudioStreamPlayer" parent="." unique_id=328254865]
+stream = ExtResource("3_fjarr")
+bus = &"Effects"

@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://di0qoyjc2m27o" path="res://scripts/menu.gd" id="1_con2f"]
 [ext_resource type="Texture2D" uid="uid://by885h87iwnui" path="res://assets/background dirt.png" id="1_yqeox"]
+[ext_resource type="AudioStream" uid="uid://1ogbyvylmar5" path="res://assets/sounds/effects/Cartoon Clank A.wav" id="2_13sgg"]
 [ext_resource type="Texture2D" uid="uid://cv3hg2m8wxws" path="res://assets/character.png" id="2_vjb58"]
 [ext_resource type="Theme" uid="uid://cjk14w4wpwu4k" path="res://themes/menu_button_theme.tres" id="3_g3eks"]
 [ext_resource type="Texture2D" uid="uid://emtvli72pwy7" path="res://assets/town/Store.png" id="4_mhnvy"]
@@ -27,6 +28,9 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_con2f")
+
+[node name="ButtonClickSound" type="AudioStreamPlayer" parent="." unique_id=2051920831]
+stream = ExtResource("2_13sgg")
 
 [node name="TextureRect" type="TextureRect" parent="." unique_id=901010139]
 modulate = Color(0.19607843, 0.19607843, 0.19607843, 0.85882354)

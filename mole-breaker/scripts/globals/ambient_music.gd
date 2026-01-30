@@ -30,3 +30,7 @@ func play_ambient_music(name: String) -> void:
 			
 	current_music_name = name
 	play()
+
+
+func _on_finished() -> void:
+	play()

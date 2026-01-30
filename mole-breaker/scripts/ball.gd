@@ -1,5 +1,7 @@
 extends CharacterBody2D
 
+@onready var bounce_sound: AudioStreamPlayer = $BounceSound
+
 @export var base_speed = 250
 @export var bounce_multiplyer = 1.05
 
@@ -19,6 +21,8 @@ func _physics_process(delta: float) -> void:
 				collision.get_collider().hit()
 			
 			velocity = velocity * bounce_multiplyer
+			
+			bounce_sound.play()
 		
 		if (velocity.y > 0 and velocity.y < 100):
 			velocity.y = -base_speed
@@ -27,12 +31,17 @@ func _physics_process(delta: float) -> void:
 		
 		velocity.x = clamp(velocity.x, -600, 600)
 		velocity.y = clamp(velocity.y, -600, 600)
+		
+
 
 func game_over ():
 	GameSaveService.save_game()
 	get_tree().change_scene_to_file("res://scenes/menu.tscn")
 
 func _on_catch_bucket_body_entered(body: Node2D) -> void:
+	if not body.is_in_group("Ball"):
+		return
+
 	PlayerStats.lives -= 1
 	if PlayerStats.lives <= 0:
 		game_over()

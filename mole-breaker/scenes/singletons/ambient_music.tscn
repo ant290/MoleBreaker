@@ -6,3 +6,5 @@
 process_mode = 3
 bus = &"Music"
 script = ExtResource("2_linfj")
+
+[connection signal="finished" from="." to="." method="_on_finished"]

@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://b21tx3018swjy"]
+
+[ext_resource type="Script" uid="uid://qju1nsx5upgr" path="res://scripts/brick_audio_player.gd" id="1_mftgw"]
+
+[node name="BrickAudioPlayer" type="AudioStreamPlayer" unique_id=1593854875]
+script = ExtResource("1_mftgw")

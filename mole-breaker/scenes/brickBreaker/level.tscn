@@ -3,6 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://baqtq748e2314" path="res://scenes/brickBreaker/paddle.tscn" id="1_2q6dc"]
 [ext_resource type="Script" uid="uid://bla25v87vpm1e" path="res://scripts/level.gd" id="1_w8frs"]
 [ext_resource type="PackedScene" uid="uid://dn3083ytfbwut" path="res://scenes/brickBreaker/touch_controls.tscn" id="2_2r41h"]
+[ext_resource type="PackedScene" uid="uid://b21tx3018swjy" path="res://scenes/brickBreaker/brick_audio_player.tscn" id="2_k34ab"]
 [ext_resource type="Texture2D" uid="uid://by885h87iwnui" path="res://assets/background dirt.png" id="2_ppgk2"]
 [ext_resource type="PackedScene" uid="uid://c00uaxwxq1i2b" path="res://scenes/brickBreaker/ball.tscn" id="2_w7c3h"]
 [ext_resource type="Script" uid="uid://bfk12tdquv0b7" path="res://scripts/player_ui.gd" id="4_mx8sn"]
@@ -27,6 +28,8 @@ size = Vector2(720, 11)
 
 [node name="Level" type="Node2D" unique_id=851138091]
 script = ExtResource("1_w8frs")
+
+[node name="BrickAudioPlayer" parent="." unique_id=1593854875 instance=ExtResource("2_k34ab")]
 
 [node name="Background" type="Sprite2D" parent="." unique_id=1389256629]
 position = Vector2(360, 640)

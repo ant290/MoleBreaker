@@ -4,6 +4,7 @@ extends Node2D
 @onready var uiLayer : PlayerUI = $CanvasLayer
 @onready var touchControls : MobileTouchControls = $TouchControls
 @onready var crtShader : CanvasLayer = $CRTShader
+@onready var audioStreamPlayer: AudioStreamPlayer = $BrickAudioPlayer
 
 # load brick images
 @onready var imgBrickDirt = preload("res://assets/bricks/brick dirt.png")
@@ -94,6 +95,8 @@ func _on_brick_break(brickType : GameConstants.BrickType, quantity : int) -> voi
 	if remaining_bricks.size() == 1:
 		call_deferred("_save_data")
 		get_tree().change_scene_to_file("res://scenes/menu.tscn")
+		
+	
 	
 func _save_data() -> void:
 	GameSaveService.save_game()

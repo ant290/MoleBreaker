@@ -44,6 +44,7 @@ window/handheld/orientation=1
 
 Brick=""
 Paddle=""
+Ball=""
 
 [input]
 
