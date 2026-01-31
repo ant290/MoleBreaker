@@ -1,35 +1,34 @@
-[gd_scene load_steps=6 format=3 uid="uid://b2speixjr7d74"]
+[gd_scene format=3 uid="uid://b2speixjr7d74"]
 
 [ext_resource type="Texture2D" uid="uid://xvtm48ovjovt" path="res://assets/town/Smithy.png" id="1_hpoev"]
 [ext_resource type="Texture2D" uid="uid://dyj8gu75xfa7p" path="res://assets/town/decor/15.png" id="2_ab2hm"]
 [ext_resource type="Texture2D" uid="uid://dm6l6iihemvk0" path="res://assets/town/decor/7.png" id="3_hhtlr"]
+[ext_resource type="LabelSettings" uid="uid://d066f8gcjuigu" path="res://scenes/town/town_building_label_settings.tres" id="4_oq5vq"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_06row"]
-size = Vector2(154, 146)
+size = Vector2(154, 175)
 
-[sub_resource type="LabelSettings" id="LabelSettings_hpoev"]
-font_size = 24
+[node name="Area2D" type="Area2D" unique_id=1087807555]
 
-[node name="Area2D" type="Area2D"]
-
-[node name="Sprite" type="Sprite2D" parent="."]
+[node name="Sprite" type="Sprite2D" parent="." unique_id=1107140504]
 modulate = Color(0.16078432, 0.16078432, 0.16078432, 1)
 texture = ExtResource("1_hpoev")
 
-[node name="15" type="Sprite2D" parent="Sprite"]
+[node name="15" type="Sprite2D" parent="Sprite" unique_id=1837159595]
 position = Vector2(83, 50)
 rotation = 3.1415927
 scale = Vector2(1, -1)
 texture = ExtResource("2_ab2hm")
 
-[node name="7" type="Sprite2D" parent="Sprite"]
+[node name="7" type="Sprite2D" parent="Sprite" unique_id=489289692]
 position = Vector2(-50, 64)
 texture = ExtResource("3_hhtlr")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1467707173]
+position = Vector2(0, -14.5)
 shape = SubResource("RectangleShape2D_06row")
 
-[node name="Label" type="Label" parent="."]
+[node name="Label" type="Label" parent="." unique_id=1766279932]
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
@@ -39,6 +38,6 @@ offset_right = 44.5
 offset_bottom = -74.0
 grow_horizontal = 2
 text = "SMITHY"
-label_settings = SubResource("LabelSettings_hpoev")
+label_settings = ExtResource("4_oq5vq")
 horizontal_alignment = 1
 vertical_alignment = 1

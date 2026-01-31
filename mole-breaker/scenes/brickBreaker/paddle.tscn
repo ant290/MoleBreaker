@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://baqtq748e2314"]
+[gd_scene format=3 uid="uid://baqtq748e2314"]
 
 [ext_resource type="Script" uid="uid://cxx1w3jcuudd5" path="res://scripts/paddle.gd" id="1_3xiby"]
 [ext_resource type="Texture2D" uid="uid://t86qi3jll87x" path="res://assets/paddles/paddle dirt.png" id="2_y7wee"]
@@ -7,21 +7,61 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3xiby"]
 size = Vector2(42, 200)
 
-[node name="Paddle" type="CharacterBody2D" groups=["Paddle"]]
+[sub_resource type="Animation" id="Animation_tuyxk"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PaddleMaterial:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, -7)]
+}
+
+[sub_resource type="Animation" id="Animation_qjoli"]
+resource_name = "paddle_hit"
+length = 0.25
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PaddleMaterial:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.06666667, 0.16666667, 0.24821448),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0, -7), Vector2(0, -5), Vector2(0, -8), Vector2(0, -7)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_3ybwx"]
+_data = {
+&"RESET": SubResource("Animation_tuyxk"),
+&"paddle_hit": SubResource("Animation_qjoli")
+}
+
+[node name="Paddle" type="CharacterBody2D" unique_id=1941806741 groups=["Paddle"]]
 motion_mode = 1
 platform_on_leave = 2
 script = ExtResource("1_3xiby")
 base_speed = 700.0
 
-[node name="PaddleMaterial" type="Sprite2D" parent="."]
+[node name="PaddleMaterial" type="Sprite2D" parent="." unique_id=299367135]
 position = Vector2(0, -7)
 texture = ExtResource("2_y7wee")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=729276390]
 position = Vector2(3.4610575e-06, -11)
 rotation = 1.5707964
 shape = SubResource("RectangleShape2D_3xiby")
 
-[node name="CharacterSprite" type="Sprite2D" parent="."]
+[node name="CharacterSprite" type="Sprite2D" parent="." unique_id=2113614129]
 position = Vector2(0, 43)
 texture = ExtResource("3_mo4dg")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1443898181]
+libraries/ = SubResource("AnimationLibrary_3ybwx")

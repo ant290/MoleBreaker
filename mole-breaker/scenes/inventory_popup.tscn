@@ -19,11 +19,18 @@ color = Color(0, 0, 0, 0.7254902)
 script = ExtResource("1_cstkm")
 
 [node name="UiPopup" type="NinePatchRect" parent="." unique_id=761637598]
-layout_mode = 0
-offset_left = 105.0
-offset_top = 119.0
-offset_right = 614.0
-offset_bottom = 619.0
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -310.0
+offset_top = -590.0
+offset_right = 310.0
+offset_bottom = 590.0
+grow_horizontal = 2
+grow_vertical = 2
 texture = ExtResource("2_j34ho")
 patch_margin_left = 12
 patch_margin_top = 12
@@ -47,14 +54,17 @@ label_settings = SubResource("LabelSettings_j34ho")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="UiPopup" unique_id=2059397886]
 layout_mode = 1
-anchors_preset = 5
+anchors_preset = 8
 anchor_left = 0.5
+anchor_top = 0.5
 anchor_right = 0.5
-offset_left = -234.0
-offset_top = 55.0
-offset_right = 234.0
-offset_bottom = 295.0
+anchor_bottom = 0.5
+offset_left = -260.0
+offset_top = -500.0
+offset_right = 260.0
+offset_bottom = 500.0
 grow_horizontal = 2
+grow_vertical = 2
 
 [node name="CloseButton" type="Button" parent="UiPopup" unique_id=1760897663]
 layout_mode = 1
@@ -64,9 +74,9 @@ anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
 offset_left = -41.0
-offset_top = -82.0
+offset_top = -62.0
 offset_right = 41.0
-offset_bottom = -40.0
+offset_bottom = -20.0
 grow_horizontal = 2
 grow_vertical = 0
 theme = ExtResource("3_j34ho")

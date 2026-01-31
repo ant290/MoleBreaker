@@ -1,6 +1,11 @@
 extends Node
 
 enum BrickType {BRICK_DIRT, BRICK_ROCK, BRICK_WOOD}
+enum BreakerLocationType {PLAINS, FOREST, QUARRY}
+
+#region Location Details
+
+#endregion
 
 func is_brick(node : Node) -> bool:
 	return node.is_in_group("Brick")

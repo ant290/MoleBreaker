@@ -2,7 +2,9 @@
 
 [ext_resource type="Script" uid="uid://cprkugw4vypms" path="res://scripts/settings_popup.gd" id="1_wv7nd"]
 [ext_resource type="Texture2D" uid="uid://dk2ypv5mvf68a" path="res://assets/woodNineRect.png" id="2_2bd2y"]
+[ext_resource type="AudioStream" uid="uid://1ogbyvylmar5" path="res://assets/sounds/effects/Cartoon Clank A.wav" id="2_m133j"]
 [ext_resource type="Theme" uid="uid://cnkgqea1hlwgw" path="res://themes/settings_theme.tres" id="2_wv7nd"]
+[ext_resource type="LabelSettings" uid="uid://csexbggbyy1pr" path="res://themes/popup_title_label_settings.tres" id="4_d4ftr"]
 [ext_resource type="PackedScene" uid="uid://bid1au5vt1gw0" path="res://scenes/settings_volume.tscn" id="4_m133j"]
 
 [node name="OverlayShadow" type="ColorRect" unique_id=425021697]
@@ -14,6 +16,10 @@ grow_vertical = 2
 color = Color(0, 0, 0, 0.7254902)
 script = ExtResource("1_wv7nd")
 
+[node name="SoundEffectsSample" type="AudioStreamPlayer" parent="." unique_id=1430488487]
+stream = ExtResource("2_m133j")
+bus = &"Effects"
+
 [node name="SettingsPopup" type="NinePatchRect" parent="." unique_id=1780968823]
 layout_mode = 1
 anchors_preset = 8
@@ -21,10 +27,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -200.0
-offset_top = -300.0
-offset_right = 200.0
-offset_bottom = 300.0
+offset_left = -310.0
+offset_top = -590.0
+offset_right = 310.0
+offset_bottom = 590.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("2_2bd2y")
@@ -35,19 +41,36 @@ patch_margin_bottom = 12
 axis_stretch_horizontal = 1
 axis_stretch_vertical = 1
 
-[node name="SettingsVertContainer" type="VBoxContainer" parent="SettingsPopup" unique_id=791171058]
+[node name="Label" type="Label" parent="SettingsPopup" unique_id=670090342]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -82.0
-offset_top = 50.0
-offset_right = 82.0
-offset_bottom = 92.0
+offset_left = -55.0
+offset_top = 20.0
+offset_right = 55.0
+offset_bottom = 54.0
 grow_horizontal = 2
+text = "SETTINGS"
+label_settings = ExtResource("4_d4ftr")
+
+[node name="SettingsVertContainer" type="VBoxContainer" parent="SettingsPopup" unique_id=791171058]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -260.0
+offset_top = -500.0
+offset_right = 260.0
+offset_bottom = 500.0
+grow_horizontal = 2
+grow_vertical = 2
 
 [node name="UseCRTCheckButton" type="CheckButton" parent="SettingsPopup/SettingsVertContainer" unique_id=1166169275]
 layout_mode = 2
+size_flags_horizontal = 4
 theme = ExtResource("2_wv7nd")
 theme_override_colors/font_color = Color(0.23753878, 0.23753935, 0.2375389, 1)
 theme_override_colors/font_focus_color = Color(0.23921569, 0.23921569, 0.23921569, 1)
@@ -57,6 +80,10 @@ theme_override_colors/font_hover_pressed_color = Color(0.23921569, 0.23921569, 0
 theme_override_colors/icon_pressed_color = Color(0.63375676, 0.6337568, 0.63375676, 1)
 theme_override_colors/button_checked_color = Color(0.74558026, 0.7455802, 0.7455802, 1)
 text = "CRT Effect"
+
+[node name="Panel" type="Panel" parent="SettingsPopup/SettingsVertContainer" unique_id=446087030]
+layout_mode = 2
+size_flags_vertical = 4
 
 [node name="Label" type="Label" parent="SettingsPopup/SettingsVertContainer" unique_id=1204248275]
 layout_mode = 2
@@ -94,7 +121,10 @@ text = "CLOSE"
 
 [connection signal="visibility_changed" from="." to="." method="_on_visibility_changed"]
 [connection signal="toggled" from="SettingsPopup/SettingsVertContainer/UseCRTCheckButton" to="." method="_on_use_crt_check_button_toggled"]
+[connection signal="volume_drag_changed" from="SettingsPopup/SettingsVertContainer/MasterVolume" to="." method="_on_master_volume_volume_drag_changed"]
 [connection signal="volume_drag_ended" from="SettingsPopup/SettingsVertContainer/MasterVolume" to="." method="_on_master_volume_volume_drag_ended"]
+[connection signal="volume_drag_changed" from="SettingsPopup/SettingsVertContainer/MusicVolume" to="." method="_on_music_volume_volume_drag_changed"]
 [connection signal="volume_drag_ended" from="SettingsPopup/SettingsVertContainer/MusicVolume" to="." method="_on_music_volume_volume_drag_ended"]
+[connection signal="volume_drag_changed" from="SettingsPopup/SettingsVertContainer/EffectsVolume" to="." method="_on_effects_volume_volume_drag_changed"]
 [connection signal="volume_drag_ended" from="SettingsPopup/SettingsVertContainer/EffectsVolume" to="." method="_on_effects_volume_volume_drag_ended"]
 [connection signal="pressed" from="SettingsPopup/CloseButton" to="." method="_on_close_button_pressed"]

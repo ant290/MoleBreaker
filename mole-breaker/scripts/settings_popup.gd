@@ -7,6 +7,7 @@ signal on_close()
 @onready var masterVolume: SettingsVolume = $SettingsPopup/SettingsVertContainer/MasterVolume
 @onready var musicVolume: SettingsVolume = $SettingsPopup/SettingsVertContainer/MusicVolume
 @onready var effectsVolume: SettingsVolume = $SettingsPopup/SettingsVertContainer/EffectsVolume
+@onready var soundEffectsSample: AudioStreamPlayer = $SoundEffectsSample
 
 
 # Called when the node enters the scene tree for the first time.
@@ -28,11 +29,18 @@ func _on_use_crt_check_button_toggled(toggled_on: bool) -> void:
 func _on_master_volume_volume_drag_ended(value: float) -> void:
 	Settings.set_master_volume(value)
 
+func _on_master_volume_volume_drag_changed(value: float) -> void:
+	Settings.set_master_volume(value)
+
 func _on_music_volume_volume_drag_ended(value: float) -> void:
+	Settings.set_music_volume(value)
+
+func _on_music_volume_volume_drag_changed(value: float) -> void:
 	Settings.set_music_volume(value)
 
 func _on_effects_volume_volume_drag_ended(value: float) -> void:
 	Settings.set_effects_volume(value)
+	soundEffectsSample.play()
 
 func _on_visibility_changed() -> void:
 	if useCrtCheckButton != null:

@@ -31,6 +31,7 @@ script = ExtResource("1_con2f")
 
 [node name="ButtonClickSound" type="AudioStreamPlayer" parent="." unique_id=2051920831]
 stream = ExtResource("2_13sgg")
+bus = &"Effects"
 
 [node name="TextureRect" type="TextureRect" parent="." unique_id=901010139]
 modulate = Color(0.19607843, 0.19607843, 0.19607843, 0.85882354)

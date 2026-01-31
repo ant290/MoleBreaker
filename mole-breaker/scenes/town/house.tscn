@@ -1,24 +1,25 @@
-[gd_scene load_steps=5 format=3 uid="uid://0l5pmxfgd5xp"]
+[gd_scene format=3 uid="uid://0l5pmxfgd5xp"]
 
 [ext_resource type="Texture2D" uid="uid://cokfl4riajtur" path="res://assets/town/House.png" id="1_et3ds"]
 [ext_resource type="Script" uid="uid://desw8ko68iwrh" path="res://scripts/town/house.gd" id="1_mamke"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_mamke"]
-size = Vector2(156, 166)
+size = Vector2(156, 185)
 
 [sub_resource type="LabelSettings" id="LabelSettings_et3ds"]
 font_size = 24
 
-[node name="House" type="Area2D"]
+[node name="House" type="Area2D" unique_id=1015229144]
 script = ExtResource("1_mamke")
 
-[node name="Sprite" type="Sprite2D" parent="."]
+[node name="Sprite" type="Sprite2D" parent="." unique_id=1285056523]
 texture = ExtResource("1_et3ds")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=638320260]
+position = Vector2(0, -9.5)
 shape = SubResource("RectangleShape2D_mamke")
 
-[node name="Label" type="Label" parent="."]
+[node name="Label" type="Label" parent="." unique_id=1270662409]
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5

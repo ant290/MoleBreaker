@@ -3,6 +3,7 @@ extends CharacterBody2D
 @export var base_speed = 1000.0
 
 @onready var character_sprite : Sprite2D = $CharacterSprite
+@onready var animator: AnimationPlayer = $AnimationPlayer
 
 func _process(delta: float) -> void:
 	
@@ -25,3 +26,7 @@ func _physics_process(delta: float) -> void:
 		velocity.x = move_toward(velocity.x, 0, base_speed)
 
 	move_and_collide(velocity * delta)
+	
+func hit() -> void:
+	animator.play("paddle_hit")
+	

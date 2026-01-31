@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://b66p4n8y8gyo8"
+path="res://.godot/imported/Whoosh Bamboo 001.wav-617b38ab65ac2a90df1b29db173bbd85.sample"
+
+[deps]
+
+source_file="res://assets/sounds/effects/Whoosh Bamboo 001.wav"
+dest_files=["res://.godot/imported/Whoosh Bamboo 001.wav-617b38ab65ac2a90df1b29db173bbd85.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

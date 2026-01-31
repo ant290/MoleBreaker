@@ -1,0 +1,49 @@
+[gd_scene format=3 uid="uid://dspa2anxowcce"]
+
+[ext_resource type="Texture2D" uid="uid://ddlnmwmm2i30n" path="res://assets/town/decor/8.png" id="1_70xfc"]
+[ext_resource type="Script" uid="uid://bmjmlq3tecmu" path="res://scripts/town/settings_building.gd" id="1_e2oo4"]
+[ext_resource type="Texture2D" uid="uid://b5tfdcx0afi8i" path="res://assets/town/tent/4.png" id="1_fi68w"]
+[ext_resource type="Texture2D" uid="uid://dm6l6iihemvk0" path="res://assets/town/decor/7.png" id="2_by7cg"]
+[ext_resource type="Texture2D" uid="uid://sv81dcnr85nl" path="res://assets/town/decor/6.png" id="2_e2oo4"]
+[ext_resource type="LabelSettings" uid="uid://d066f8gcjuigu" path="res://scenes/town/town_building_label_settings.tres" id="5_v7o15"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3ykmp"]
+size = Vector2(88, 111)
+
+[node name="Settings" type="Area2D" unique_id=1259330006]
+script = ExtResource("1_e2oo4")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=677907206]
+position = Vector2(9, 31)
+texture = ExtResource("1_70xfc")
+
+[node name="Axe" type="Sprite2D" parent="." unique_id=550809936]
+position = Vector2(-21, 41)
+texture = ExtResource("2_e2oo4")
+
+[node name="Anvil" type="Sprite2D" parent="." unique_id=2023936594]
+position = Vector2(-17, 15)
+texture = ExtResource("2_by7cg")
+
+[node name="Tent" type="Sprite2D" parent="." unique_id=1299692107]
+texture = ExtResource("1_fi68w")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=218823143]
+position = Vector2(0, -13.5)
+shape = SubResource("RectangleShape2D_3ykmp")
+
+[node name="Label" type="Label" parent="." unique_id=161622001]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -55.0
+offset_top = -73.0
+offset_right = 55.0
+offset_bottom = -39.0
+grow_horizontal = 2
+text = "SETTINGS"
+label_settings = ExtResource("5_v7o15")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="input_event" from="." to="." method="_on_input_event"]
