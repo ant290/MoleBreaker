@@ -1,6 +1,6 @@
-[gd_scene load_steps=5 format=3 uid="uid://dn3083ytfbwut"]
+[gd_scene format=3 uid="uid://dn3083ytfbwut"]
 
-[ext_resource type="Script" uid="uid://chunyu8itfm2e" path="res://scripts/touch_controls.gd" id="1_6e4pk"]
+[ext_resource type="Script" uid="uid://chunyu8itfm2e" path="res://scripts/brickBreaker/touch_controls.gd" id="1_6e4pk"]
 [ext_resource type="Texture2D" uid="uid://ddnoeidcj41dc" path="res://assets/arrow left dirt.png" id="1_n26gd"]
 [ext_resource type="Texture2D" uid="uid://r7idy8xwqh6b" path="res://assets/arrow right dirt.png" id="2_6e4pk"]
 

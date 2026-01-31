@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://d0qgslqpuw3ps"]
 
-[ext_resource type="Script" uid="uid://l0in4ahl7f44" path="res://scripts/brick.gd" id="1_0w5h4"]
+[ext_resource type="Script" uid="uid://l0in4ahl7f44" path="res://scripts/brickBreaker/brick.gd" id="1_0w5h4"]
 [ext_resource type="PackedScene" uid="uid://b21tx3018swjy" path="res://scenes/brickBreaker/brick_audio_player.tscn" id="2_7btvx"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0w5h4"]

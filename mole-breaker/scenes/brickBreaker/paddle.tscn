@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://baqtq748e2314"]
 
-[ext_resource type="Script" uid="uid://cxx1w3jcuudd5" path="res://scripts/paddle.gd" id="1_3xiby"]
+[ext_resource type="Script" uid="uid://cxx1w3jcuudd5" path="res://scripts/brickBreaker/paddle.gd" id="1_3xiby"]
 [ext_resource type="Texture2D" uid="uid://t86qi3jll87x" path="res://assets/paddles/paddle dirt.png" id="2_y7wee"]
 [ext_resource type="Texture2D" uid="uid://cci5q0oob5koh" path="res://assets/paddles/moleboi holding idle.png" id="3_mo4dg"]
 

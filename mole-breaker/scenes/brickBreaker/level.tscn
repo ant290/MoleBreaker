@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://cvgivxopk62ic"]
 
 [ext_resource type="PackedScene" uid="uid://baqtq748e2314" path="res://scenes/brickBreaker/paddle.tscn" id="1_2q6dc"]
-[ext_resource type="Script" uid="uid://bla25v87vpm1e" path="res://scripts/level.gd" id="1_w8frs"]
+[ext_resource type="Script" uid="uid://bla25v87vpm1e" path="res://scripts/brickBreaker/level.gd" id="1_w8frs"]
 [ext_resource type="PackedScene" uid="uid://dn3083ytfbwut" path="res://scenes/brickBreaker/touch_controls.tscn" id="2_2r41h"]
 [ext_resource type="PackedScene" uid="uid://b21tx3018swjy" path="res://scenes/brickBreaker/brick_audio_player.tscn" id="2_k34ab"]
 [ext_resource type="Texture2D" uid="uid://by885h87iwnui" path="res://assets/background dirt.png" id="2_ppgk2"]
