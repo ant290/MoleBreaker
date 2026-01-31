@@ -29,7 +29,7 @@ func _on_play_button_pressed() -> void:
 
 func _on_town_button_pressed() -> void:
 	buttonClickSound.play()
-	SceneTransitions.fade_out("Town")
+	SceneTransitions.fade_out()
 	await SceneTransitions.fade_complete
 	
 	get_tree().change_scene_to_file("res://scenes/town/town.tscn")

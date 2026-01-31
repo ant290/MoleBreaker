@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://cmmtiienjt1tm"]
 
 [ext_resource type="Script" uid="uid://c6nn5s20n85dk" path="res://scripts/quest_heading.gd" id="1_4yhxo"]
+[ext_resource type="Texture2D" uid="uid://bjjgaugl7j43x" path="res://assets/PaperNineRect.png" id="1_tlq2h"]
 
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_qtl7k"]
 
@@ -8,38 +9,72 @@
 font_size = 24
 font_color = Color(0.23921569, 0.23921569, 0.23921569, 1)
 
-[node name="QuestHeading" type="HSplitContainer" unique_id=191167714 groups=["QuestHeading"]]
-split_offsets = PackedInt32Array(128)
-dragging_enabled = false
-dragger_visibility = 1
-split_offset = 128
+[node name="QuestHeading" type="NinePatchRect" unique_id=1376152750 groups=["QuestHeading"]]
+custom_minimum_size = Vector2(0, 140)
+offset_right = 520.0
+offset_bottom = 140.0
+texture = ExtResource("1_tlq2h")
+patch_margin_left = 3
+patch_margin_top = 3
+patch_margin_right = 3
+patch_margin_bottom = 3
+axis_stretch_horizontal = 2
+axis_stretch_vertical = 2
 script = ExtResource("1_4yhxo")
 
-[node name="QuestImage" type="TextureRect" parent="." unique_id=1820259707]
+[node name="QuestSplitContainer" type="HBoxContainer" parent="." unique_id=191163109]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -256.0
+offset_top = -64.0
+offset_right = 256.0
+offset_bottom = 64.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="QuestImage" type="TextureRect" parent="QuestSplitContainer" unique_id=1820259707]
 custom_minimum_size = Vector2(128, 128)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 texture = SubResource("PlaceholderTexture2D_qtl7k")
 
-[node name="QuestDetails" type="VSplitContainer" parent="." unique_id=625126645]
+[node name="QuestDetails" type="VBoxContainer" parent="QuestSplitContainer" unique_id=1048797469]
 layout_mode = 2
 
-[node name="HSplitContainer" type="HSplitContainer" parent="QuestDetails" unique_id=15648137]
+[node name="HBoxContainer" type="HBoxContainer" parent="QuestSplitContainer/QuestDetails" unique_id=1180205818]
 layout_mode = 2
 
-[node name="LocationLabel" type="Label" parent="QuestDetails/HSplitContainer" unique_id=885134934]
+[node name="LocationLabel" type="Label" parent="QuestSplitContainer/QuestDetails/HBoxContainer" unique_id=885134934]
 custom_minimum_size = Vector2(128, 0)
 layout_mode = 2
 text = "Location Name"
 label_settings = SubResource("LabelSettings_4yhxo")
 
-[node name="EmbarkButton" type="Button" parent="QuestDetails/HSplitContainer" unique_id=1800661859]
+[node name="EmbarkButton" type="Button" parent="QuestSplitContainer/QuestDetails/HBoxContainer" unique_id=1800661859]
+custom_minimum_size = Vector2(150, 0)
 layout_mode = 2
+size_flags_horizontal = 8
 theme_override_font_sizes/font_size = 24
 text = "EMBARK!"
 
-[node name="BrickExamples" type="HBoxContainer" parent="QuestDetails" unique_id=1537601019]
+[node name="PanelContainer" type="Panel" parent="QuestSplitContainer/QuestDetails" unique_id=130931089]
+clip_contents = true
+custom_minimum_size = Vector2(380, 64)
 layout_mode = 2
 
-[connection signal="pressed" from="QuestDetails/HSplitContainer/EmbarkButton" to="." method="_on_embark_button_pressed"]
+[node name="BrickExamples" type="HBoxContainer" parent="QuestSplitContainer/QuestDetails/PanelContainer" unique_id=1537601019]
+clip_contents = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[connection signal="pressed" from="QuestSplitContainer/QuestDetails/HBoxContainer/EmbarkButton" to="." method="_on_embark_button_pressed"]

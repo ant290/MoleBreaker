@@ -47,7 +47,8 @@ func _on_quest_embark_pressed(locationId : int) -> void:
 	
 	#somehow load a level properly
 	PlayerStats.currentLocation = locationId
-	SceneTransitions.fade_out("Level Name")
+	var details = GameConstants.LOCATION_DETAILS[locationId]
+	SceneTransitions.fade_out(details.get("Name", "Level Name"))
 	await SceneTransitions.fade_complete
 	
 	get_tree().change_scene_to_file("res://scenes/brickBreaker/level.tscn")
