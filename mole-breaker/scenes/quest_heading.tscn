@@ -52,28 +52,30 @@ layout_mode = 2
 [node name="LocationLabel" type="Label" parent="QuestSplitContainer/QuestDetails/HBoxContainer" unique_id=885134934]
 custom_minimum_size = Vector2(128, 0)
 layout_mode = 2
+size_flags_vertical = 1
 text = "Location Name"
 label_settings = SubResource("LabelSettings_4yhxo")
+vertical_alignment = 1
 
 [node name="EmbarkButton" type="Button" parent="QuestSplitContainer/QuestDetails/HBoxContainer" unique_id=1800661859]
 custom_minimum_size = Vector2(150, 0)
 layout_mode = 2
-size_flags_horizontal = 8
 theme_override_font_sizes/font_size = 24
 text = "EMBARK!"
 
 [node name="PanelContainer" type="Panel" parent="QuestSplitContainer/QuestDetails" unique_id=130931089]
 clip_contents = true
-custom_minimum_size = Vector2(380, 64)
+custom_minimum_size = Vector2(380, 82)
 layout_mode = 2
 
 [node name="BrickExamples" type="HBoxContainer" parent="QuestSplitContainer/QuestDetails/PanelContainer" unique_id=1537601019]
 clip_contents = true
 layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 4.0
+offset_right = 4.0
 grow_vertical = 2
 alignment = 1
 
