@@ -5,11 +5,13 @@ class_name QuestHeader
 @export var location_type : GameConstants.BreakerLocationType
 @export var quest_name : String = "name"
 @export var possible_bricks : Array[int] = []
+@export var location_icon: Texture2D
 
 signal on_embark_pressed(locationId : int)
 
 @onready var location_label: Label = $QuestSplitContainer/QuestDetails/HBoxContainer/LocationLabel
 @onready var brick_examples: HBoxContainer = $QuestSplitContainer/QuestDetails/PanelContainer/BrickExamples
+@onready var quest_image: TextureRect = $QuestSplitContainer/QuestImage
 
 # load brick images
 @onready var imgBrickDirt = preload("res://assets/bricks/brick dirt.png")
@@ -19,6 +21,7 @@ signal on_embark_pressed(locationId : int)
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	location_label.text = quest_name
+	quest_image.texture = location_icon
 	_load_possible_bricks()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

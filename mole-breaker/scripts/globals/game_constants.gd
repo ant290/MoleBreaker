@@ -10,6 +10,8 @@ enum BreakerLocationType {PLAINS, FOREST, QUARRY}
 const LOCATION_DETAILS : Dictionary[BreakerLocationType, Variant] = {
 	BreakerLocationType.PLAINS : {
 		"Name" : "Plains",
+		"Icon" : "res://assets/locations/icon-plains.png",
+		"Background" : "res://assets/locations/background-plains.png",
 		"Bricks" : {
 			BrickType.BRICK_DIRT : 10,
 			BrickType.BRICK_ROCK : 2,
@@ -18,6 +20,8 @@ const LOCATION_DETAILS : Dictionary[BreakerLocationType, Variant] = {
 	},
 	BreakerLocationType.FOREST : {
 		"Name" : "Forest",
+		"Icon" : "",
+		"Background" : "res://assets/locations/background-forest.png",
 		"Bricks" : {
 			BrickType.BRICK_DIRT : 4,
 			BrickType.BRICK_ROCK : 2,
@@ -26,6 +30,8 @@ const LOCATION_DETAILS : Dictionary[BreakerLocationType, Variant] = {
 	},
 	BreakerLocationType.QUARRY : {
 		"Name" : "Quarry",
+		"Icon" : "",
+		"Background" : "res://assets/locations/background-quarry.png",
 		"Bricks" : {
 			BrickType.BRICK_DIRT : 4,
 			BrickType.BRICK_ROCK : 8,

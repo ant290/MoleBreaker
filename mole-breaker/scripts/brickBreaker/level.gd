@@ -5,6 +5,7 @@ extends Node2D
 @onready var touchControls : MobileTouchControls = $TouchControls
 @onready var crtShader : CanvasLayer = $CRTShader
 @onready var audioStreamPlayer: AudioStreamPlayer = $BrickAudioPlayer
+@onready var background: TextureRect = $Background
 
 # load brick images
 @onready var imgBrickDirt = preload("res://assets/bricks/brick dirt.png")
@@ -57,6 +58,11 @@ func setupLevel() -> void:
 	else:
 		levelName = locationDetails.get("Name", "")
 		
+		var backgroundLocation = locationDetails.get("Background")
+		if backgroundLocation != null:
+			var backgroundImage = ResourceLoader.load(backgroundLocation)
+			background.texture = backgroundImage
+			
 		#build bricks
 		var totalChances = -1
 		var brickChanceMappings : Array[BrickChance] = []

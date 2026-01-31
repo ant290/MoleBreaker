@@ -23,11 +23,14 @@ func load_quests() -> void:
 	#for now just some forced levels
 	for key in GameConstants.LOCATION_DETAILS:
 		var newQuest : QuestHeader = quest_heading_scene.instantiate()
-		var locationDetals = GameConstants.LOCATION_DETAILS[key]
+		var locationDetails = GameConstants.LOCATION_DETAILS[key]
 		newQuest.location_type = key
-		newQuest.quest_name = locationDetals["Name"]
-		
-		var bricks = locationDetals["Bricks"]
+		newQuest.quest_name = locationDetails["Name"]
+		var iconLocation = locationDetails.get("Icon")
+		if iconLocation != null:
+			var icon = ResourceLoader.load(iconLocation)
+			newQuest.location_icon = icon
+		var bricks = locationDetails["Bricks"]
 		for i in bricks.keys():
 			newQuest.possible_bricks.append(int(i))
 		quest_list_container.add_child(newQuest)
