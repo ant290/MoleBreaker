@@ -5,6 +5,35 @@ enum BreakerLocationType {PLAINS, FOREST, QUARRY}
 
 #region Location Details
 
+# details is a dictionary of locations and their brick allocations
+# brick allocation consists of a brick type and a number for its spawn weight 
+const LOCATION_DETAILS : Dictionary[BreakerLocationType, Variant] = {
+	BreakerLocationType.PLAINS : {
+		"Name" : "Plains",
+		"Bricks" : {
+			BrickType.BRICK_DIRT : 10,
+			BrickType.BRICK_ROCK : 2,
+			BrickType.BRICK_WOOD : 1
+		}
+	},
+	BreakerLocationType.FOREST : {
+		"Name" : "Forest",
+		"Bricks" : {
+			BrickType.BRICK_DIRT : 4,
+			BrickType.BRICK_ROCK : 2,
+			BrickType.BRICK_WOOD : 8
+		}
+	},
+	BreakerLocationType.QUARRY : {
+		"Name" : "Quarry",
+		"Bricks" : {
+			BrickType.BRICK_DIRT : 4,
+			BrickType.BRICK_ROCK : 8,
+			BrickType.BRICK_WOOD : 1
+		}
+	}
+}
+
 #endregion
 
 func is_brick(node : Node) -> bool:

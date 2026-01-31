@@ -5,6 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://dk2ypv5mvf68a" path="res://assets/woodNineRect.png" id="2_xwq4e"]
 [ext_resource type="LabelSettings" uid="uid://csexbggbyy1pr" path="res://themes/popup_title_label_settings.tres" id="3_h8pjd"]
 [ext_resource type="Theme" uid="uid://cnkgqea1hlwgw" path="res://themes/settings_theme.tres" id="3_sjird"]
+[ext_resource type="PackedScene" uid="uid://cmmtiienjt1tm" path="res://scenes/quest_heading.tscn" id="5_xkugk"]
 
 [node name="OverlayShadow" type="ColorRect" unique_id=1621169500]
 anchors_preset = 15
@@ -55,7 +56,8 @@ label_settings = ExtResource("3_h8pjd")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="VBoxContainer" type="VBoxContainer" parent="UiPopup" unique_id=379361521]
+[node name="QuestListContainer" type="VBoxContainer" parent="UiPopup" unique_id=379361521]
+clip_contents = true
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -68,6 +70,10 @@ offset_right = 260.0
 offset_bottom = 500.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_constants/separation = 10
+
+[node name="QuestHeading" parent="UiPopup/QuestListContainer" unique_id=191167714 instance=ExtResource("5_xkugk")]
+layout_mode = 2
 
 [node name="CloseButton" type="Button" parent="UiPopup" unique_id=430717860]
 layout_mode = 1
