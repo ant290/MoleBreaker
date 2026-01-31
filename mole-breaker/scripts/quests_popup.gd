@@ -46,6 +46,7 @@ func _on_quest_embark_pressed(locationId : int) -> void:
 	embark_sound.play()
 	
 	#somehow load a level properly
+	PlayerStats.currentLocation = locationId
 	SceneTransitions.fade_out("Level Name")
 	await SceneTransitions.fade_complete
 	

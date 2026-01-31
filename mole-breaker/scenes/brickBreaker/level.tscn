@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://by885h87iwnui" path="res://assets/background dirt.png" id="2_ppgk2"]
 [ext_resource type="PackedScene" uid="uid://c00uaxwxq1i2b" path="res://scenes/brickBreaker/ball.tscn" id="2_w7c3h"]
 [ext_resource type="Script" uid="uid://bfk12tdquv0b7" path="res://scripts/player_ui.gd" id="4_mx8sn"]
+[ext_resource type="LabelSettings" uid="uid://cudps360vqhad" path="res://themes/level_label_settings.tres" id="7_0sdye"]
 [ext_resource type="PackedScene" uid="uid://d32bg47cji12w" path="res://scenes/inventory_popup.tscn" id="7_klq6b"]
 [ext_resource type="PackedScene" uid="uid://cdkondhkrlc2b" path="res://scenes/shaders/crt_shader.tscn" id="9_k34ab"]
 
@@ -15,13 +16,6 @@ size = Vector2(7.5, 1280)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_w8frs"]
 size = Vector2(720, 7)
-
-[sub_resource type="LabelSettings" id="LabelSettings_w8frs"]
-font_size = 32
-outline_size = 3
-outline_color = Color(0, 0, 0, 1)
-shadow_size = 3
-shadow_color = Color(0.043137256, 0.043137256, 0.043137256, 0.8117647)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ppgk2"]
 size = Vector2(720, 11)
@@ -68,7 +62,7 @@ offset_top = 15.0
 offset_right = 172.0
 offset_bottom = 60.0
 text = "Score: 100"
-label_settings = SubResource("LabelSettings_w8frs")
+label_settings = ExtResource("7_0sdye")
 
 [node name="LivesText" type="Label" parent="CanvasLayer" unique_id=316687985]
 anchors_preset = 1
@@ -79,7 +73,20 @@ offset_top = 15.0
 offset_bottom = 60.0
 grow_horizontal = 0
 text = "Lives: 4"
-label_settings = SubResource("LabelSettings_w8frs")
+label_settings = ExtResource("7_0sdye")
+
+[node name="LevelName" type="Label" parent="CanvasLayer" unique_id=265267075]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -86.5
+offset_top = 15.0
+offset_right = 86.5
+offset_bottom = 60.0
+grow_horizontal = 2
+text = "LevelName"
+label_settings = ExtResource("7_0sdye")
+horizontal_alignment = 1
 
 [node name="Inventory" parent="CanvasLayer" unique_id=1198923052 instance=ExtResource("7_klq6b")]
 visible = false

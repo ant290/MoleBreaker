@@ -7,6 +7,8 @@ class_name PlayerUI
 @onready var lives_text : Label = $LivesText
 @export var lives_text_prompt : String = "Lives: "
 
+@onready var level_name: Label = $LevelName
+
 @onready var inventory : InventoryPopup = $Inventory
 
 @onready var level = get_parent()
@@ -36,8 +38,8 @@ func _on_inventory_closed() -> void:
 	_handle_open_close_inventory(true)
 
 func load_bricks() -> void:
+	level_name.text = level.levelName
 	current_level_bricks = level.get_children().filter(GameConstants.is_brick)
-	
 	current_level_bricks.map(subscribe_to_brick)
 
 func subscribe_to_brick(brick: BreakableBrick) -> void:
