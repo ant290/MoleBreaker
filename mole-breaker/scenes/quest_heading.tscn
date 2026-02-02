@@ -79,7 +79,7 @@ offset_right = 4.0
 grow_vertical = 2
 alignment = 1
 
-[node name="TextureRect" type="ColorRect" parent="." unique_id=1544778469]
+[node name="LockedOverlay" type="ColorRect" parent="." unique_id=1544778469]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -88,7 +88,7 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 0.8039216)
 
-[node name="Label" type="Label" parent="." unique_id=89512684]
+[node name="LevelRequirement" type="Label" parent="LockedOverlay" unique_id=89512684]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5

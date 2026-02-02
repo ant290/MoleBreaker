@@ -42,7 +42,7 @@ func _on_quest_embark_pressed(questId : int) -> void:
 	
 	#somehow load a level properly
 	var details : Quest = GameObjects.QUEST_DETAILS[questId]
-	PlayerStats.currentLocation = details.location_details.location_type
+	PlayerStats.currentQuestId = questId
 	
 	SceneTransitions.fade_out(details.name)
 	await SceneTransitions.fade_complete

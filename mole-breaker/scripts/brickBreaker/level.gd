@@ -52,13 +52,13 @@ func _process(delta: float) -> void:
 func setupLevel() -> void:
 	PlayerStats.lives = 3
 	
-	var questDetails = GameObjects.QUEST_DETAILS.get(PlayerStats.currentLocation)
+	var questDetails : Quest = GameObjects.QUEST_DETAILS.get(PlayerStats.currentQuestId)
 	if questDetails == null:
 		get_tree().change_scene_to_file("res://scenes/town/town.tscn")
 	else:
-		levelName = questDetails.get("Name", "")
+		levelName = questDetails.name
 		
-		var backgroundLocation = questDetails.get("Background")
+		var backgroundLocation = questDetails.location_details.background_reference
 		if backgroundLocation != null:
 			var backgroundImage = ResourceLoader.load(backgroundLocation)
 			background.texture = backgroundImage
@@ -66,7 +66,7 @@ func setupLevel() -> void:
 		#build bricks
 		var totalChances = -1
 		var brickChanceMappings : Array[BrickChance] = []
-		var locationBricksPart = questDetails.get("Bricks", {})
+		var locationBricksPart = questDetails.brick_availabilities
 		for key in locationBricksPart:
 			var brickChance : BrickChance = BrickChance.new()
 			brickChance.brick_type = key
@@ -125,6 +125,7 @@ func _on_brick_break(brickType : GameConstants.BrickType, quantity : int) -> voi
 	var remaining_bricks = get_children().filter(GameConstants.is_brick)
 
 	if remaining_bricks.size() == 1:
+		ExperienceBus.give_experience.emit(PlayerStats.score)
 		call_deferred("_save_data")
 		get_tree().change_scene_to_file("res://scenes/menu.tscn")
 		
