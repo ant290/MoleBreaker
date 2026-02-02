@@ -8,12 +8,12 @@ extends Node2D
 @onready var background: TextureRect = $Background
 
 # load brick images
-@onready var imgBrickDirt = preload("res://assets/bricks/brick dirt.png")
-@onready var imgBrickDirtDamaged = preload("res://assets/bricks/brick dirt cracked.png")
-@onready var imgBrickRock = preload("res://assets/bricks/brick rock.png")
-@onready var imgBrickRockDamaged = preload("res://assets/bricks/brick rock cracked.png")
-@onready var imgBrickWood = preload("res://assets/bricks/brick wood.png")
-@onready var imgBrickWoodDamaged = preload("res://assets/bricks/brick wood cracked.png")
+@onready var imgBrickDirt = preload(GameConstants.RESOURCE_LOCATION_BRICK_DIRT)
+@onready var imgBrickDirtDamaged = preload(GameConstants.RESOURCE_LOCATION_BRICK_DIRT_DAMAGED)
+@onready var imgBrickRock = preload(GameConstants.RESOURCE_LOCATION_BRICK_ROCK)
+@onready var imgBrickRockDamaged = preload(GameConstants.RESOURCE_LOCATION_BRICK_ROCK_DAMAGED)
+@onready var imgBrickWood = preload(GameConstants.RESOURCE_LOCATION_BRICK_WOOD)
+@onready var imgBrickWoodDamaged = preload(GameConstants.RESOURCE_LOCATION_BRICK_WOOD_DAMAGED)
 
 # brick stats
 var dirtHealth = 2
@@ -52,13 +52,13 @@ func _process(delta: float) -> void:
 func setupLevel() -> void:
 	PlayerStats.lives = 3
 	
-	var locationDetails = GameConstants.LOCATION_DETAILS.get(PlayerStats.currentLocation)
-	if locationDetails == null:
+	var questDetails = GameObjects.QUEST_DETAILS.get(PlayerStats.currentLocation)
+	if questDetails == null:
 		get_tree().change_scene_to_file("res://scenes/town/town.tscn")
 	else:
-		levelName = locationDetails.get("Name", "")
+		levelName = questDetails.get("Name", "")
 		
-		var backgroundLocation = locationDetails.get("Background")
+		var backgroundLocation = questDetails.get("Background")
 		if backgroundLocation != null:
 			var backgroundImage = ResourceLoader.load(backgroundLocation)
 			background.texture = backgroundImage
@@ -66,7 +66,7 @@ func setupLevel() -> void:
 		#build bricks
 		var totalChances = -1
 		var brickChanceMappings : Array[BrickChance] = []
-		var locationBricksPart = locationDetails.get("Bricks", {})
+		var locationBricksPart = questDetails.get("Bricks", {})
 		for key in locationBricksPart:
 			var brickChance : BrickChance = BrickChance.new()
 			brickChance.brick_type = key

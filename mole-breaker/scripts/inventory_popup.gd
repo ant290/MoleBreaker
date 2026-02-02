@@ -7,9 +7,9 @@ signal on_close()
 @onready var inven_items_container : VBoxContainer = $UiPopup/VBoxContainer
 
 # load brick images
-@onready var imgBrickDirt = preload("res://assets/bricks/brick dirt.png")
-@onready var imgBrickRock = preload("res://assets/bricks/brick rock.png")
-@onready var imgBrickWood = preload("res://assets/bricks/brick wood.png")
+@onready var imgBrickDirt = preload(GameConstants.RESOURCE_LOCATION_BRICK_DIRT)
+@onready var imgBrickRock = preload(GameConstants.RESOURCE_LOCATION_BRICK_ROCK)
+@onready var imgBrickWood = preload(GameConstants.RESOURCE_LOCATION_BRICK_WOOD)
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:

@@ -2,10 +2,7 @@ extends NinePatchRect
 class_name QuestHeader
 
 #possibly refactor these into one object
-@export var location_type : GameConstants.BreakerLocationType
-@export var quest_name : String = "name"
-@export var possible_bricks : Array[int] = []
-@export var location_icon: Texture2D
+var quest : Quest
 
 signal on_embark_pressed(locationId : int)
 
@@ -14,14 +11,15 @@ signal on_embark_pressed(locationId : int)
 @onready var quest_image: TextureRect = $QuestSplitContainer/QuestImage
 
 # load brick images
-@onready var imgBrickDirt = preload("res://assets/bricks/brick dirt.png")
-@onready var imgBrickRock = preload("res://assets/bricks/brick rock.png")
-@onready var imgBrickWood = preload("res://assets/bricks/brick wood.png")
+@onready var imgBrickDirt = preload(GameConstants.RESOURCE_LOCATION_BRICK_DIRT)
+@onready var imgBrickRock = preload(GameConstants.RESOURCE_LOCATION_BRICK_ROCK)
+@onready var imgBrickWood = preload(GameConstants.RESOURCE_LOCATION_BRICK_WOOD)
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	location_label.text = quest_name
-	quest_image.texture = location_icon
+	location_label.text = quest.name
+	var icon = ResourceLoader.load(quest.location_details.icon_reference)
+	quest_image.texture = icon
 	_load_possible_bricks()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -29,7 +27,7 @@ func _process(delta: float) -> void:
 	pass
 
 func _load_possible_bricks() -> void:
-	for brick in possible_bricks:
+	for brick in quest.brick_availabilities:
 		var image : TextureRect = TextureRect.new()
 		image.size_flags_horizontal = Control.SIZE_SHRINK_BEGIN
 		image.size_flags_vertical = Control.SIZE_SHRINK_CENTER
@@ -46,4 +44,4 @@ func _load_possible_bricks() -> void:
 		brick_examples.add_child(image)
 
 func _on_embark_button_pressed() -> void:
-	on_embark_pressed.emit(location_type)
+	on_embark_pressed.emit(quest.id)

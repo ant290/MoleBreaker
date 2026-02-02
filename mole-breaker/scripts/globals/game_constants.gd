@@ -3,51 +3,20 @@ extends Node
 enum BrickType {BRICK_DIRT, BRICK_ROCK, BRICK_WOOD}
 enum BreakerLocationType {PLAINS, FOREST, QUARRY}
 
-#region Location Details
-
-# details is a dictionary of locations and their brick allocations
-# brick allocation consists of a brick type and a number for its spawn weight 
-const LOCATION_DETAILS : Dictionary[BreakerLocationType, Variant] = {
-	BreakerLocationType.PLAINS : {
-		"Name" : "Plains",
-		"Icon" : "res://assets/locations/icon-plains.png",
-		"Background" : "res://assets/locations/background-plains.png",
-		"Bricks" : {
-			BrickType.BRICK_DIRT : 10,
-			BrickType.BRICK_ROCK : 2,
-			BrickType.BRICK_WOOD : 1
-		}
-	},
-	BreakerLocationType.FOREST : {
-		"Name" : "Forest",
-		"Icon" : "",
-		"Background" : "res://assets/locations/background-forest.png",
-		"Bricks" : {
-			BrickType.BRICK_DIRT : 4,
-			BrickType.BRICK_ROCK : 2,
-			BrickType.BRICK_WOOD : 8
-		}
-	},
-	BreakerLocationType.QUARRY : {
-		"Name" : "Quarry",
-		"Icon" : "",
-		"Background" : "res://assets/locations/background-quarry.png",
-		"Bricks" : {
-			BrickType.BRICK_DIRT : 4,
-			BrickType.BRICK_ROCK : 8,
-			BrickType.BRICK_WOOD : 1
-		}
-	}
-}
-
-#endregion
-
 func is_brick(node : Node) -> bool:
 	return node.is_in_group("Brick")
 
 const AUDIO_BUS_NAME_EFFECTS : String = "Effects"
 const AUDIO_BUS_NAME_MASTER : String = "Master"
 const AUDIO_BUS_NAME_MUSIC : String = "Music"
+
+const RESOURCE_LOCATION_BRICK_DIRT : String  = "res://assets/bricks/brick dirt.png"
+
+const RESOURCE_LOCATION_BRICK_DIRT_DAMAGED : String = "res://assets/bricks/brick dirt cracked.png"
+const RESOURCE_LOCATION_BRICK_ROCK : String = "res://assets/bricks/brick rock.png"
+const RESOURCE_LOCATION_BRICK_ROCK_DAMAGED : String = "res://assets/bricks/brick rock cracked.png"
+const RESOURCE_LOCATION_BRICK_WOOD : String = "res://assets/bricks/brick wood.png"
+const RESOURCE_LOCATION_BRICK_WOOD_DAMAGED : String = "res://assets/bricks/brick wood cracked.png"
 
 const SAVE_DATA_FILE_NAME : String = "user://savegame.save"
 const SAVE_DATA_PLAYER_STATS : String = "PLAYER_STATS"

@@ -21,18 +21,10 @@ func _on_close_button_pressed() -> void:
 
 func load_quests() -> void:
 	#for now just some forced levels
-	for key in GameConstants.LOCATION_DETAILS:
+	for key in GameObjects.QUEST_DETAILS:
 		var newQuest : QuestHeader = quest_heading_scene.instantiate()
-		var locationDetails = GameConstants.LOCATION_DETAILS[key]
-		newQuest.location_type = key
-		newQuest.quest_name = locationDetails["Name"]
-		var iconLocation = locationDetails.get("Icon")
-		if iconLocation != null:
-			var icon = ResourceLoader.load(iconLocation)
-			newQuest.location_icon = icon
-		var bricks = locationDetails["Bricks"]
-		for i in bricks.keys():
-			newQuest.possible_bricks.append(int(i))
+		var questDetails : Quest = GameObjects.QUEST_DETAILS[key]
+		newQuest.quest = questDetails
 		quest_list_container.add_child(newQuest)
 	
 	#listen for clicks to embark
@@ -45,13 +37,14 @@ func _is_quest_heading(node: Node) -> bool:
 func _subscribe_to_quest(questHeading : QuestHeader) -> void:
 	questHeading.on_embark_pressed.connect(_on_quest_embark_pressed)
 
-func _on_quest_embark_pressed(locationId : int) -> void:
+func _on_quest_embark_pressed(questId : int) -> void:
 	embark_sound.play()
 	
 	#somehow load a level properly
-	PlayerStats.currentLocation = locationId
-	var details = GameConstants.LOCATION_DETAILS[locationId]
-	SceneTransitions.fade_out(details.get("Name", "Level Name"))
+	var details : Quest = GameObjects.QUEST_DETAILS[questId]
+	PlayerStats.currentLocation = details.location_details.location_type
+	
+	SceneTransitions.fade_out(details.name)
 	await SceneTransitions.fade_complete
 	
 	get_tree().change_scene_to_file("res://scenes/brickBreaker/level.tscn")

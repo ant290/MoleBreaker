@@ -32,6 +32,7 @@ GameSaveService="*res://scripts/globals/save_service.gd"
 SceneTransitions="*res://scenes/singletons/scene_transitions.tscn"
 Settings="*res://scripts/globals/settings.gd"
 AmbientMusic="*uid://c701vdw7c82xu"
+GameObjects="*uid://tea68r4mc73n"
 
 [display]
 
