@@ -1,0 +1,115 @@
+[gd_scene format=3 uid="uid://ch56ud0wg7bt2"]
+
+[ext_resource type="Script" uid="uid://wx3dhywspg4r" path="res://scripts/brickBreaker/level_end_popup.gd" id="1_lxbt8"]
+[ext_resource type="Texture2D" uid="uid://dk2ypv5mvf68a" path="res://assets/woodNineRect.png" id="2_mert7"]
+[ext_resource type="Theme" uid="uid://cnkgqea1hlwgw" path="res://themes/settings_theme.tres" id="3_lprt5"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_j34ho"]
+font_size = 24
+font_color = Color(0, 0, 0, 1)
+
+[node name="OverlayShadow" type="ColorRect" unique_id=1278439784]
+process_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.7254902)
+script = ExtResource("1_lxbt8")
+
+[node name="UiPopup" type="NinePatchRect" parent="." unique_id=761637598]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -310.0
+offset_top = -590.0
+offset_right = 310.0
+offset_bottom = 590.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_mert7")
+patch_margin_left = 12
+patch_margin_top = 12
+patch_margin_right = 12
+patch_margin_bottom = 12
+axis_stretch_horizontal = 2
+axis_stretch_vertical = 1
+
+[node name="Panel" type="Panel" parent="UiPopup" unique_id=72596314]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -279.0
+offset_top = -507.0
+offset_right = 279.0
+offset_bottom = 507.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="XPGain" type="Label" parent="UiPopup/Panel" unique_id=619270259]
+layout_mode = 0
+offset_left = 34.0
+offset_top = 36.0
+offset_right = 74.0
+offset_bottom = 59.0
+text = "XP Gained: "
+
+[node name="Level" type="Label" parent="UiPopup/Panel" unique_id=1901541200]
+layout_mode = 0
+offset_left = 318.0
+offset_top = 38.0
+offset_right = 358.0
+offset_bottom = 61.0
+text = "Level: "
+
+[node name="ProgressBar" type="ProgressBar" parent="UiPopup/Panel" unique_id=547347709]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -254.5
+offset_top = 88.0
+offset_right = 254.5
+offset_bottom = 126.0
+grow_horizontal = 2
+step = 1.0
+rounded = true
+
+[node name="Title" type="Label" parent="UiPopup" unique_id=1771173603]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -67.5
+offset_top = 20.0
+offset_right = 67.5
+offset_bottom = 54.0
+grow_horizontal = 2
+text = "XP"
+label_settings = SubResource("LabelSettings_j34ho")
+horizontal_alignment = 1
+
+[node name="CloseButton" type="Button" parent="UiPopup" unique_id=1760897663]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -41.0
+offset_top = -62.0
+offset_right = 41.0
+offset_bottom = -20.0
+grow_horizontal = 2
+grow_vertical = 0
+theme = ExtResource("3_lprt5")
+text = "CLOSE"
+
+[connection signal="pressed" from="UiPopup/CloseButton" to="." method="_on_close_button_pressed"]

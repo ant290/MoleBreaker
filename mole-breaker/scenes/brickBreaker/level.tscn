@@ -9,6 +9,7 @@
 [ext_resource type="Script" uid="uid://bfk12tdquv0b7" path="res://scripts/player_ui.gd" id="4_mx8sn"]
 [ext_resource type="LabelSettings" uid="uid://cudps360vqhad" path="res://themes/level_label_settings.tres" id="7_0sdye"]
 [ext_resource type="PackedScene" uid="uid://d32bg47cji12w" path="res://scenes/inventory_popup.tscn" id="7_klq6b"]
+[ext_resource type="PackedScene" uid="uid://ch56ud0wg7bt2" path="res://scenes/brickBreaker/level_end_popup.tscn" id="8_jnc8h"]
 [ext_resource type="PackedScene" uid="uid://cdkondhkrlc2b" path="res://scenes/shaders/crt_shader.tscn" id="9_k34ab"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_w7c3h"]
@@ -18,7 +19,7 @@ size = Vector2(7.5, 1280)
 size = Vector2(720, 7)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ppgk2"]
-size = Vector2(720, 11)
+size = Vector2(718, 11)
 
 [node name="Level" type="Node2D" unique_id=851138091]
 script = ExtResource("1_w8frs")
@@ -106,6 +107,9 @@ grow_horizontal = 2
 text = "LevelName"
 label_settings = ExtResource("7_0sdye")
 horizontal_alignment = 1
+
+[node name="LevelEndOverlay" parent="CanvasLayer" unique_id=1278439784 instance=ExtResource("8_jnc8h")]
+visible = false
 
 [node name="Inventory" parent="CanvasLayer" unique_id=1198923052 instance=ExtResource("7_klq6b")]
 visible = false

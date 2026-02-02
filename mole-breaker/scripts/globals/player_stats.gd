@@ -12,6 +12,7 @@ var currentExperience : int = 0
 var maxExperience : int = 90
 var currentLevel : int = 1
 var nextLevelExperience : int
+var lastLevelExperienceCap : int = 0
 
 #endregion
 
@@ -37,6 +38,7 @@ func _give_experience(value : int) -> void:
 		_level_up()
 		
 func _level_up() -> void:
+	lastLevelExperienceCap = maxExperience
 	maxExperience = maxExperience * 2
 	currentLevel = currentLevel + 1
 	nextLevelExperience = maxExperience - currentExperience

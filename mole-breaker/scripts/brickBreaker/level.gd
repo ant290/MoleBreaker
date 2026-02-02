@@ -125,9 +125,10 @@ func _on_brick_break(brickType : GameConstants.BrickType, quantity : int) -> voi
 	var remaining_bricks = get_children().filter(GameConstants.is_brick)
 
 	if remaining_bricks.size() == 1:
+		uiLayer.show_level_end_overlay()
 		ExperienceBus.give_experience.emit(PlayerStats.score)
 		call_deferred("_save_data")
-		get_tree().change_scene_to_file("res://scenes/menu.tscn")
+		#get_tree().change_scene_to_file("res://scenes/menu.tscn")
 		
 	
 	

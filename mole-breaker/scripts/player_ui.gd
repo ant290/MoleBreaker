@@ -10,6 +10,7 @@ class_name PlayerUI
 @onready var level_name: Label = $LevelName
 
 @onready var inventory : InventoryPopup = $Inventory
+@onready var level_end_overlay: LevelEndPopup = $LevelEndOverlay
 
 @onready var level = get_parent()
 
@@ -19,11 +20,19 @@ var current_level_bricks : Array = [BreakableBrick]
 func _ready() -> void:
 	_set_score_label()
 	inventory.on_close.connect(_on_inventory_closed)
+	level_end_overlay.on_close.connect(_on_level_end_closed)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	if Input.is_action_just_pressed("ui_cancel"):
 		_handle_open_close_inventory(get_tree().paused)
+
+func show_level_end_overlay() -> void:
+	level_end_overlay.show()
+	level_end_overlay.animate_xp_gain()
+
+func _on_level_end_closed() -> void:
+	get_tree().change_scene_to_file("res://scenes/town/town.tscn")
 
 func _handle_open_close_inventory(paused: bool) -> void:
 	if paused:
