@@ -92,7 +92,7 @@ offset_left = -139.0
 offset_top = 15.0
 offset_bottom = 60.0
 grow_horizontal = 0
-text = "Lives: 4"
+text = "Lives:"
 label_settings = ExtResource("7_0sdye")
 
 [node name="LevelName" type="Label" parent="CanvasLayer" unique_id=265267075]
@@ -125,5 +125,6 @@ shape = SubResource("RectangleShape2D_ppgk2")
 [node name="CRTShader" parent="." unique_id=1086750645 instance=ExtResource("9_k34ab")]
 visible = false
 
+[connection signal="OnOutOfBounds" from="Ball" to="." method="_on_ball_on_out_of_bounds"]
 [connection signal="body_entered" from="CatchBucket" to="Ball" method="_on_catch_bucket_body_entered"]
 [connection signal="body_entered" from="CatchBucket" to="CanvasLayer" method="_on_catch_bucket_body_entered"]

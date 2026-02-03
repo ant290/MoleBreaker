@@ -6,6 +6,7 @@ extends Node2D
 @onready var crtShader : CanvasLayer = $CRTShader
 @onready var audioStreamPlayer: AudioStreamPlayer = $BrickAudioPlayer
 @onready var background: TextureRect = $Background
+@onready var ball: CharacterBody2D = $Ball
 
 # load brick images
 @onready var imgBrickDirt = preload(GameConstants.RESOURCE_LOCATION_BRICK_DIRT)
@@ -45,12 +46,13 @@ func _ready() -> void:
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	pass
 
 
 func setupLevel() -> void:
-	PlayerStats.lives = 3
+	PlayerStats.rest_score()
+	PlayerStats.reset_lives()
 	
 	var questDetails : Quest = GameObjects.QUEST_DETAILS.get(PlayerStats.currentQuestId)
 	if questDetails == null:
@@ -121,16 +123,29 @@ func setupLevel() -> void:
 func subscribe_to_brick(brick: BreakableBrick) -> void:
 	brick.OnBreak.connect(_on_brick_break)
 
-func _on_brick_break(brickType : GameConstants.BrickType, quantity : int) -> void:
-	var remaining_bricks = get_children().filter(GameConstants.is_brick)
+func _on_brick_break(_brickType : GameConstants.BrickType, _quantity : int) -> void:
+	var remaining_brick_nodes : Array[Node] = get_children().filter(GameConstants.is_brick)
+	var count_bricks_with_health = 0
+	
+	for brick in remaining_brick_nodes:
+		if brick is BreakableBrick:
+			if brick.health > 0:
+				count_bricks_with_health = count_bricks_with_health + 1
 
-	if remaining_bricks.size() == 1:
-		uiLayer.show_level_end_overlay()
-		ExperienceBus.give_experience.emit(PlayerStats.score)
-		call_deferred("_save_data")
-		#get_tree().change_scene_to_file("res://scenes/menu.tscn")
-		
+	if count_bricks_with_health == 0:
+		game_over()
 	
 	
 func _save_data() -> void:
 	GameSaveService.save_game()
+
+func game_over ():
+	ball.process_mode = Node.PROCESS_MODE_DISABLED
+	uiLayer.show_level_end_overlay()
+	ExperienceBus.give_experience.emit(PlayerStats.score)
+	call_deferred("_save_data")
+
+func _on_ball_on_out_of_bounds() -> void:
+	PlayerStats.lives -= 1
+	if PlayerStats.lives <= 0:
+		game_over()

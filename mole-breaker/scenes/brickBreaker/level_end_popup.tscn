@@ -112,4 +112,5 @@ grow_vertical = 0
 theme = ExtResource("3_lprt5")
 text = "CLOSE"
 
+[connection signal="value_changed" from="UiPopup/Panel/ProgressBar" to="." method="_on_progress_bar_value_changed"]
 [connection signal="pressed" from="UiPopup/CloseButton" to="." method="_on_close_button_pressed"]

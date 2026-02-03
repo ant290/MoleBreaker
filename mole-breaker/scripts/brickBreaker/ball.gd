@@ -1,5 +1,7 @@
 extends CharacterBody2D
 
+signal OnOutOfBounds()
+
 @onready var bounce_sound: AudioStreamPlayer = $BounceSound
 
 @export var base_speed = 250
@@ -8,6 +10,7 @@ extends CharacterBody2D
 var is_active = true
 
 func _ready() -> void:
+	process_mode = Node.PROCESS_MODE_INHERIT
 	velocity = Vector2(base_speed * -1, base_speed)
 
 func _physics_process(delta: float) -> void:
@@ -31,20 +34,12 @@ func _physics_process(delta: float) -> void:
 		
 		velocity.x = clamp(velocity.x, -600, 600)
 		velocity.y = clamp(velocity.y, -600, 600)
-		
-
-
-func game_over ():
-	GameSaveService.save_game()
-	get_tree().change_scene_to_file("res://scenes/menu.tscn")
 
 func _on_catch_bucket_body_entered(body: Node2D) -> void:
 	if not body.is_in_group("Ball"):
 		return
+	
+	position = Vector2(384, 1059)
+	velocity = Vector2(base_speed, base_speed * -1)
 
-	PlayerStats.lives -= 1
-	if PlayerStats.lives <= 0:
-		game_over()
-	else:
-		position = Vector2(384, 1059)
-		velocity = Vector2(base_speed, base_speed * -1)
+	OnOutOfBounds.emit()

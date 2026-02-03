@@ -19,6 +19,7 @@ var current_level_bricks : Array = [BreakableBrick]
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	_set_score_label()
+	_set_lives_label()
 	inventory.on_close.connect(_on_inventory_closed)
 	level_end_overlay.on_close.connect(_on_level_end_closed)
 
@@ -28,6 +29,10 @@ func _process(_delta: float) -> void:
 		_handle_open_close_inventory(get_tree().paused)
 
 func show_level_end_overlay() -> void:
+	level_end_overlay.initial_xp = PlayerStats.currentExperience
+	level_end_overlay.initial_level = PlayerStats.currentLevel
+	level_end_overlay.gained_xp = PlayerStats.score
+	level_end_overlay.next_max_xp = PlayerStats.maxExperience
 	level_end_overlay.show()
 	level_end_overlay.animate_xp_gain()
 
@@ -64,6 +69,9 @@ func _update_inventory (brickType : GameConstants.BrickType, quantity : int) -> 
 
 func _set_score_label() -> void:
 	score_text.text = score_text_prompt + str(PlayerStats.score)
-
-func _on_catch_bucket_body_entered(body: Node2D) -> void:
+	
+func _set_lives_label() -> void:
 	lives_text.text = lives_text_prompt + str(PlayerStats.lives)
+
+func _on_catch_bucket_body_entered(_body: Node2D) -> void:
+	_set_lives_label()
