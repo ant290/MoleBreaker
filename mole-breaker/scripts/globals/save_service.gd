@@ -18,8 +18,6 @@ func load_game() -> void:
 	
 	var save_file = FileAccess.open(GameConstants.SAVE_DATA_FILE_NAME, FileAccess.READ)
 	
-	var file_position = 0
-	
 	while save_file.get_position() < save_file.get_length():
 		var json_string = save_file.get_line()
 		
@@ -41,5 +39,3 @@ func load_game() -> void:
 					Settings.load_data(data[key])
 				_:
 					print("UNKNOWN save data component", key)
-		
-		file_position += 1

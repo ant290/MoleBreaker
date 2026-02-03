@@ -17,7 +17,7 @@ func _ready() -> void:
 	SceneTransitions.fade_in()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	pass
 
 func _on_settings_use_crt_changed(value: bool) -> void:

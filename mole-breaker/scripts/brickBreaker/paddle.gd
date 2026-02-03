@@ -5,7 +5,7 @@ extends CharacterBody2D
 @onready var character_sprite : Sprite2D = $CharacterSprite
 @onready var animator: AnimationPlayer = $AnimationPlayer
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	
 	#wiggle
 	if velocity.x != 0:

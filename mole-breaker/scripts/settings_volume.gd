@@ -14,7 +14,7 @@ func _ready() -> void:
 	_label.text = title
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	pass
 
 func set_slider_value(value: float) -> void:

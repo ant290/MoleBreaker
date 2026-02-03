@@ -21,7 +21,7 @@ func _ready() -> void:
 	ExperienceBus.give_experience.connect(_give_experience)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	pass
 	
 func add_to_inventory(brick_type: GameConstants.BrickType, amount: int) -> void:

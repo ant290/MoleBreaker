@@ -15,20 +15,20 @@ func _ready() -> void:
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	pass
 	
-func play_ambient_music(name: String) -> void:
-	if current_music_name == name and playing:
+func play_ambient_music(musicName: String) -> void:
+	if current_music_name == musicName and playing:
 		return
 		
-	match name:
+	match musicName:
 		MUSIC_NAME_CABIN:
 			stream = music_cabin
 		MUSIC_NAME_GARDEN:
 			stream = music_garden
 			
-	current_music_name = name
+	current_music_name = musicName
 	play()
 
 

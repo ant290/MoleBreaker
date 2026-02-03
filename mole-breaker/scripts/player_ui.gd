@@ -23,7 +23,7 @@ func _ready() -> void:
 	level_end_overlay.on_close.connect(_on_level_end_closed)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	if Input.is_action_just_pressed("ui_cancel"):
 		_handle_open_close_inventory(get_tree().paused)
 

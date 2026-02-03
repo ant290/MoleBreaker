@@ -21,14 +21,15 @@ signal on_embark_pressed(questId : int)
 func _ready() -> void:
 	location_label.text = quest.name
 	level_requirement.text = "Level Requirement : " + str(quest.minimum_level)
-	var icon = ResourceLoader.load(quest.location_details.icon_reference)
-	quest_image.texture = icon
+	if !quest.location_details.icon_reference.strip_edges().is_empty():
+		var icon = ResourceLoader.load(quest.location_details.icon_reference)
+		quest_image.texture = icon
 	_load_possible_bricks()
 	if PlayerStats.currentLevel >= quest.minimum_level:
 		locked_overlay.visible = false
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	pass
 
 func _load_possible_bricks() -> void:
