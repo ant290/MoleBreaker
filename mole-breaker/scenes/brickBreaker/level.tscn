@@ -16,7 +16,7 @@
 size = Vector2(7.5, 1280)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_w8frs"]
-size = Vector2(720, 7)
+size = Vector2(718, 7)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ppgk2"]
 size = Vector2(718, 11)
@@ -69,12 +69,17 @@ position = Vector2(724, 640)
 shape = SubResource("RectangleShape2D_w7c3h")
 
 [node name="Ceiling" type="CollisionShape2D" parent="Walls" unique_id=1427809319]
-position = Vector2(360, -3.5)
+position = Vector2(360, 57.5)
 shape = SubResource("RectangleShape2D_w8frs")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=140996247]
 process_mode = 3
 script = ExtResource("4_mx8sn")
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer" unique_id=1965315998]
+offset_right = 720.0
+offset_bottom = 61.0
+color = Color(0, 0, 0, 0.63529414)
 
 [node name="ScoreText" type="Label" parent="CanvasLayer" unique_id=1467219390]
 offset_left = 15.0
