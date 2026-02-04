@@ -2,7 +2,9 @@
 
 [ext_resource type="Script" uid="uid://lpx3hxn6obsv" path="res://scripts/inventory_popup.gd" id="1_cstkm"]
 [ext_resource type="Texture2D" uid="uid://dk2ypv5mvf68a" path="res://assets/woodNineRect.png" id="2_j34ho"]
+[ext_resource type="Texture2D" uid="uid://cv3hg2m8wxws" path="res://assets/character.png" id="3_4w41e"]
 [ext_resource type="Theme" uid="uid://cnkgqea1hlwgw" path="res://themes/settings_theme.tres" id="3_j34ho"]
+[ext_resource type="Texture2D" uid="uid://cbo5d6o4ucsu5" path="res://assets/SnowBall.png" id="4_owxk1"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_j34ho"]
 font_size = 24
@@ -52,6 +54,118 @@ grow_horizontal = 2
 text = "INVENTORY"
 label_settings = SubResource("LabelSettings_j34ho")
 
+[node name="PlayerLevelContainer" type="Panel" parent="UiPopup" unique_id=1507377212]
+custom_minimum_size = Vector2(520, 0)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -279.0
+offset_top = -515.0
+offset_right = 279.0
+offset_bottom = -315.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Level" type="Label" parent="UiPopup/PlayerLevelContainer" unique_id=882063889]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -524.0
+offset_top = 10.0
+offset_right = -400.0
+offset_bottom = 33.0
+grow_horizontal = 0
+text = "Level: X"
+
+[node name="XPToNext" type="Label" parent="UiPopup/PlayerLevelContainer" unique_id=155081816]
+layout_mode = 1
+offset_left = 318.0
+offset_top = 10.0
+offset_right = 539.0
+offset_bottom = 33.0
+text = "XP to level up: XX"
+
+[node name="BallDetails" type="Control" parent="UiPopup/PlayerLevelContainer" unique_id=1660787403]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 97.0
+offset_top = -131.0
+offset_right = 203.0
+offset_bottom = -25.0
+grow_vertical = 0
+
+[node name="BallLabel" type="Label" parent="UiPopup/PlayerLevelContainer/BallDetails" unique_id=66319145]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -20.0
+offset_right = 20.0
+offset_bottom = 23.0
+grow_horizontal = 2
+text = "Ball:"
+horizontal_alignment = 1
+
+[node name="SelectedBall" type="TextureRect" parent="UiPopup/PlayerLevelContainer/BallDetails" unique_id=1396396099]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -40.5
+offset_top = -81.0
+offset_right = 40.5
+grow_horizontal = 2
+grow_vertical = 0
+texture = ExtResource("4_owxk1")
+
+[node name="CharacterDetails" type="Control" parent="UiPopup/PlayerLevelContainer" unique_id=1908946479]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -216.0
+offset_top = -152.0
+offset_right = -86.0
+offset_bottom = -22.0
+grow_horizontal = 0
+grow_vertical = 0
+
+[node name="CharacterLabel" type="Label" parent="UiPopup/PlayerLevelContainer/CharacterDetails" unique_id=1845247920]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -40.5
+offset_right = 40.5
+offset_bottom = 23.0
+grow_horizontal = 2
+text = "Character:"
+horizontal_alignment = 1
+
+[node name="SelectedCharacter" type="TextureRect" parent="UiPopup/PlayerLevelContainer/CharacterDetails" unique_id=1714284299]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -61.0
+offset_top = -122.0
+offset_right = 61.0
+grow_horizontal = 2
+grow_vertical = 0
+texture = ExtResource("3_4w41e")
+
 [node name="VBoxContainer" type="VBoxContainer" parent="UiPopup" unique_id=2059397886]
 layout_mode = 1
 anchors_preset = 8
@@ -60,7 +174,7 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -260.0
-offset_top = -500.0
+offset_top = -279.0
 offset_right = 260.0
 offset_bottom = 500.0
 grow_horizontal = 2

@@ -5,6 +5,8 @@ signal on_close()
 
 @onready var inventory_item_scene = preload("res://scenes/inventory_item.tscn")
 @onready var inven_items_container : VBoxContainer = $UiPopup/VBoxContainer
+@onready var level: Label = $UiPopup/PlayerLevelContainer/Level
+@onready var xp_to_next: Label = $UiPopup/PlayerLevelContainer/XPToNext
 
 # load brick images
 @onready var imgBrickDirt = preload(GameConstants.RESOURCE_LOCATION_BRICK_DIRT)
@@ -14,6 +16,7 @@ signal on_close()
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	load_inventory()
+	load_stats()
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -22,6 +25,7 @@ func _process(_delta: float) -> void:
 
 func refresh() -> void:
 	load_inventory()
+	load_stats()
 
 func is_brick_type(item: InventoryItem, number):
 	return item.brick_type == number
@@ -52,6 +56,10 @@ func load_inventory() -> void:
 					newBrick.sprite_texture = imgBrickWood
 			
 			inven_items_container.add_child(newBrick)
+
+func load_stats() -> void:
+	level.text = "Level: " + str(PlayerStats.currentLevel)
+	xp_to_next.text = "XP to level up: " + str(PlayerStats.nextLevelExperience)
 
 func _on_close_button_pressed() -> void:
 	on_close.emit()

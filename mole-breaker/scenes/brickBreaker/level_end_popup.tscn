@@ -53,21 +53,21 @@ offset_bottom = 507.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="XPGain" type="Label" parent="UiPopup/Panel" unique_id=619270259]
+[node name="Level" type="Label" parent="UiPopup/Panel" unique_id=1901541200]
 layout_mode = 0
 offset_left = 34.0
-offset_top = 36.0
-offset_right = 74.0
-offset_bottom = 59.0
-text = "XP Gained: "
+offset_top = 38.0
+offset_right = 83.0
+offset_bottom = 61.0
+text = "Level: "
 
-[node name="Level" type="Label" parent="UiPopup/Panel" unique_id=1901541200]
+[node name="XPGain" type="Label" parent="UiPopup/Panel" unique_id=619270259]
 layout_mode = 0
 offset_left = 318.0
 offset_top = 38.0
-offset_right = 358.0
+offset_right = 406.0
 offset_bottom = 61.0
-text = "Level: "
+text = "XP Gained: "
 
 [node name="ProgressBar" type="ProgressBar" parent="UiPopup/Panel" unique_id=547347709]
 layout_mode = 1
