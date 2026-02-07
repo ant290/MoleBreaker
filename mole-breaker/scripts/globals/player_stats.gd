@@ -2,6 +2,7 @@ extends Node
 
 var score : int = 0
 var lives: int = 3
+
 var brickInventory: Dictionary[GameConstants.BrickType, int] = {}
 var chosenBall: GameConstants.BallType = GameConstants.BallType.SNOW_BALL
 
@@ -24,6 +25,9 @@ func _ready() -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
 	pass
+
+func set_quest(questId : int) -> void:
+	currentQuestId = questId
 
 func reset_lives() -> void:
 	lives = 3
@@ -57,7 +61,8 @@ func get_next_xp_cap(cap : int) -> int:
 func get_save_data() -> Dictionary:
 	var save_data = {
 		GameConstants.SAVE_DATA_PLAYER_STATS_BRICK_INVENTORY : brickInventory,
-		GameConstants.SAVE_DATA_PLAYER_STATS_CURRENT_XP : currentExperience
+		GameConstants.SAVE_DATA_PLAYER_STATS_CURRENT_XP : currentExperience,
+		GameConstants.SAVE_DATA_PLAYER_STATS_CHOSEN_BALL : chosenBall
 	}
 	
 	return save_data
@@ -71,4 +76,8 @@ func load_data(data: Dictionary) -> void:
 	currentExperience = int(data.get(GameConstants.SAVE_DATA_PLAYER_STATS_CURRENT_XP, 0))
 	while currentExperience >= maxExperience:
 		_level_up()
+	
+	var foundChosenBall = int(data.get(GameConstants.SAVE_DATA_PLAYER_STATS_CHOSEN_BALL, -1))
+	if foundChosenBall >= 0:
+		chosenBall = foundChosenBall as GameConstants.BallType
 #endregion

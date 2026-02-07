@@ -6,6 +6,7 @@ class_name BallBase
 @export var base_speed = 250
 @export var bounce_multiplier = 1.05
 @export var max_speed = 600
+@export var damage = 1
 
 var is_active = true
 

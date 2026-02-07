@@ -21,7 +21,7 @@ signal OnBreak(brick_type: GameConstants.BrickType, quantity : int)
 @onready var damage_collision_shape: CollisionShape2D = $DamageCollider/CollisionShape2D
 
 
-var health : int
+var health : float
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -35,9 +35,9 @@ func _ready() -> void:
 func _process(_delta: float) -> void:
 	pass
 
-func hit():
+func hit(damage: float):
 	#set the brick health, call animation and emit points signal
-	health -= 1
+	health -= damage
 	animator.play("dink")
 	OnHit.emit(points_per_hit)
 	if health <= 0:
@@ -65,4 +65,5 @@ func _on_brick_audio_player_finished() -> void:
 
 func _on_damage_collider_entered(body: Node) -> void:
 	if body.is_in_group("Ball"):
-		hit()
+		var ball : BallBase = body
+		hit(ball.damage)

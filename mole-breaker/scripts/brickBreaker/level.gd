@@ -52,11 +52,14 @@ func _process(_delta: float) -> void:
 	pass
 
 func addBall() -> void:
+	var ball : BallBase
 	match PlayerStats.chosenBall:
 		GameConstants.BallType.SNOW_BALL:
-			var ball : BallBase = snowBallScene.instantiate()
-			ball.position = Vector2(384, 1059)
-			add_child(ball)
+			ball = snowBallScene.instantiate()
+		GameConstants.BallType.GHOST_BALL:
+			ball = ghostBallScene.instantiate()
+	ball.position = Vector2(384, 1059)
+	add_child(ball)
 
 func setupLevel() -> void:
 	PlayerStats.rest_score()

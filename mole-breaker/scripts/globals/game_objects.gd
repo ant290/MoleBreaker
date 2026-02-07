@@ -4,14 +4,20 @@ extends Node
 
 const BALL_DICT : Dictionary[GameConstants.BallType, Variant] ={
 	GameConstants.BallType.SNOW_BALL : {
+		"Scene" : "res://scenes/brickBreaker/snow_ball.tscn",
 		"Sprite" : "res://assets/balls/SnowBall.png",
 		"BaseSpeed" : 250,
-		"BounceMultiplier" : 1.05
+		"MaxSpeed" : 600,
+		"BounceMultiplier" : 1.05,
+		"Damage" : 1
 	},
 	GameConstants.BallType.GHOST_BALL : {
+		"Scene" : "res://scenes/brickBreaker/ghost_ball.tscn",
 		"Sprite" : "res://assets/balls/GhostBall.png",
 		"BaseSpeed" : 200,
-		"BounceMultiplier" : 1.07
+		"MaxSpeed" : 600,
+		"BounceMultiplier" : 1.07,
+		"Damage" : 1
 	}
 }
 
@@ -71,6 +77,7 @@ var QUEST_DICT : Dictionary[int, Variant] = {
 #needs to be populated at run time
 var LOCATION_DETAILS : Dictionary[GameConstants.BreakerLocationType, LocationDetails] = {}
 var QUEST_DETAILS : Dictionary[int, Quest] = {}
+var BALL_DETAILS : Dictionary[int, BallMapping] = {}
 
 #endregion
 
