@@ -3,9 +3,6 @@
 [ext_resource type="Script" uid="uid://l0in4ahl7f44" path="res://scripts/brickBreaker/brick.gd" id="1_0w5h4"]
 [ext_resource type="PackedScene" uid="uid://b21tx3018swjy" path="res://scenes/brickBreaker/brick_audio_player.tscn" id="2_7btvx"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_0w5h4"]
-size = Vector2(122, 58)
-
 [sub_resource type="Animation" id="Animation_c34n8"]
 length = 0.001
 tracks/0/type = "value"
@@ -67,8 +64,13 @@ _data = {
 &"dink": SubResource("Animation_7mekc")
 }
 
-[node name="Brick" type="RigidBody2D" unique_id=446602168 groups=["Brick"]]
-gravity_scale = 0.0
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0w5h4"]
+size = Vector2(120, 56)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7btvx"]
+size = Vector2(122, 58)
+
+[node name="Brick" type="Node2D" unique_id=71762052 groups=["Brick"]]
 script = ExtResource("1_0w5h4")
 
 [node name="BrickAudioPlayer" parent="." unique_id=1593854875 instance=ExtResource("2_7btvx")]
@@ -78,11 +80,20 @@ script = ExtResource("1_0w5h4")
 [node name="DamagedSprite" type="Sprite2D" parent="." unique_id=1704323230]
 visible = false
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=687979983]
-shape = SubResource("RectangleShape2D_0w5h4")
-
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1044313387]
 libraries/ = SubResource("AnimationLibrary_ci8dj")
+
+[node name="BounceCollider" type="RigidBody2D" parent="." unique_id=71987378 groups=["Brick"]]
+collision_layer = 2
+gravity_scale = 0.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BounceCollider" unique_id=687979983]
+shape = SubResource("RectangleShape2D_0w5h4")
+
+[node name="DamageCollider" type="Area2D" parent="." unique_id=1845545761]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DamageCollider" unique_id=1510311743]
+shape = SubResource("RectangleShape2D_7btvx")
 
 [connection signal="finished" from="BrickAudioPlayer" to="." method="_on_brick_audio_player_finished"]
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]

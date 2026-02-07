@@ -4,6 +4,10 @@ extends CharacterBody2D
 
 @onready var character_sprite : Sprite2D = $CharacterSprite
 @onready var animator: AnimationPlayer = $AnimationPlayer
+@onready var animation_area_detector: Area2D = $AnimationAreaDetector
+
+func _ready() -> void:
+	animation_area_detector.body_entered.connect(_on_animation_body_entered)
 
 func _process(_delta: float) -> void:
 	
@@ -26,6 +30,10 @@ func _physics_process(delta: float) -> void:
 		velocity.x = move_toward(velocity.x, 0, base_speed)
 
 	move_and_collide(velocity * delta)
+
+func _on_animation_body_entered(body: Node2D) -> void:
+	if body.is_in_group("Ball"):
+		hit()
 	
 func hit() -> void:
 	animator.play("paddle_hit")

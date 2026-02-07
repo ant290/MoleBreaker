@@ -2,9 +2,13 @@ extends Node
 
 enum BrickType {BRICK_DIRT, BRICK_ROCK, BRICK_WOOD}
 enum BreakerLocationType {PLAINS, FOREST, QUARRY}
+enum BallType {SNOW_BALL, GHOST_BALL}
 
 func is_brick(node : Node) -> bool:
 	return node.is_in_group("Brick")
+
+func is_ball(node : Node) -> bool:
+	return node.is_in_group("Ball")
 
 const AUDIO_BUS_NAME_EFFECTS : String = "Effects"
 const AUDIO_BUS_NAME_MASTER : String = "Master"

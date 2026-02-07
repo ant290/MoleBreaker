@@ -3,6 +3,7 @@ extends Node
 var score : int = 0
 var lives: int = 3
 var brickInventory: Dictionary[GameConstants.BrickType, int] = {}
+var chosenBall: GameConstants.BallType = GameConstants.BallType.SNOW_BALL
 
 var currentQuestId : int
 

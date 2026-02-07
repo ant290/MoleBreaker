@@ -1,4 +1,4 @@
-extends RigidBody2D
+extends Node2D
 class_name BreakableBrick
 
 signal OnHit(points : int)
@@ -14,8 +14,11 @@ signal OnBreak(brick_type: GameConstants.BrickType, quantity : int)
 @onready var healthy_sprite : Sprite2D = $HealthySprite
 @onready var damaged_sprite : Sprite2D = $DamagedSprite
 @onready var animator : AnimationPlayer = $AnimationPlayer
-@onready var collision_shape_2d: CollisionShape2D = $CollisionShape2D
 @onready var brick_audio_player: AudioStreamPlayer = $BrickAudioPlayer
+@onready var bounce_collider: RigidBody2D = $BounceCollider
+@onready var bounce_collision_shape: CollisionShape2D = $BounceCollider/CollisionShape2D
+@onready var damage_collider: Area2D = $DamageCollider
+@onready var damage_collision_shape: CollisionShape2D = $DamageCollider/CollisionShape2D
 
 
 var health : int
@@ -25,7 +28,7 @@ func _ready() -> void:
 	health = starting_health
 	healthy_sprite.texture = healthy_texture
 	damaged_sprite.texture = damaged_texture
-	
+	damage_collider.body_entered.connect(_on_damage_collider_entered)
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -52,9 +55,14 @@ func _on_animation_player_animation_finished(_anim_name: StringName) -> void:
 	if health <= 0:
 		healthy_sprite.hide()
 		damaged_sprite.hide()
-		collision_shape_2d.disabled = true
+		bounce_collision_shape.disabled = true
+		damage_collision_shape.disabled = true
 		brick_audio_player.play_break()
 
 func _on_brick_audio_player_finished() -> void:
 	if health <= 0:
 		call_deferred("queue_free")
+
+func _on_damage_collider_entered(body: Node) -> void:
+	if body.is_in_group("Ball"):
+		hit()

@@ -5,7 +5,6 @@
 [ext_resource type="PackedScene" uid="uid://dn3083ytfbwut" path="res://scenes/brickBreaker/touch_controls.tscn" id="2_2r41h"]
 [ext_resource type="PackedScene" uid="uid://b21tx3018swjy" path="res://scenes/brickBreaker/brick_audio_player.tscn" id="2_k34ab"]
 [ext_resource type="Texture2D" uid="uid://by885h87iwnui" path="res://assets/background dirt.png" id="2_ppgk2"]
-[ext_resource type="PackedScene" uid="uid://c00uaxwxq1i2b" path="res://scenes/brickBreaker/ball.tscn" id="2_w7c3h"]
 [ext_resource type="Script" uid="uid://bfk12tdquv0b7" path="res://scripts/player_ui.gd" id="4_mx8sn"]
 [ext_resource type="LabelSettings" uid="uid://cudps360vqhad" path="res://themes/level_label_settings.tres" id="7_0sdye"]
 [ext_resource type="PackedScene" uid="uid://d32bg47cji12w" path="res://scenes/inventory_popup.tscn" id="7_klq6b"]
@@ -55,20 +54,17 @@ position = Vector2(360, 640)
 [node name="Paddle" parent="." unique_id=395169963 instance=ExtResource("1_2q6dc")]
 position = Vector2(359, 1130)
 
-[node name="Ball" parent="." unique_id=1765914509 instance=ExtResource("2_w7c3h")]
-position = Vector2(384, 1059)
+[node name="Walls" type="StaticBody2D" parent="." unique_id=1718697576 groups=["Wall"]]
 
-[node name="Walls" type="StaticBody2D" parent="." unique_id=1718697576]
-
-[node name="LeftWall" type="CollisionShape2D" parent="Walls" unique_id=577295977]
+[node name="LeftWall" type="CollisionShape2D" parent="Walls" unique_id=577295977 groups=["Wall"]]
 position = Vector2(-3.75, 640)
 shape = SubResource("RectangleShape2D_w7c3h")
 
-[node name="RightWall" type="CollisionShape2D" parent="Walls" unique_id=433608889]
+[node name="RightWall" type="CollisionShape2D" parent="Walls" unique_id=433608889 groups=["Wall"]]
 position = Vector2(724, 640)
 shape = SubResource("RectangleShape2D_w7c3h")
 
-[node name="Ceiling" type="CollisionShape2D" parent="Walls" unique_id=1427809319]
+[node name="Ceiling" type="CollisionShape2D" parent="Walls" unique_id=1427809319 groups=["Wall"]]
 position = Vector2(360, 57.5)
 shape = SubResource("RectangleShape2D_w8frs")
 
@@ -130,6 +126,5 @@ shape = SubResource("RectangleShape2D_ppgk2")
 [node name="CRTShader" parent="." unique_id=1086750645 instance=ExtResource("9_k34ab")]
 visible = false
 
-[connection signal="OnOutOfBounds" from="Ball" to="." method="_on_ball_on_out_of_bounds"]
-[connection signal="body_entered" from="CatchBucket" to="Ball" method="_on_catch_bucket_body_entered"]
+[connection signal="body_entered" from="CatchBucket" to="." method="_on_catch_bucket_body_entered"]
 [connection signal="body_entered" from="CatchBucket" to="CanvasLayer" method="_on_catch_bucket_body_entered"]

@@ -1,8 +1,8 @@
-[gd_scene format=3 uid="uid://c00uaxwxq1i2b"]
+[gd_scene format=3 uid="uid://xsggc005mmkd"]
 
-[ext_resource type="Script" uid="uid://b8qxt4jfq6i2f" path="res://scripts/brickBreaker/ball.gd" id="1_7s4qf"]
-[ext_resource type="Texture2D" uid="uid://cbo5d6o4ucsu5" path="res://assets/balls/SnowBall.png" id="2_cxlvu"]
-[ext_resource type="AudioStream" uid="uid://difs5mwf7xgj4" path="res://assets/sounds/effects/Cartoon Boing C.wav" id="3_fjarr"]
+[ext_resource type="Script" uid="uid://bcsgph2v6wwmo" path="res://scripts/brickBreaker/snow_ball.gd" id="1_se68q"]
+[ext_resource type="Texture2D" uid="uid://cbo5d6o4ucsu5" path="res://assets/balls/SnowBall.png" id="2_15d0o"]
+[ext_resource type="AudioStream" uid="uid://difs5mwf7xgj4" path="res://assets/sounds/effects/Cartoon Boing C.wav" id="3_r5t72"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_f7cbr"]
 radius = 16.0
@@ -12,10 +12,10 @@ colors = PackedColorArray(0.53362983, 0.8204804, 0.88068885, 1, 1, 1, 1, 1)
 
 [node name="Ball" type="CharacterBody2D" unique_id=1289675433 groups=["Ball"]]
 collision_mask = 3
-script = ExtResource("1_7s4qf")
+script = ExtResource("1_se68q")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1799405161]
-texture = ExtResource("2_cxlvu")
+texture = ExtResource("2_15d0o")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1038187710]
 shape = SubResource("CircleShape2D_f7cbr")
@@ -30,5 +30,5 @@ gravity = Vector2(0, 0)
 color_ramp = SubResource("Gradient_cxlvu")
 
 [node name="BounceSound" type="AudioStreamPlayer" parent="." unique_id=328254865]
-stream = ExtResource("3_fjarr")
+stream = ExtResource("3_r5t72")
 bus = &"Effects"

@@ -1,12 +1,13 @@
 extends Node2D
 
 @onready var brickObject = preload("res://scenes/brickBreaker/brick.tscn")
+@onready var snowBallScene = preload("res://scenes/brickBreaker/snow_ball.tscn")
+@onready var ghostBallScene = preload("res://scenes/brickBreaker/ghost_ball.tscn")
 @onready var uiLayer : PlayerUI = $CanvasLayer
 @onready var touchControls : MobileTouchControls = $TouchControls
 @onready var crtShader : CanvasLayer = $CRTShader
 @onready var audioStreamPlayer: AudioStreamPlayer = $BrickAudioPlayer
 @onready var background: TextureRect = $Background
-@onready var ball: CharacterBody2D = $Ball
 
 # load brick images
 @onready var imgBrickDirt = preload(GameConstants.RESOURCE_LOCATION_BRICK_DIRT)
@@ -37,6 +38,7 @@ func _ready() -> void:
 			touchControls.show()
 		_:
 			touchControls.hide()
+	addBall()
 	setupLevel()
 	uiLayer.load_bricks()
 	
@@ -49,6 +51,12 @@ func _ready() -> void:
 func _process(_delta: float) -> void:
 	pass
 
+func addBall() -> void:
+	match PlayerStats.chosenBall:
+		GameConstants.BallType.SNOW_BALL:
+			var ball : BallBase = snowBallScene.instantiate()
+			ball.position = Vector2(384, 1059)
+			add_child(ball)
 
 func setupLevel() -> void:
 	PlayerStats.rest_score()
@@ -140,12 +148,19 @@ func _save_data() -> void:
 	GameSaveService.save_game()
 
 func game_over ():
-	ball.process_mode = Node.PROCESS_MODE_DISABLED
+	var balls = get_children().filter(GameConstants.is_ball)
+	for ball in balls:
+		ball.process_mode = Node.PROCESS_MODE_DISABLED
 	uiLayer.show_level_end_overlay()
 	ExperienceBus.give_experience.emit(PlayerStats.score)
 	call_deferred("_save_data")
 
-func _on_ball_on_out_of_bounds() -> void:
-	PlayerStats.lives -= 1
-	if PlayerStats.lives <= 0:
-		game_over()
+func _on_catch_bucket_body_entered(body: Node2D) -> void:
+	if body.is_in_group("Ball"):
+		var ball : BallBase = body
+		
+		PlayerStats.lives -= 1
+		if PlayerStats.lives <= 0:
+			game_over()
+		
+		ball.reset_position()

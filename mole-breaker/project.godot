@@ -48,6 +48,7 @@ Brick=""
 Paddle=""
 Ball=""
 QuestHeading=""
+Wall=""
 
 [input]
 

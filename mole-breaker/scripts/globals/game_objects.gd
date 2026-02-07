@@ -1,5 +1,22 @@
 extends Node
 
+#region Ball Details
+
+const BALL_DICT : Dictionary[GameConstants.BallType, Variant] ={
+	GameConstants.BallType.SNOW_BALL : {
+		"Sprite" : "res://assets/balls/SnowBall.png",
+		"BaseSpeed" : 250,
+		"BounceMultiplier" : 1.05
+	},
+	GameConstants.BallType.GHOST_BALL : {
+		"Sprite" : "res://assets/balls/GhostBall.png",
+		"BaseSpeed" : 200,
+		"BounceMultiplier" : 1.07
+	}
+}
+
+#endregion
+
 #region Location Details
 
 const LOCATION_DICT : Dictionary[GameConstants.BreakerLocationType, Variant] = {
