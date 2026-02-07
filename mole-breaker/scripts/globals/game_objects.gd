@@ -103,3 +103,15 @@ func _ready() -> void:
 		for brickChance in bricks:
 				quest.brick_availabilities[brickChance] = bricks[brickChance]
 		QUEST_DETAILS[key] = quest
+	
+	#build balls
+	for key in BALL_DICT:
+		var type = BALL_DICT[key]
+		var mapping = BallMapping.new()
+		mapping.ball_type = key
+		mapping.scene_path = type["Scene"]
+		mapping.sprite_path = type["Sprite"]
+		mapping.base_speed = int(type.get("BaseSpeed", 250))
+		mapping.max_speed = int(type.get("MaxSpeed", 600))
+		mapping.bounce_multiplier = int(type.get("BounceMultiplier", 1.05))
+		mapping.damage = int(type.get("Damage", 1))
