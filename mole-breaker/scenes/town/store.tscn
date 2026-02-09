@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://cinvu8quv2384"]
 
 [ext_resource type="Texture2D" uid="uid://emtvli72pwy7" path="res://assets/town/Store.png" id="1_k61li"]
+[ext_resource type="Script" uid="uid://bq8kgix8yigcb" path="res://scripts/town/store.gd" id="1_p6v8q"]
 [ext_resource type="Texture2D" uid="uid://c0xt57i3pi1e4" path="res://assets/town/decor/16.png" id="2_ljh1p"]
 [ext_resource type="Texture2D" uid="uid://baob8w3clkaar" path="res://assets/town/box/3.png" id="3_qdg1j"]
 [ext_resource type="Texture2D" uid="uid://cqke3mwrwf2jf" path="res://assets/town/box/4.png" id="4_p6v8q"]
@@ -12,6 +13,7 @@ size = Vector2(112, 135)
 font_size = 24
 
 [node name="Area2D" type="Area2D" unique_id=2117291136]
+script = ExtResource("1_p6v8q")
 
 [node name="Sprite" type="Sprite2D" parent="." unique_id=1753134659]
 modulate = Color(0.16078432, 0.16078432, 0.16078432, 1)
@@ -47,3 +49,5 @@ text = "STORE"
 label_settings = SubResource("LabelSettings_k61li")
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[connection signal="input_event" from="." to="." method="_on_input_event"]

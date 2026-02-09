@@ -1,0 +1,90 @@
+[gd_scene format=3 uid="uid://cfbsg50l6l7hp"]
+
+[ext_resource type="Script" uid="uid://cqm2d4lnxgp27" path="res://scripts/balls_popup.gd" id="1_hk2i7"]
+[ext_resource type="AudioStream" uid="uid://b66p4n8y8gyo8" path="res://assets/sounds/effects/Whoosh Bamboo 001.wav" id="2_3w0jh"]
+[ext_resource type="Texture2D" uid="uid://dk2ypv5mvf68a" path="res://assets/woodNineRect.png" id="3_85jis"]
+[ext_resource type="LabelSettings" uid="uid://csexbggbyy1pr" path="res://themes/popup_title_label_settings.tres" id="4_m5wko"]
+[ext_resource type="Theme" uid="uid://cnkgqea1hlwgw" path="res://themes/settings_theme.tres" id="5_n1sco"]
+
+[node name="OverlayShadow" type="ColorRect" unique_id=1621169500]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.7254902)
+script = ExtResource("1_hk2i7")
+
+[node name="EmbarkSound" type="AudioStreamPlayer" parent="." unique_id=1414056326]
+stream = ExtResource("2_3w0jh")
+bus = &"Effects"
+
+[node name="UiPopup" type="NinePatchRect" parent="." unique_id=1699803896]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -310.0
+offset_top = -590.0
+offset_right = 310.0
+offset_bottom = 590.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_85jis")
+patch_margin_left = 12
+patch_margin_top = 12
+patch_margin_right = 12
+patch_margin_bottom = 12
+axis_stretch_horizontal = 2
+axis_stretch_vertical = 1
+
+[node name="Title" type="Label" parent="UiPopup" unique_id=1819006396]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -67.5
+offset_top = 20.0
+offset_right = 67.5
+offset_bottom = 54.0
+grow_horizontal = 2
+text = "BALLS"
+label_settings = ExtResource("4_m5wko")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="BallsListContainer" type="VBoxContainer" parent="UiPopup" unique_id=379361521]
+clip_contents = true
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -260.0
+offset_top = -500.0
+offset_right = 260.0
+offset_bottom = 500.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 20
+
+[node name="CloseButton" type="Button" parent="UiPopup" unique_id=430717860]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -41.0
+offset_top = -62.0
+offset_right = 41.0
+offset_bottom = -20.0
+grow_horizontal = 2
+grow_vertical = 0
+theme = ExtResource("5_n1sco")
+text = "CLOSE"
+
+[connection signal="pressed" from="UiPopup/CloseButton" to="." method="_on_close_button_pressed"]

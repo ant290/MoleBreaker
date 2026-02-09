@@ -5,6 +5,7 @@ extends Node2D
 @onready var inventory : InventoryPopup = $CanvasLayer/Inventory
 @onready var settings_popup: SettingsPopup = $CanvasLayer/SettingsPopup
 @onready var quests_popup: ColorRect = $CanvasLayer/QuestsPopup
+@onready var balls_popup: ColorRect = $CanvasLayer/BallsPopup
 
 @onready var building_click_sound: AudioStreamPlayer = $BuildingClickSound
 @onready var closed_sound: AudioStreamPlayer = $ClosedSound
@@ -58,4 +59,14 @@ func _on_tavern_on_click() -> void:
 func _on_quests_popup_on_close() -> void:
 	closed_sound.play()
 	quests_popup.visible = false
+	has_popup_showing = false
+
+func _on_store_on_click() -> void:
+	building_click_sound.play()
+	balls_popup.visible = true
+	has_popup_showing = true
+
+func _on_balls_popup_on_close() -> void:
+	closed_sound.play()
+	balls_popup.visible = false
 	has_popup_showing = false

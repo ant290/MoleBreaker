@@ -31,6 +31,7 @@
 [ext_resource type="Texture2D" uid="uid://cdtvs48g51nhm" path="res://assets/town/stone/6.png" id="23_b3xbq"]
 [ext_resource type="PackedScene" uid="uid://dj6ok546ls86i" path="res://scenes/settings_popup.tscn" id="27_wpqog"]
 [ext_resource type="PackedScene" uid="uid://cpochxj4ubbwt" path="res://scenes/quests_popup.tscn" id="30_bjm3s"]
+[ext_resource type="PackedScene" uid="uid://cfbsg50l6l7hp" path="res://scenes/balls_popup.tscn" id="31_67633"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_jil70"]
 texture = ExtResource("3_06row")
@@ -367,13 +368,18 @@ visible = false
 [node name="QuestsPopup" parent="CanvasLayer" unique_id=1621169500 instance=ExtResource("30_bjm3s")]
 visible = false
 
+[node name="BallsPopup" parent="CanvasLayer" unique_id=504768265 instance=ExtResource("31_67633")]
+visible = false
+
 [node name="CRTShader" parent="." unique_id=1509600276 instance=ExtResource("9_jil70")]
 visible = false
 
 [connection signal="on_click" from="TownDesign/House" to="." method="_on_house_on_click"]
+[connection signal="on_click" from="TownDesign/Store" to="." method="_on_store_on_click"]
 [connection signal="on_click" from="TownDesign/Tavern" to="." method="_on_tavern_on_click"]
 [connection signal="on_click" from="TownDesign/Settings" to="." method="_on_settings_on_click"]
 [connection signal="released" from="TouchScreenButton" to="." method="_on_touch_screen_button_released"]
 [connection signal="on_close" from="CanvasLayer/Inventory" to="." method="_on_inventory_on_close"]
 [connection signal="on_close" from="CanvasLayer/SettingsPopup" to="." method="_on_settings_popup_on_close"]
 [connection signal="on_close" from="CanvasLayer/QuestsPopup" to="." method="_on_quests_popup_on_close"]
+[connection signal="on_close" from="CanvasLayer/BallsPopup" to="." method="_on_balls_popup_on_close"]
