@@ -31,16 +31,6 @@ func _on_touch_screen_button_released() -> void:
 		await SceneTransitions.fade_complete
 		get_tree().change_scene_to_file("res://scenes/menu.tscn")
 
-func _on_house_on_click() -> void:
-	building_click_sound.play()
-	inventory.visible = true
-	has_popup_showing = true
-
-func _on_inventory_on_close() -> void:
-	closed_sound.play()
-	inventory.visible = false
-	has_popup_showing = false
-
 func _on_settings_on_click() -> void:
 	building_click_sound.play()
 	settings_popup.visible = true

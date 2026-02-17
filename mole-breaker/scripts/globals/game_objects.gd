@@ -74,10 +74,21 @@ var QUEST_DICT : Dictionary[int, Variant] = {
 	}
 }
 
+# building unlock requirements
+var BUILDING_DICT : Dictionary[GameConstants.BuildingType, Variant] = {
+	GameConstants.BuildingType.TAVERN : {
+		"LevelRequirement" : 0
+	},
+	GameConstants.BuildingType.HOUSE : {
+		"LevelRequirement" : 2
+	}
+}
+
 #needs to be populated at run time
 var LOCATION_DETAILS : Dictionary[GameConstants.BreakerLocationType, LocationDetails] = {}
 var QUEST_DETAILS : Dictionary[int, Quest] = {}
-var BALL_DETAILS : Dictionary[int, BallMapping] = {}
+var BALL_DETAILS : Dictionary[GameConstants.BallType, BallMapping] = {}
+var BUILDING_DETAILS : Dictionary[GameConstants.BuildingType, BuildingMapping] = {}
 
 #endregion
 
@@ -115,3 +126,13 @@ func _ready() -> void:
 		mapping.max_speed = int(type.get("MaxSpeed", 600))
 		mapping.bounce_multiplier = int(type.get("BounceMultiplier", 1.05))
 		mapping.damage = int(type.get("Damage", 1))
+		BALL_DETAILS[key] = mapping
+	
+	#build buildings
+	for key in BUILDING_DICT:
+		var type = BUILDING_DICT[key]
+		var mapping = BuildingMapping.new()
+		mapping.building_type = key
+		mapping.level_requirement = int(type.get("LevelRequirement", 0))
+		# mapping.brick_cost = {}
+		BUILDING_DETAILS[key] = mapping

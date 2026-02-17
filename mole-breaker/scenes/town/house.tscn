@@ -2,6 +2,11 @@
 
 [ext_resource type="Texture2D" uid="uid://cokfl4riajtur" path="res://assets/town/House.png" id="1_et3ds"]
 [ext_resource type="Script" uid="uid://desw8ko68iwrh" path="res://scripts/town/house.gd" id="1_mamke"]
+[ext_resource type="AudioStream" uid="uid://jr5u3i6o11bn" path="res://assets/sounds/effects/Earth Friend Tank Happy A.wav" id="2_ipqu0"]
+[ext_resource type="AudioStream" uid="uid://5bd0752kv2rw" path="res://assets/sounds/effects/Earth Friend Tank Effort B.wav" id="3_qn50g"]
+[ext_resource type="Texture2D" uid="uid://dm2w6kspxqdar" path="res://assets/red alert.png" id="3_ywvkh"]
+[ext_resource type="PackedScene" uid="uid://cb7jt0tnuac6s" path="res://scenes/help_dialog_popup.tscn" id="4_8yrb2"]
+[ext_resource type="PackedScene" uid="uid://d32bg47cji12w" path="res://scenes/inventory_popup.tscn" id="7_qn50g"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_mamke"]
 size = Vector2(156, 185)
@@ -12,7 +17,14 @@ font_size = 24
 [node name="House" type="Area2D" unique_id=1015229144]
 script = ExtResource("1_mamke")
 
+[node name="BuildingClickSound" type="AudioStreamPlayer" parent="." unique_id=173132481]
+stream = ExtResource("2_ipqu0")
+
+[node name="ClosedSound" type="AudioStreamPlayer" parent="." unique_id=1136065093]
+stream = ExtResource("3_qn50g")
+
 [node name="Sprite" type="Sprite2D" parent="." unique_id=1285056523]
+modulate = Color(0.16078432, 0.16078432, 0.16078432, 1)
 texture = ExtResource("1_et3ds")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=638320260]
@@ -33,4 +45,18 @@ label_settings = SubResource("LabelSettings_et3ds")
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="RedAlert" type="Sprite2D" parent="." unique_id=1907925253]
+position = Vector2(59, 65)
+texture = ExtResource("3_ywvkh")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1393307398]
+
+[node name="InfoPopup" parent="CanvasLayer" unique_id=57342310 instance=ExtResource("4_8yrb2")]
+visible = false
+
+[node name="InventoryPopup" parent="CanvasLayer" unique_id=1278439784 instance=ExtResource("7_qn50g")]
+visible = false
+
 [connection signal="input_event" from="." to="." method="_on_input_event"]
+[connection signal="on_close" from="CanvasLayer/InfoPopup" to="." method="_on_info_popup_on_close"]
+[connection signal="on_close" from="CanvasLayer/InventoryPopup" to="." method="_on_overlay_shadow_on_close"]

@@ -17,7 +17,6 @@
 [ext_resource type="Texture2D" uid="uid://xvsilj3ata6a" path="res://assets/town/grass/5.png" id="7_3sg37"]
 [ext_resource type="PackedScene" uid="uid://dspa2anxowcce" path="res://scenes/town/settings.tscn" id="7_iu42p"]
 [ext_resource type="Texture2D" uid="uid://ddnoeidcj41dc" path="res://assets/arrow left dirt.png" id="8_5vpkg"]
-[ext_resource type="PackedScene" uid="uid://d32bg47cji12w" path="res://scenes/inventory_popup.tscn" id="8_jil70"]
 [ext_resource type="Texture2D" uid="uid://dh75syvvu0fh" path="res://assets/town/grass/6.png" id="8_vky2r"]
 [ext_resource type="Texture2D" uid="uid://c00ehlg6tp0gf" path="res://assets/town/grass/3.png" id="9_fwdo8"]
 [ext_resource type="PackedScene" uid="uid://cdkondhkrlc2b" path="res://scenes/shaders/crt_shader.tscn" id="9_jil70"]
@@ -359,9 +358,6 @@ texture_normal = ExtResource("8_5vpkg")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1342035673]
 
-[node name="Inventory" parent="CanvasLayer" unique_id=2122643412 instance=ExtResource("8_jil70")]
-visible = false
-
 [node name="SettingsPopup" parent="CanvasLayer" unique_id=425021697 instance=ExtResource("27_wpqog")]
 visible = false
 
@@ -374,12 +370,10 @@ visible = false
 [node name="CRTShader" parent="." unique_id=1509600276 instance=ExtResource("9_jil70")]
 visible = false
 
-[connection signal="on_click" from="TownDesign/House" to="." method="_on_house_on_click"]
 [connection signal="on_click" from="TownDesign/Store" to="." method="_on_store_on_click"]
 [connection signal="on_click" from="TownDesign/Tavern" to="." method="_on_tavern_on_click"]
 [connection signal="on_click" from="TownDesign/Settings" to="." method="_on_settings_on_click"]
 [connection signal="released" from="TouchScreenButton" to="." method="_on_touch_screen_button_released"]
-[connection signal="on_close" from="CanvasLayer/Inventory" to="." method="_on_inventory_on_close"]
 [connection signal="on_close" from="CanvasLayer/SettingsPopup" to="." method="_on_settings_popup_on_close"]
 [connection signal="on_close" from="CanvasLayer/QuestsPopup" to="." method="_on_quests_popup_on_close"]
 [connection signal="on_close" from="CanvasLayer/BallsPopup" to="." method="_on_balls_popup_on_close"]

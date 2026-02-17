@@ -5,6 +5,7 @@ var lives: int = 3
 
 var brickInventory: Dictionary[GameConstants.BrickType, int] = {}
 var chosenBall: GameConstants.BallType = GameConstants.BallType.SNOW_BALL
+var unlockedBuildings: Array[GameConstants.BuildingType] = [GameConstants.BuildingType.TAVERN]
 
 var currentQuestId : int
 
@@ -42,6 +43,7 @@ func add_to_inventory(brick_type: GameConstants.BrickType, amount: int) -> void:
 	else:
 		brickInventory[brick_type] = amount
 
+#region levelling
 func _give_experience(value : int) -> void:
 	currentExperience = currentExperience + value
 	
@@ -53,16 +55,28 @@ func _level_up() -> void:
 	maxExperience = get_next_xp_cap(maxExperience)
 	currentLevel = currentLevel + 1
 	nextLevelExperience = maxExperience - currentExperience
+	_unlock_buildings()
+	ExperienceBus.level_increased.emit(currentLevel)
 
 func get_next_xp_cap(cap : int) -> int:
 	return cap * 2
+
+func _unlock_buildings() -> void:
+	for key in GameObjects.BUILDING_DETAILS:
+		var building : BuildingMapping = GameObjects.BUILDING_DETAILS[key]
+		if building.level_requirement <= currentLevel:
+			if not unlockedBuildings.any(func(number): return number == building.building_type):
+				unlockedBuildings.append(building.building_type)
+
+#endregion
 
 #region save data
 func get_save_data() -> Dictionary:
 	var save_data = {
 		GameConstants.SAVE_DATA_PLAYER_STATS_BRICK_INVENTORY : brickInventory,
 		GameConstants.SAVE_DATA_PLAYER_STATS_CURRENT_XP : currentExperience,
-		GameConstants.SAVE_DATA_PLAYER_STATS_CHOSEN_BALL : chosenBall
+		GameConstants.SAVE_DATA_PLAYER_STATS_CHOSEN_BALL : chosenBall,
+		GameConstants.SAVE_DATA_PLAYER_STATS_BUILDINGS_UNLOCKED : unlockedBuildings
 	}
 	
 	return save_data
@@ -72,6 +86,9 @@ func load_data(data: Dictionary) -> void:
 	for key in brickInventoryPart.keys():
 		var brick_type = int(key)
 		brickInventory[brick_type] = int(brickInventoryPart[key])
+		
+	var buildings : Array[GameConstants.BuildingType] = data.get(GameConstants.SAVE_DATA_PLAYER_STATS_BUILDINGS_UNLOCKED, [GameConstants.BuildingType.TAVERN] as Array[GameConstants.BuildingType])
+	unlockedBuildings = buildings
 	
 	currentExperience = int(data.get(GameConstants.SAVE_DATA_PLAYER_STATS_CURRENT_XP, 0))
 	while currentExperience >= maxExperience:
