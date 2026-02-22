@@ -2,7 +2,6 @@ extends Node2D
 
 @onready var crtShader : CanvasLayer = $CRTShader
 
-@onready var inventory : InventoryPopup = $CanvasLayer/Inventory
 @onready var settings_popup: SettingsPopup = $CanvasLayer/SettingsPopup
 @onready var quests_popup: ColorRect = $CanvasLayer/QuestsPopup
 @onready var balls_popup: ColorRect = $CanvasLayer/BallsPopup

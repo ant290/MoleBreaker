@@ -36,12 +36,41 @@ func reset_lives() -> void:
 func rest_score() -> void:
 	score = 0
 	
+#region inventory
+
 func add_to_inventory(brick_type: GameConstants.BrickType, amount: int) -> void:
 	if brickInventory.has(brick_type):
 		var brick_amount = brickInventory[brick_type]
 		brickInventory[brick_type] = brick_amount + amount
 	else:
 		brickInventory[brick_type] = amount
+
+func can_afford(brick_costs: Dictionary[GameConstants.BrickType, int]) -> bool:
+	for type in brick_costs:
+		var qtyRequired = brick_costs[type]
+		var ownedQty : int = brickInventory.get(type, 0)
+		if ownedQty < qtyRequired:
+			return false
+	return true
+
+func pay_cost(brick_costs: Dictionary[GameConstants.BrickType, int]) -> bool:
+	if !can_afford(brick_costs):
+		return false
+	else:
+		for type in brick_costs:
+			var qtyRequired = brick_costs[type]
+			var ownedQty : int = brickInventory.get(type, 0)
+			brickInventory[type] = ownedQty - qtyRequired
+	
+	#clear empty entries
+	var keys = brickInventory.keys()
+	for i in keys:
+		if brickInventory[i] <= 0:
+			brickInventory.erase(i)
+	
+	return true
+
+#endregion
 
 #region levelling
 func _give_experience(value : int) -> void:
@@ -60,13 +89,24 @@ func _level_up() -> void:
 
 func get_next_xp_cap(cap : int) -> int:
 	return cap * 2
+#endregion
 
+#region buildings
 func _unlock_buildings() -> void:
 	for key in GameObjects.BUILDING_DETAILS:
 		var building : BuildingMapping = GameObjects.BUILDING_DETAILS[key]
 		if building.level_requirement <= currentLevel:
-			if not unlockedBuildings.any(func(number): return number == building.building_type):
+			if not unlockedBuildings.any(func(number): return number == building.building_type) and building.brick_cost.size() == 0:
 				unlockedBuildings.append(building.building_type)
+
+func unlock_building(type: GameConstants.BuildingType, brick_costs: Dictionary[GameConstants.BrickType, int]) -> bool:
+	if unlockedBuildings.any(func(number): return number == type):
+		return true
+	if !pay_cost(brick_costs):
+		return false
+	unlockedBuildings.append(type)
+	GameSaveService.save_game()
+	return true
 
 #endregion
 
@@ -86,8 +126,11 @@ func load_data(data: Dictionary) -> void:
 	for key in brickInventoryPart.keys():
 		var brick_type = int(key)
 		brickInventory[brick_type] = int(brickInventoryPart[key])
-		
-	var buildings : Array[GameConstants.BuildingType] = data.get(GameConstants.SAVE_DATA_PLAYER_STATS_BUILDINGS_UNLOCKED, [GameConstants.BuildingType.TAVERN] as Array[GameConstants.BuildingType])
+	
+	var dataArray = data.get(GameConstants.SAVE_DATA_PLAYER_STATS_BUILDINGS_UNLOCKED, [GameConstants.BuildingType.TAVERN] as Array[GameConstants.BuildingType])
+	var buildings : Array[GameConstants.BuildingType]
+	buildings.assign(dataArray.map(func(b): return int(b)))
+	
 	unlockedBuildings = buildings
 	
 	currentExperience = int(data.get(GameConstants.SAVE_DATA_PLAYER_STATS_CURRENT_XP, 0))

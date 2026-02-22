@@ -22,8 +22,6 @@ func _process(_delta: float) -> void:
 	pass
 
 func check_lock_status(_value : int) -> void:
-	var buildings = PlayerStats.unlockedBuildings
-	
 	if PlayerStats.unlockedBuildings.any(func(number): return number == GameConstants.BuildingType.HOUSE):
 		isLocked = false
 		sprite.modulate = Color(1,1,1,1)
@@ -37,6 +35,7 @@ func _on_input_event(_viewport: Node, event: InputEvent, _shape_idx: int) -> voi
 			#show info
 			info_popup.visible = true
 		else:
+			inventory_popup.refresh()
 			inventory_popup.visible = true
 
 

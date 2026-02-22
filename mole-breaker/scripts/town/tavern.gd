@@ -1,11 +1,13 @@
 extends Area2D
 
+@onready var sprite: Sprite2D = $Sprite
+
 signal on_click()
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	pass # Replace with function body.
-
+	if PlayerStats.unlockedBuildings.any(func(number): return number == GameConstants.BuildingType.TAVERN):
+		sprite.modulate = Color(1,1,1,1)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:

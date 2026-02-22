@@ -4,6 +4,7 @@ enum BrickType {BRICK_DIRT, BRICK_ROCK, BRICK_WOOD}
 enum BreakerLocationType {PLAINS, FOREST, QUARRY}
 enum BallType {SNOW_BALL, GHOST_BALL}
 enum BuildingType {TAVERN, HOUSE, STORE, SMITHY}
+enum LockStatus {LOCKED, UNLOCKABLE, UNLOCKED}
 
 func is_brick(node : Node) -> bool:
 	return node.is_in_group("Brick")
@@ -47,5 +48,6 @@ const SAVE_DATA_SETTINGS_VOLUME_MUSIC : String = "VOLUME_MUSIC"
 #region townInfo
 
 const TOWN_INFO_HOUSE : String = "[p]Unlocked at level 2.[/p][p][br] [br] [br][/p][p]Visit here to see your current inventory, Selected ball and Character.[/p]"
+const TOWN_INFO_STORE : String = "[p]Available at level 4.[/p]"
 
 #endregion

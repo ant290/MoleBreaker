@@ -2,9 +2,14 @@
 
 [ext_resource type="Texture2D" uid="uid://emtvli72pwy7" path="res://assets/town/Store.png" id="1_k61li"]
 [ext_resource type="Script" uid="uid://bq8kgix8yigcb" path="res://scripts/town/store.gd" id="1_p6v8q"]
+[ext_resource type="AudioStream" uid="uid://jr5u3i6o11bn" path="res://assets/sounds/effects/Earth Friend Tank Happy A.wav" id="2_36b1e"]
 [ext_resource type="Texture2D" uid="uid://c0xt57i3pi1e4" path="res://assets/town/decor/16.png" id="2_ljh1p"]
+[ext_resource type="Texture2D" uid="uid://dm2w6kspxqdar" path="res://assets/red alert.png" id="2_sf5mo"]
+[ext_resource type="AudioStream" uid="uid://5bd0752kv2rw" path="res://assets/sounds/effects/Earth Friend Tank Effort B.wav" id="3_8qup2"]
 [ext_resource type="Texture2D" uid="uid://baob8w3clkaar" path="res://assets/town/box/3.png" id="3_qdg1j"]
 [ext_resource type="Texture2D" uid="uid://cqke3mwrwf2jf" path="res://assets/town/box/4.png" id="4_p6v8q"]
+[ext_resource type="PackedScene" uid="uid://cb7jt0tnuac6s" path="res://scenes/help_dialog_popup.tscn" id="9_vm74n"]
+[ext_resource type="PackedScene" uid="uid://cfbsg50l6l7hp" path="res://scenes/balls_popup.tscn" id="10_34twq"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ljh1p"]
 size = Vector2(112, 135)
@@ -14,6 +19,12 @@ font_size = 24
 
 [node name="Area2D" type="Area2D" unique_id=2117291136]
 script = ExtResource("1_p6v8q")
+
+[node name="BuildingClickSound" type="AudioStreamPlayer" parent="." unique_id=581591422]
+stream = ExtResource("2_36b1e")
+
+[node name="ClosedSound" type="AudioStreamPlayer" parent="." unique_id=912960569]
+stream = ExtResource("3_8qup2")
 
 [node name="Sprite" type="Sprite2D" parent="." unique_id=1753134659]
 modulate = Color(0.16078432, 0.16078432, 0.16078432, 1)
@@ -31,6 +42,10 @@ texture = ExtResource("3_qdg1j")
 [node name="4" type="Sprite2D" parent="Sprite" unique_id=1441599709]
 position = Vector2(58, 43)
 texture = ExtResource("4_p6v8q")
+
+[node name="RedAlert" type="Sprite2D" parent="." unique_id=1636377069]
+position = Vector2(43, 44)
+texture = ExtResource("2_sf5mo")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=55734399]
 position = Vector2(0, -11.5)
@@ -50,4 +65,29 @@ label_settings = SubResource("LabelSettings_k61li")
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="LockStatus" type="Label" parent="." unique_id=416811483]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -27.5
+offset_top = -11.5
+offset_right = 27.5
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "Locked"
+horizontal_alignment = 1
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1468974736]
+
+[node name="InfoPopup" parent="CanvasLayer" unique_id=57342310 instance=ExtResource("9_vm74n")]
+visible = false
+
+[node name="BallsPopup" parent="CanvasLayer" unique_id=1621169500 instance=ExtResource("10_34twq")]
+visible = false
+
 [connection signal="input_event" from="." to="." method="_on_input_event"]
+[connection signal="on_close" from="CanvasLayer/InfoPopup" to="." method="_on_info_popup_on_close"]
+[connection signal="on_close" from="CanvasLayer/BallsPopup" to="." method="_on_balls_popup_on_close"]

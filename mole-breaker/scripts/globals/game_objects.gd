@@ -81,6 +81,14 @@ var BUILDING_DICT : Dictionary[GameConstants.BuildingType, Variant] = {
 	},
 	GameConstants.BuildingType.HOUSE : {
 		"LevelRequirement" : 2
+	},
+	GameConstants.BuildingType.STORE : {
+		"LevelRequirement" : 4,
+		"BrickCost" : {
+			GameConstants.BrickType.BRICK_DIRT : 50,
+			GameConstants.BrickType.BRICK_ROCK : 25,
+			GameConstants.BrickType.BRICK_WOOD : 10
+		}
 	}
 }
 
@@ -109,7 +117,7 @@ func _ready() -> void:
 		quest.id = key
 		quest.location_details = LOCATION_DETAILS[item["LocationType"]]
 		quest.name = item["Name"]
-		quest.minimum_level = item["MinimumLevel"]
+		quest.minimum_level = item.get("MinimumLevel", 0)
 		var bricks = item["Bricks"]
 		for brickChance in bricks:
 				quest.brick_availabilities[brickChance] = bricks[brickChance]
@@ -134,5 +142,9 @@ func _ready() -> void:
 		var mapping = BuildingMapping.new()
 		mapping.building_type = key
 		mapping.level_requirement = int(type.get("LevelRequirement", 0))
-		# mapping.brick_cost = {}
+
+		var brickCosts = type.get("BrickCost", {})
+		for brickType in brickCosts:
+			mapping.brick_cost[brickType] = brickCosts[brickType]
+
 		BUILDING_DETAILS[key] = mapping
